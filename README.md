@@ -9,6 +9,6 @@
 ### 2.- ... 5.-
 
 ## Integrantes del equipo
-### Leticia Luna Tlatelpa
+### Leticia Luna Tlatelpa - Soy Maestra en Diseño, Información y Comunicación. Me interesan la visualización de datos y los sistemas interactivos. Me apasiona contar historias basadas en datos, estáticas o interactivas.
 ### Diego Joel Gongora Gamboa - Estudiante de Ciencias de la Computación, interesado en el desarrollo web, especialmente el frontend y apasionado de las tecnologías emergentes :)
 ### Quetzalli Abigail Pinzón Montes - Ing. en Sistemas y Comunicaciones, actualmente estudiante de Ciencias de la Computación, especial interés por el mundo fitness y la fusión de este con las tecnologías actuales para el alcance de público de todas las edades, experiencia inicial en el mundo del desarrollo web pero comprometida a la investigación para el cumplimiento de objetivos.
