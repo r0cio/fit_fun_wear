@@ -16,7 +16,12 @@
     Porque puedes buscar por producto o por deporte.
 * <https://www.sportscheck.com/>
     Porque está muy especializada y puedes escoger diferentes tamaños y particularidades de una prenda o zapato.
-### 2.- ... 5.-
+### 2.- Referencias adicionales - QP
+* <https://www.zumba.com/es-ES/shop/US> La página se encuentra organizada y es atractiva para el cliente por el tipo de prendas que ofrecen, tienen la opción de cambiar el idioma, registrarse, iniciar sesión e información de redes sociales.
+* <https://www.romed.com.mx/> Es una página sencilla pero cuenta con los elementos necesarios para la interacción del cliente, imágenes llamativas y asesoramiento via whatsapp en un horario específico. 
+* <https://www.reebok.mx/> Estilo clásico y amigable para el usuario, muestra las categorías de compra, las prendas populares, permite iniciar sesión o registrarte, así como dar seguimiento a tus pedidos. 
+* <https://tfit.com.mx/> Colores atractivos visualmente, al inicio muestra un carrusel con las nuevas colecciones y con ofertas, muestra los productos y los precios con su respectiva imagen.
+* <https://labellamafia.mx/> Al inicio cuenta con colores super llamativos en las imágenes de presentación, tiene la opción de buscar productos, seleccionar por categorías, un diseño fácil para la navegación del usuario, opción de iniciar sesión, registrarse y carrito de compra.
 
 ## Integrantes del equipo
 ### Leticia Luna Tlatelpa - Soy Maestra en Diseño, Información y Comunicación. Me interesan la visualización de datos y los sistemas interactivos. Me apasiona contar historias basadas en datos, estáticas o interactivas.
