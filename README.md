@@ -16,12 +16,20 @@
     Porque puedes buscar por producto o por deporte.
 * <https://www.sportscheck.com/>
     Porque está muy especializada y puedes escoger diferentes tamaños y particularidades de una prenda o zapato.
+
 ### 2.- Referencias adicionales - QP
 * <https://www.zumba.com/es-ES/shop/US> La página se encuentra organizada y es atractiva para el cliente por el tipo de prendas que ofrecen, tienen la opción de cambiar el idioma, registrarse, iniciar sesión e información de redes sociales.
 * <https://www.romed.com.mx/> Es una página sencilla pero cuenta con los elementos necesarios para la interacción del cliente, imágenes llamativas y asesoramiento via whatsapp en un horario específico. 
 * <https://www.reebok.mx/> Estilo clásico y amigable para el usuario, muestra las categorías de compra, las prendas populares, permite iniciar sesión o registrarte, así como dar seguimiento a tus pedidos. 
 * <https://tfit.com.mx/> Colores atractivos visualmente, al inicio muestra un carrusel con las nuevas colecciones y con ofertas, muestra los productos y los precios con su respectiva imagen.
 * <https://labellamafia.mx/> Al inicio cuenta con colores super llamativos en las imágenes de presentación, tiene la opción de buscar productos, seleccionar por categorías, un diseño fácil para la navegación del usuario, opción de iniciar sesión, registrarse y carrito de compra.
+
+### 3.- Más referencias - Diego
+* <https://www.nike.com/mx/> El contenido del sitio está muy bien organizado y cuenta con menús desplegables que hacen que la navegación por el sitio sea muy agradable.
+* <https://www.adidas.mx/> El sitio web cuenta con material interactivo así que es bastante funcional y visualmente atractivo, además que la navegación es muy intuitiva.
+* <https://mx.puma.com/> Posee una estética bastante agradable con varios colores e imágenes que dan a conocer los productos.
+* <https://www.underarmour.com.mx/es-mx/> Tiene una amplia colección de productos y muy bien categorizados por lo tanto su funcionalidad es muy buena.
+* <https://www.newbalancemexico.com/> Cuenta con un estilo relativamente simple lo que hace que sea más fácil de usar y esto puede hacer que los usuarios quieran volver a comprar en este sitio.
 
 ## Integrantes del equipo
 ### Leticia Luna Tlatelpa - Soy Maestra en Diseño, Información y Comunicación. Me interesan la visualización de datos y los sistemas interactivos. Me apasiona contar historias basadas en datos, estáticas o interactivas.
