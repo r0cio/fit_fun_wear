@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.google.com/specimen/IBM+Plex+Sans#standard-styles" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/stylesRegister.css">
+    <title>FitFunWear</title>
+</head>
+
+<body>
+    <header>
+        <nav class="main-top-nav">
+            <div class="img-logo">
+                <a href="/">
+                    <img src="/img/Logo.svg" alt="Logo FitFunWear"></a>
+            </div>
+            <div class="main-list-nav">
+                <p class="list-nav-item"><a href="#">Hombre</a></p>
+                <p class="list-nav-item"><a href="#">Mujer</a></p>
+                <p class="list-nav-item"><a href="#">Ofertas</a></p>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search pointer"></i>
+            </div>
+            <div class="user">
+                <i class="fas fa-user pointer"></i>
+            </div>
+            <div class="shop-car">
+                <i class="fas fa-shopping-cart pointer"></i>
+            </div>
+            <div class="bars">
+                <i class="fas fa-bars pointer"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class = "seccion">
+            <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
+        </div>
+        <div class = "bienvenida">
+            <h1> BIENVENIDO A LA COMUNIDAD FIT FUN WEAR</h1> 
+            <p class = "comunidad"> Crea tu perfil y descubre una increíble experiencia, tendrás acceso a beneficios exclusivos y a los mejores productos deportivos. </p>
+        </div>
+
+        <form action = "/" method = "GET">
+
+            <div class = "etiquetaNombre">
+                <label>Nombre*</label>
+            </div>
+            <div class = "nombre">
+                <input type="text" placeholder =" Inserte su nombre" name="nombre" required>
+            </div>
+            
+            <div class = "etiquetaApellido">
+                <label>Apellido</label>
+            </div>
+            <div class = "apellido">
+                <input type="text" placeholder =" Inserte su apellido" name="apellido" pattern = "[a-zA-Z]">
+            </div>
+
+            <div class = "etiquetaCorreo">
+                <label>Correo electrónico</label>
+            </div>
+            <div class = "correo">
+                <input type="email" placeholder =" Inserte su correo electrónico" name="email" minlength="@" required>
+            </div>
+
+            <div class = "etiquetaContraseña">
+                <label>Contraseña</label>
+            </div>
+            <div class = "Contraseña" >
+                <input type="password" placeholder =" Inserte su contraseña" name="password" maxlength="8" required>
+            </div>
+            <div>
+                <p class = "terminos"> Al crear una cuenta aceptas la <a class = "box" href="/">Política de privacidad</a> y los <a class = "box" href="/">Términos de uso </a>de Fit Fun Wear</p>
+            </div>
+
+            <div class ="boton">
+                <button class="Enviar" type = "submit">ÚNETE</button>
+            </div>
+                
+            <div>
+                <p class = "iniciaSesion"> ¿Ya eres parte de la comunidad? <a class = "iniciarSesion" href="/login">Inicia sesión</a> </p>
+            </div>
+        
+        </form>
+
+    </main>
+
+    <footer>
+        <hr>
+        <section class="footer-section-select">
+            <select name="faq" id="faq" class="footer-select" title="FAQ">
+                <option value="faq" selected disabled>FAQ</option>
+                <option value="uno"><a href="#">Uno</a></option>
+                <option value="dos"><a href="#">Dos</a></option>
+                <option value="https://www.google.com">Tres</option>
+            </select>
+        </section>
+        <section class="footer-section-select">
+            <select name="about" id="about" class="footer-select" title="Acerca de">
+                <option value="about" selected disabled>Acerca de</option>
+                <option value="uno">Uno</option>
+                <option value="dos">Dos</option>
+                <option value="tres">Tres</option>
+            </select>
+        </section>
+        <section class="footer-section-select">
+            <select name="contact" id="contact" class="footer-select" title="Contacto">
+                <option value="contact" selected disabled>Contacto</option>
+                <option value="uno">Uno</option>
+                <option value="dos">Dos</option>
+                <option value="tres">Tres</option>
+            </select>
+        </section>
+        <div class="container-footer">
+            <section class="footer-list">
+                <p class="footer-list-title">FAQ</p>
+                <ul>
+                    <li><a href="#">¿Cómo comprar?</a></li>
+                    <li><a href="#">¿Cómo comprar?</a></li>
+                    <li><a href="#">¿Cómo comprar?</a></li>
+                    <li><a href="#">¿Cómo comprar?</a></li>
+                </ul>
+            </section>
+            <section class="footer-list">
+                <p class="footer-list-title">Acerca de</p>
+                <ul>
+                    <li><a href="#">¿Cómo comprar?</a></li>
+                    <li><a href="#">¿Cómo comprar?</a></li>
+                    <li><a href="#">¿Cómo comprar?</a></li>
+                    <li><a href="#">¿Cómo comprar?</a></li>
+                </ul>
+            </section>
+            <section class="footer-list">
+                <p class="footer-list-title">Contacto</p>
+                <ul>
+                    <li><a href="#">¿Cómo comprar?</a></li>
+                    <li><a href="#">¿Cómo comprar?</a></li>
+                    <li><a href="#">¿Cómo comprar?</a></li>
+                    <li><a href="#">¿Cómo comprar?</a></li>
+                </ul>
+            </section>
+            <section>
+                <p class="footer-list-title">Redes sociales</p>
+                <div class="footer-social">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </section>
+        </div>
+        <section class="social">
+            <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </section>
+        <section class="footer-bottom">
+            <div class="img-footer">
+                <a href="/">
+                    <img src="/img/Logo.png" alt="Logo FitFunWear"></a>
+            </div>
+            <div class="copyright">
+                <p class="copy-item">Copyright &copy; FitFunWear 2021</p>
+                <p class="copy-item"><a class="link-copy" href="#">Politica de privacidad</a></p>
+                <p class="copy-item"><a class="link-copy" href="#">Aviso legal</a></p>
+            </div>
+        </section>
+    </footer>
+    
+</body>
+
+</html>
