@@ -1,0 +1,261 @@
+/** Estilos generales **/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+/* Este estilo es para que la sección main tenga un color diferente al header y footer */
+main {
+    background-color: #f8f7f7;
+    padding: 10px 0;
+}
+
+a {
+    color: #063b52!important;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #000;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+li {
+    list-style-type: none;
+}
+
+/** Header **/
+header nav.main-top-nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+header nav.main-top-nav div.img-logo {
+    flex-grow: 0.9;
+    margin-right: 30%;
+    max-height: 60px;
+}
+
+header nav.main-top-nav div.img-logo img, footer div.img-footer img {
+    border-radius: 5px;
+    max-height: 60px;
+    max-width: 100%;
+    transition: transform 450ms linear;
+}
+
+header nav.main-top-nav div.img-logo img:hover, footer div.img-footer img:hover {
+    transform: scaleX(1.1) scaleY(1.1);
+}
+
+header nav.main-top-nav div.search-bar, header nav.main-top-nav div.user, header nav.main-top-nav div.shop-car, header nav.main-top-nav div.bars {
+    align-self: center;
+    color: #063b52;
+    flex-grow: 0.30;
+    font-size: 35px;
+}
+
+header div.main-list-nav {
+    display: none;
+}
+
+header nav.main-top-nav div.user {
+    display: none;
+}
+
+/** Footer **/
+footer {
+    padding: 10px;
+}
+
+footer section.footer-section-select {
+    margin: 10px;
+}
+
+footer section.footer-section-select select.footer-select {
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+footer section.footer-section-select select.footer-select:focus {
+    border: 2px solid #29adb8;
+}
+
+footer section.social {
+    display: flex;
+    font-size: 30px;
+    justify-content: space-evenly;
+    margin: 20px 0;
+}
+
+footer .fa-facebook, footer .fa-twitter, footer .fa-instagram, footer .fa-cc-visa, footer .fa-cc-mastercard,
+footer .fa-cc-paypal, footer .fa-cc-amex {
+    font-size: 2.5rem;
+    transition: all 0.4s;
+}
+
+footer .fa-facebook:hover {
+    color: #1877f2;
+}
+
+footer .fa-twitter:hover {
+    color: rgba(29,161,242,1.00);
+}
+
+footer .fa-instagram:hover {
+    background: #833ab4;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 45%;
+}
+
+footer .fa-cc-visa:hover {
+    color: #1951B1;
+}
+
+footer .fa-cc-mastercard:hover {
+    color: #eea849;
+}
+
+footer .fa-cc-paypal:hover {
+    color: #00A8EA;
+}
+
+footer .fa-cc-amex:hover {
+    color: #006fcf;
+}
+
+footer div.container-footer {
+    display: none;
+}
+
+footer section.credit-cards i {
+    font-size: 2.5rem;
+}
+
+footer section.credit-cards p.footer-cards-title {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 7px 0;
+}
+
+footer section.credit-cards div.credit-card-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+/** Media queries **/
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    /* Header */
+    header nav.main-top-nav div.search-bar, header nav.main-top-nav div.user, header nav.main-top-nav div.shop-car, header nav.main-top-nav div.bars {
+        flex-grow: 0.3;
+        font-size: 40px;
+    }
+
+    header nav.main-top-nav div.img-logo {
+        margin-right: 50%;
+    }
+    
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    /* Footer */
+    footer section.footer-section-select, footer section.social {
+        display: none;
+    }
+
+    footer div.container-footer, footer section div.footer-social {
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 15px;
+    }
+
+    footer div.container-footer {
+        padding-top: 15px;
+    }
+    
+    footer section p.footer-list-title {
+        font-weight: 800;
+        margin-bottom: 10px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    footer section div.footer-social a {
+        margin: 0 15px;
+        padding-top: 10px;
+    }
+
+    footer section.credit-cards {
+        display: none;
+    }
+
+    footer section div.cc-container {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    footer section.footer-bottom {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    footer section.footer-bottom div.copyright {
+        align-items: center;
+        display: flex;
+    }
+
+    footer section.footer-bottom div.copyright p.copy-item {
+        margin: 0 10px;
+    }
+
+    footer section.footer-bottom div.copyright p.copy-item a:hover, .footer-list a:hover {
+        color: #ed5556!important;
+    }
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    /* Header */
+    header nav.main-top-nav div.bars {
+        display: none;
+    }
+
+    header nav.main-top-nav div.user {
+        display: inline;
+    }
+
+    header nav.main-top-nav div.main-list-nav {
+        align-items: center;
+        display: flex;
+        margin-right: 34%;
+    }
+
+    header nav.main-top-nav div.img-logo {
+        margin-right: 0%;
+    }
+
+    header nav.main-top-nav div.main-list-nav p.list-nav-item a {
+        color: #063b52;
+        font-size: 1.5rem;
+        margin: 0 10px;
+    }
+
+    header nav.main-top-nav div.main-list-nav p.list-nav-item a:hover {
+        color: #29adb8!important;
+    }
+
+}

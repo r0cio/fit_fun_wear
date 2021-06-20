@@ -23,3 +23,11 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {
     res.sendFile(path.resolve('views/register.html'));
 });
+
+app.get('/privacidad', (req, res) => {
+    res.sendFile(path.resolve('views/privacidad.html'));
+});
+
+app.get('/legal', (req, res) => {
+    res.sendFile(path.resolve('views/legal.html'));
+});

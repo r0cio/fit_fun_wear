@@ -1,0 +1,48 @@
+main {
+    padding: 25px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.intro-section {
+    padding-top: 10px;
+}
+
+section, .intro-section {
+    text-align: justify;
+}
+
+p.title-section {
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 18px 0;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    /* Main */
+    main {
+        padding: 40px;
+    }
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    /* Main */
+    main {
+        padding: 50px;
+    }
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    /* Main */
+    main {
+        padding: 70px;
+    }
+
+}
