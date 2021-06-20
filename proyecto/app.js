@@ -31,3 +31,11 @@ app.get('/privacidad', (req, res) => {
 app.get('/legal', (req, res) => {
     res.sendFile(path.resolve('views/legal.html'));
 });
+
+app.get('/terminos', (req, res) => {
+    res.sendFile(path.resolve('views/terminos.html'));
+});
+
+app.get('/resetPassword', (req, res) => {
+    res.sendFile(path.resolve('views/resetPassword.html'));
+});
