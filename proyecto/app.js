@@ -39,3 +39,14 @@ app.get('/terminos', (req, res) => {
 app.get('/resetPassword', (req, res) => {
     res.sendFile(path.resolve('views/resetPassword.html'));
 });
+
+app.get('/cartNV', (req, res) => {
+    //res.sendFile(path.join(__dirname, '/views/index.html'));
+    res.sendFile(path.resolve('views/carritoNV.html'));
+});
+
+
+app.get('/cart', (req, res) => {
+    //res.sendFile(path.join(__dirname, '/views/index.html'));
+    res.sendFile(path.resolve('views/carritoVacio.html'));
+});

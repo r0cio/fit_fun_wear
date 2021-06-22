@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/img/icono-logo.ico">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <title>FunFitWear. Cart.</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="css/styles_cart.css">
     <link rel="stylesheet" href="/css/styles-header-footer.css">
-    <link rel="stylesheet" href="/css/styles-index.css">
-    <title>FitFunWear</title>
-</head>
 
+</head>
 <body>
     <header>
         <nav class="main-top-nav">
@@ -34,73 +31,123 @@
                 <a href="/login" title="Iniciar sesión / Registrarse"><i class="fas fa-user pointer"></i></a>
             </div>
             <div class="shop-car">
-                <a href="/cartNV" title="Ver carrito"><i class="fas fa-shopping-cart pointer"></i></a>
+                <a href="/cartV" title="Ver carrito"><i class="fas fa-shopping-cart pointer"></i></a>
             </div>
             <div class="bars">
                 <a href="#" title="Más opciones"><i class="fas fa-bars pointer"></i></a>
             </div>
         </nav>
     </header>
-    <main>
-        <section class="carrousel">
+    <section class="header-NoVacio">
+        <h2>TU CARRITO DE COMPRA [1]</h2>
+    </section>
+    <main class="cart">
+        <div class="products-selected">
+            <section class="articulos">
+                <article>
+                    <div class="check">
+                            <img src="/img/jade-tennis.jpg" alt="jade-tennis" class="product_img">
+                            <div class="disponible">
+                                <p>Disponible</p>
+                            </div>
+                    </div>
+                    <div class="desc-article">
+                            <h5>Tenis para hombre marca NIKE</h5>
+                            <label >COLOR<p class="color">Verde</p></label>
+                            <label>TALLA<p class="size">27</p></label>
+                            <label>MODELO<p class="modelo">Lorem Ipsum</p></label>
+                            <div class="cantidad-total">
+                                <label>Cantidad
+                                    <select>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                    </select></label>
+                                <label class="subtotal">$2270.00</label>
+                            </div>
+                            <div class="cart-modify">
+                                <div class="editar">
+                                    <label>EDITAR</label>
+                                </div>
+                                <div class="eliminar">
+                                    <label>ELIMINAR</label>
+                                </div>
+                            </div>
+    
+                    </div>
+    
+                </article>
+                <article>
+                    <div class="check">
+                        <img src="img/conjuntofila.jpg" alt="jade-tennis" class="product_img">
+                        <div class="disponible">
+                            <p>Disponible</p>
+                        </div>
+                    </div>
+                    <div class="desc-article">
+                        <h5 class="description">Conjunto de short y playera marca FILA</h5>
+                        <label >COLOR<p class="color">Azul</p></label>
+                        <label>TALLA<p class="size">L</p></label>
+                        <label>MODELO<p class="modelo">Lorem Ipsum</p></label>
+                        <div  class="cantidad-total">
+                            <label>Cantidad
+                                <select>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                </select></label>
+                            <label class="subtotal">$2270.00</label>
+                        </div>
+                        <div class="cart-modify">
+                            <div class="editar">
+                                <label>EDITAR</label>
+                            </div>
+                            <div class="eliminar">
+                                <label>ELIMINAR</label>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <div class="a-pagar">
+                <section class="subtotal-final">
+                    <div class="row-total">
+                        <p>SUBTOTAL</p>
+                        <p>$4540.00</p>
+                    </div>
+                    <div class="row-total">
+                        <p>GASTOS DE ENVÍO</p>
+                        <p>$0.00</p>
+                    </div>
+                </section>
+                <section class="total-final">
+                    <div class="row-total-fin">
+                        <p>TOTAL</p>
+                        <p>$4540.00</p>
+                    </div>
+                </section>
+                <label id= "pagar"><button>PAGAR</button></label>
+            </div>
+        </div>
+        <section class="carousel">
             <i class="fas fa-chevron-left pointer"><a href="#" title="Previo"></a></i>
-            <img src="/img/jade-scarlato-dT6wB15xdoA-unsplash.jpg" alt="Imagen de carrusel" class="pointer">
+            <img src="/img/dusan-jovic-uTlMDzkAz-M-unsplash.jpg" alt="Imagen de carrusel" class="pointer">
+            <img src="/img/daria-volkova-E8N5sAI7Bpw-unsplash.jpg" alt="Imagen de carrusel" class="pointer">
             <i class="fas fa-chevron-right pointer"></i>
-        </section>
-        <section class="trending">
-            <h2 class="title-section">Tendencias</h2>
-            <div class="trending-articles">
-                <article class="section-item pointer">
-                    <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" class="img-item" alt="Artículo">
-                    <p class="item-name">Nombre del artículo</p>
-                    <p class="item-price"><b>$250.00</b></p>
-                </article>
-                <article class="section-item pointer">
-                    <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" class="img-item" alt="Artículo">
-                    <p class="item-name">Nombre del artículo</p>
-                    <p class="item-price"><b>$250.00</b></p>
-                </article>
-                <article class="section-item pointer">
-                    <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" class="img-item" alt="Artículo">
-                    <p class="item-name">Otro artículo</p>
-                    <p class="item-price"><b>$250.00</b></p>
-                </article>
-                <article class="section-item pointer">
-                    <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" class="img-item" alt="Artículo">
-                    <p class="item-name">Otro artículo</p>
-                    <p class="item-price"><b>$250.00</b></p>
-                </article>
-                <article class="section-item pointer">
-                    <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" class="img-item" alt="Artículo">
-                    <p class="item-name">Otro artículo</p>
-                    <p class="item-price"><b>$250.00</b></p>
-                </article>
-            </div>
-        </section>
-        <section class="best-seller">
-            <h2 class="title-section">Más vendidos</h2>
-            <div class="best-seller-articles">
-                <article class="section-item pointer">
-                    <img src="/img/maksim-larin-ezdrvzA1hZw-unsplash.jpg" class="img-item" alt="Artículo">
-                    <p class="item-name">Otro artículo</p>
-                    <p class="item-price"><b>$250.00</b></p>
-                </article>
-                <article class="section-item pointer">
-                    <img src="/img/maksim-larin-ezdrvzA1hZw-unsplash.jpg" class="img-item" alt="Artículo">
-                    <p class="item-name">Otro artículo</p>
-                    <p class="item-price"><b>$250.00</b></p>
-                </article>
-                <article class="section-item pointer">
-                    <img src="/img/maksim-larin-ezdrvzA1hZw-unsplash.jpg" class="img-item" alt="Artículo">
-                    <p class="item-name">Otro artículo</p>
-                    <p class="item-price"><b>$250.00</b></p>
-                </article>
-                <article class="section-item pointer">
-                    <img src="/img/maksim-larin-ezdrvzA1hZw-unsplash.jpg" class="img-item" alt="Artículo">
-                    <p class="item-name">Otro artículo</p>
-                    <p class="item-price"><b>$250.00</b></p>
-                </article>
-            </div>
         </section>
     </main>
     <footer>
@@ -200,5 +247,4 @@
         </section>
     </footer>
 </body>
-
 </html>
