@@ -50,3 +50,7 @@ app.get('/cart', (req, res) => {
     //res.sendFile(path.join(__dirname, '/views/index.html'));
     res.sendFile(path.resolve('views/carritoVacio.html'));
 });
+
+app.get('/product-detail', (req, res) => {
+    res.sendFile(path.resolve('views/product-detail.html'));
+});
