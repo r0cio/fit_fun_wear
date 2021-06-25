@@ -1,4 +1,4 @@
-# Conclusiones
+# Conclusiones Sprint 1
 ## Empezar a hacer
 ### Decidimos realizar como nuevas actividades primeramente un tablero en Trello para programar las actividades y tener un mejor control sobre las tareas a realizar en el sprint dividiéndolas entre los integrantes del equipo. Otra cosa que se implemento fue la creación de un canal privado en Slack para tener una comunicación más ágil entre los miembros del equipo, la siguiente actividad innovadora fue que en los documentos donde se necesitaba la participación de todos los miembros del equipo se usó la plataforma Drive con el objetivo de que todos los participantes contribuyeran en el mismo documento.
 
@@ -13,3 +13,19 @@
 
 ## Dejar de hacer
 ### Una cosa que queremos es dejar de prolongar los tiempos entre cada reunión.
+
+# Conclusiones Sprint 2
+## Empezar a hacer
+### Algo que nos hemos planteado es organizarnos mejor en el sentido de definir mejor los alcances de las tareas, además ahora que tenemos un producto realizado debemos revisar que se vea uniforme en todas las vistas, esto es tener una uniformidad entre los html.
+
+## Hacer más
+### Hemos pensado en realizar commits en Github más recurrentes debido a que en algunos casos del sprint pasado tuvimos commits más largos. Un punto que igual queremos realizar de forma más continua es involucrarnos más en el proyecto, con esto nos referimos a que cada uno de nosotros esté al pendiente de los que hacen lo demás y no se concentre únicamente en el trabajo asignado.
+
+## Continuar haciendo
+### Algo que nos ha funcionado es realizar reuniones para ponernos de acuerdo y queremos seguir haciendo estas reuniones para ver los avances individuales.
+
+## Hacer menos
+### Una cosa que nos hemos planteado es subdividir las tareas de forma que estemos involucrados completamente con el proyecto, además de que esto ocasionará que no nos compliquemos tanto con tareas complejas.
+
+## Dejar de hacer
+### Esperar a tener todo completo para realizar las reuniones, así en ese caso tendremos reuniones más enriquecedoras, otra cosa es dejar de realizar los commits cuando acabemos nuestra funcionalidad al 100%, de esta forma todos tendremos nuestros códigos actualizados frecuentemente y podremos evitar conflictos de código.
