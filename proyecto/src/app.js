@@ -10,6 +10,8 @@ app.listen(PORT, () => {  // Se inicializa el servidor
     console.log("Servidor corriendo en http://localhost:" + PORT);
 });
 
+app.set('view engine', 'ejs');
+
 // Rutas 
 app.get('/', (req, res) => {
     //res.sendFile(path.join(__dirname, '/views/index.html'));
