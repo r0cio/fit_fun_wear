@@ -1,0 +1,123 @@
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/styles-product-detail.css">
+    <title>Detalle de producto</title>
+    </head>
+
+    <body>
+        <%- include('../partials/header') %>
+            <main>
+                <section class="product-detail">
+                    <div class="img-product">
+                        <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" class="img-product"
+                            alt="Imagen de producto">
+                    </div>
+                    <h1 class="product-name">Nombre del producto</h1>
+                    <div class="img-product-small">
+                        <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" alt="Imagen pequeña producto">
+                        <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" alt="Imagen pequeña producto">
+                        <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" alt="Imagen pequeña producto">
+                    </div>
+                    <div class="price">
+                        <p><b>$250.00</b></p>
+                    </div>
+                    <div class="description">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A dolor explicabo nihil nisi culpa?
+                            Tempora
+                            iste voluptatum earum amet. Temporibus provident nobis quasi magnam facilis, consequatur
+                            quidem
+                            sapiente aut excepturi.</p>
+                    </div>
+                    <div>
+                        <a class="buy-now" href="#">Comprar ahora</a>
+                    </div>
+                    <div>
+                        <a class="add-cart" href="#">Añadir al carrito</a>
+                    </div>
+                    <div class="heart">
+                        <i class="far fa-heart"></i>
+                    </div>
+                    <select name="comments" id="comments">
+                        <option value="comments" selected disabled>Comentarios</option>
+                        <option value="uno">Uno</option>
+                        <option value="dos">Dos</option>
+                        <option value="tres">Tres</option>
+                    </select>
+                </section>
+                <section class="product-detail-desktop">
+                    <div class="container-desktop">
+                        <div class="img-product-desktop">
+                            <div class="img-product">
+                                <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" class="img-product"
+                                    alt="Imagen de producto">
+                            </div>
+                            <div class="img-product-small">
+                                <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" alt="Imagen pequeña producto">
+                                <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" alt="Imagen pequeña producto">
+                                <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" alt="Imagen pequeña producto">
+                            </div>
+                        </div>
+                        <div class="details">
+                            <h1 class="product-name">Nombre del producto</h1>
+                            <div class="price">
+                                <p><b>$250.00</b></p>
+                            </div>
+                            <div class="description">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A dolor explicabo nihil nisi
+                                    culpa?
+                                    Tempora
+                                    iste voluptatum earum amet. Temporibus provident nobis quasi magnam facilis,
+                                    consequatur
+                                    quidem
+                                    sapiente aut excepturi.</p>
+                            </div>
+                            <div>
+                                <a class="buy-now" href="#">Comprar ahora</a>
+                            </div>
+                            <div class="container-button">
+                                <div class="button-add-cart">
+                                    <a class="add-cart" href="#">Añadir al carrito</a>
+                                </div>
+                                <div class="heart pointer">
+                                    <i class="far fa-heart"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <section class="user-comments">
+                        <h2 class="title-section">Comentarios</h2>
+                        <div class="comment">
+                            <i class="fas fa-user"></i>
+                            <p class="text-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+                                labore
+                                expedita cupiditate ipsum, asperiores qui aperiam, rerum natus id in ipsa accusamus
+                                aspernatur
+                                quasi incidunt repudiandae libero quos accusantium suscipit!</p>
+                            <i class="fas fa-user"></i>
+                            <p class="text-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+                                labore
+                                expedita cupiditate ipsum, asperiores qui aperiam, rerum natus id in ipsa accusamus
+                                aspernatur
+                                quasi incidunt repudiandae libero quos accusantium suscipit!</p>
+                        </div>
+                    </section>
+                </section>
+                <section class="similar-products">
+                    <h2 class="title-section">Productos similares</h2>
+                    <div class="similar-product-item">
+                        <article class="section-item pointer">
+                            <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" class="img-item" alt="Artículo">
+                            <p class="item-name">Nombre del artículo</p>
+                            <p class="item-price"><b>$250.00</b></p>
+                        </article>
+                        <article class="section-item pointer">
+                            <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" class="img-item" alt="Artículo">
+                            <p class="item-name">Nombre del artículo</p>
+                            <p class="item-price"><b>$250.00</b></p>
+                        </article>
+                    </div>
+                </section>
+            </main>
+            <%- include('../partials/footer') %>
+    </body>
+
+    </html>
