@@ -5,6 +5,7 @@ const path = require('path');
 // Se importan las rutas del subdirectorio routes/
 const rutasMain = require('./routes/main');
 const rutasProduct = require('./routes/product');
+const rutasUser = require('./routes/user');
 
 const app = express();  // Se almacena el objeto que devuelve express()
 const PORT = 3000; // Se toma el puerto del entorno o el 3030
@@ -19,14 +20,9 @@ app.listen(PORT, () => {  // Se inicializa el servidor
 // Rutas 
 app.use('/', rutasMain);
 app.use('/product-detail', rutasProduct);
-
-app.get('/login', (req, res) => {
-    res.sendFile(path.resolve('views/login.html'));
-});
-
-app.get('/register', (req, res) => {
-    res.sendFile(path.resolve('views/register.html'));
-});
+app.use('/', rutasUser);
+app.use('/register', rutasUser);
+app.use('/resetPassword', rutasUser);
 
 app.get('/privacidad', (req, res) => {
     res.sendFile(path.resolve('views/privacidad.html'));
@@ -38,10 +34,6 @@ app.get('/legal', (req, res) => {
 
 app.get('/terminos', (req, res) => {
     res.sendFile(path.resolve('views/terminos.html'));
-});
-
-app.get('/resetPassword', (req, res) => {
-    res.sendFile(path.resolve('views/resetPassword.html'));
 });
 
 app.get('/cartNV', (req, res) => {

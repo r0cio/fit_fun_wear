@@ -1,93 +1,64 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/img/icono-logo.ico">
-    <link href="https://fonts.google.com/specimen/IBM+Plex+Sans#standard-styles" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="/css/styles-header-footer.css">
-    <link rel="stylesheet" href="/css/styles-login.css">
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/styles-register.css">
     <title>FitFunWear</title>
 </head>
 
 <body>
-    <header>
-        <nav class="main-top-nav">
-            <div class="img-logo">
-                <a href="/">
-                    <img src="/img/Logo.svg" alt="Logo FitFunWear"></a>
-            </div>
-            <div class="main-list-nav">
-                <p class="list-nav-item"><a href="#">Hombre</a></p>
-                <p class="list-nav-item"><a href="#">Mujer</a></p>
-                <p class="list-nav-item"><a href="#">Ofertas</a></p>
-            </div>
-            <div class="search-bar">
-                <i class="fas fa-search pointer"></i>
-            </div>
-            <div class="user">
-                <i class="fas fa-user pointer"></i>
-            </div>
-            <div class="shop-car">
-                <i class="fas fa-shopping-cart pointer"></i>
-            </div>
-            <div class="bars">
-                <i class="fas fa-bars pointer"></i>
-            </div>
-        </nav>
-    </header>
-
+    <%- include('../partials/header') %>
     <main>
-        <div>
-            <h1> Iniciar sesión </h1> 
+        <div class = "seccion">
+            <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
         </div>
+        <div class = "bienvenida">
+            <h1> BIENVENIDO A LA COMUNIDAD FIT FUN WEAR</h1> 
+            <p class = "comunidad"> Crea tu perfil y descubre una increíble experiencia, tendrás acceso a beneficios exclusivos y a los mejores productos deportivos. </p>
+        </div>
+
         <form action = "/" method = "GET">
 
-            <div class = "etiquetaUsuario">
+            <div class = "etiquetaNombre">
+                <label>Nombre*</label>
+            </div>
+            <div class = "nombre">
+                <input type="text" placeholder =" Inserte su nombre" name="nombre" required>
+            </div>
+            
+            <div class = "etiquetaApellido">
+                <label>Apellido</label>
+            </div>
+            <div class = "apellido">
+                <input type="text" placeholder =" Inserte su apellido" name="apellido" pattern = "[a-zA-Z]">
+            </div>
+
+            <div class = "etiquetaCorreo">
                 <label>Correo electrónico</label>
             </div>
-            <div class = "Usuario">
-                <input type="email" placeholder =" Inserte su correo electrónico" name="emailUsuario" minlength="8" required>
+            <div class = "correo">
+                <input type="email" placeholder =" Inserte su correo electrónico" name="email" minlength="@" required>
             </div>
 
             <div class = "etiquetaContraseña">
                 <label>Contraseña</label>
             </div>
             <div class = "Contraseña" >
-                <input type="password" placeholder =" Inserte su contraseña" name="password" maxlength="8" required>
+                <input type="password" placeholder =" Cree una contraseña" name="password" maxlength="8" required>
             </div>
-
-            <div class = "Recordarme" >
-                <input type="checkbox" name="recordarme" value="recordarme" checked> Recordarme
-            </div>
-
-            <div class = "contraseñaOlvidada" >
-                <a class ="box" href="/resetPassword"> ¿Olvidaste tu contraseña? </a>
+            <div>
+                <p class = "terminos"> Al crear una cuenta aceptas la <a class = "box" href="/privacidad">Política de privacidad</a> y los <a class = "box" href="/terminos">Términos de uso </a>de Fit Fun Wear</p>
             </div>
 
             <div class ="boton">
-                <button class="Enviar" type = "submit">Iniciar sesión</button>
+                <button class="Enviar" type = "submit">ÚNETE</button>
             </div>
-
-            <div class = "nuevoUsuario" >
-                <label>¿Eres nuevo(a)?</label>
-                <a class ="box" href="/register"> ¡REGISTRATE AQUÍ! </a>
+                
+            <div>
+                <p class = "iniciaSesion"> ¿Ya eres parte de la comunidad? <a class = "iniciarSesion" href="/login">Inicia sesión</a> </p>
             </div>
-
-            <div class = "beneficios" >
-                <i class="fas fa-gifts"></i>
-                <label class ="beneficios">Recibe beneficios exclusivos al unirte a nuestra comunidad</label>
-            </div>
-
         
         </form>
 
     </main>
-    
+
     <footer>
         <hr>
         <section class="footer-section-select">
@@ -159,7 +130,7 @@
             </section>
         </div>
         <section class="social">
-            <a class href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
             <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
             <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
         </section>
@@ -183,7 +154,7 @@
             </div>
         </section>
     </footer>
-
+    
 </body>
 
 </html>
