@@ -1,7 +1,33 @@
+let article = [
+    {
+     id: "1",
+     imagen: "/img/jade-tennis.jpg",
+     disponible : true,
+     desc: "Tenis para hombre marca NIKE",
+     color:"Verde",
+     talla:"27",
+     modelo:"Lorem Ipsum",
+     precio: 2270.00,
+     cantidad:1
+    },
+    {
+        id: "2",
+        imagen: "img/conjuntofila.jpg",
+        disponible : true,
+        desc: "Conjunto de short y playera marca FILA",
+        color:"Azul",
+        talla:"L",
+        modelo:"Lorem Ipsum",
+        precio: 1258.00,
+        cantidad:1
+       }
+]
+
 const cartController = {
     // Listado de los productos en el carrito
     index: function (req, res) {
-        res.render('cart/carritoNV');
+        res.render('cart/index', {'article':article});
+        //res.render('cart/carritoNV');
         //res.render('/carritoVacio');
         },
     // Saca Item del carrito
