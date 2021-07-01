@@ -24,7 +24,8 @@ app.use('/product-detail', rutasProduct);
 app.use('/', rutasUser);
 app.use('/register', rutasUser);
 app.use('/resetPassword', rutasUser);
-app.use('/cart', rutasCart);
+app.use('/', rutasCart);
+//app.use('/index', rutasCart);
 
 app.get('/privacidad', (req, res) => {
     res.sendFile(path.resolve('views/privacidad.html'));

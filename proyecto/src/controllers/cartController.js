@@ -12,7 +12,7 @@ let article = [
     },
     {
         id: "2",
-        imagen: "img/conjuntofila.jpg",
+        imagen: "/img/conjuntoFila.jpg",
         disponible : true,
         desc: "Conjunto de short y playera marca FILA",
         color:"Azul",
@@ -27,7 +27,6 @@ const cartController = {
     // Listado de los productos en el carrito
     index: function (req, res) {
         res.render('cart/index', {'article':article});
-        //res.render('cart/carritoNV');
         //res.render('/carritoVacio');
         },
     // Saca Item del carrito

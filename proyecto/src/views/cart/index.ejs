@@ -1,35 +1,12 @@
 <%- include('../partials/head') %>
-    <link rel="stylesheet" href="css/styles_cart.css">
+    <link rel="stylesheet" href="/css/styles_cart.css">
     <title>FunFitWear.Cart.</title>
 </head>
 <body>
-    <header>
-        <nav class="main-top-nav">
-            <div class="img-logo">
-                <a href="/">
-                    <img src="/img/Logo.svg" alt="Logo FitFunWear"></a>
-            </div>
-            <div class="main-list-nav">
-                <p class="list-nav-item"><a href="#">Hombre</a></p>
-                <p class="list-nav-item"><a href="#">Mujer</a></p>
-                <p class="list-nav-item"><a href="#">Ofertas</a></p>
-            </div>
-            <div class="search-bar">
-                <a href="#" title="Buscar algo"><i class="fas fa-search pointer"></i></a>
-            </div>
-            <div class="user">
-                <a href="/login" title="Iniciar sesión / Registrarse"><i class="fas fa-user pointer"></i></a>
-            </div>
-            <div class="shop-car">
-                <a href="/cartV" title="Ver carrito"><i class="fas fa-shopping-cart pointer"></i></a>
-            </div>
-            <div class="bars">
-                <a href="#" title="Más opciones"><i class="fas fa-bars pointer"></i></a>
-            </div>
-        </nav>
-    </header>
+    <%- include('../partials/header') %>
+
     <section class="header-NoVacio">
-        <h2>TU CARRITO DE COMPRA [1]</h2>
+        <h2>TU CARRITO DE COMPRA [<%=article.length%>]</h2>
     </section>
     <main class="cart">
         <div class="products-selected">
@@ -65,14 +42,16 @@
                                             <option>9</option>
                                             <option>10</option>
                                         </select></label>
-                                    <label class="subtotal"> <%= article[i].precio %> </label>
+                                    <label class="subtotal"> $<%= article[i].precio %> </label>
                                 </div>
                                 <div class="cart-modify">
                                     <div class="editar">
                                         <label>EDITAR</label>
                                     </div>
                                     <div class="eliminar">
+                                        <a href="./sacarItem" title="Ver carrito">
                                         <label>ELIMINAR</label>
+                                        </a>
                                     </div>
                                 </div>
         
