@@ -5,8 +5,8 @@ const cartController = require('../controllers/cartController');
 
 // Rutas
 router.get('/index', cartController.index);
+router.get('/sacarItem/:id', cartController.sacarItem);
 console.log("llegue aqui");
-router.get('/sacarItem', cartController.sacarItem);
 router.get('/consultarItem', cartController.consultarItem);
 router.get('/agregarItem', cartController.agregarItem);
 

@@ -34,12 +34,17 @@ const cartController = {
     // Saca Item del carrito
     sacarItem: function (req, res) {
         //res.render('/sacarItem');
-        res.send('Estoy en sacarItem')
+        articulo = article.filter(articulo => articulo.id == req.params.id)[0];
+        console.log("el articulo a quitar es " + (articulo.id).toString());
+        article.splice((articulo.id)-1, 1);
+        res.render('cart/index', {'article':article});
+        //res.send('Estoy en sacarItem')
         },
     // Consulta item del carrito
     consultarItem: function (req, res) {
         //res.render('/consultarItem');
         res.send('Estoy en consultarItem')
+        //res.render('detalleMenu', {'articulo':article[articulo.id-1]});
         },
     // Agrega item al carrito
     agregarItem: function (req, res) {
