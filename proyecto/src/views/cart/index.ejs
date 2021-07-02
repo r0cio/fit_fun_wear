@@ -4,7 +4,22 @@
 </head>
 <body>
     <%- include('../partials/header') %>
-
+    <% if (article.length == 0) { %>
+        <main class="vacio">
+            <section class="section-cart">
+                <div class="continua-compra">
+                    <h2>TU CARRITO DE COMPRA[0]</h2>
+                    <div>
+                        <i class="fas fa-chevron-left" ></i>
+                        <a href="/">Continuar comprando </a>
+                    </div>
+                </div>
+            </section>
+            <section class="centrado section-main">
+                <div class="unico-texto">No hay productos en el carrito</div>
+            </section>
+        </main>
+    <% } else {%>
     <section class="header-NoVacio">
         <h2>TU CARRITO DE COMPRA [<%=article.length%>]</h2>
     </section>
@@ -87,5 +102,6 @@
         </section>
     </main>
     <%- include('../partials/footer') %>
+    <% } %>
 </body>
 </html>

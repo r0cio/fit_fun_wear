@@ -1,4 +1,5 @@
 let article = [
+    
     {
      id: "1",
      imagen: "/img/jade-tennis.jpg",
@@ -21,6 +22,7 @@ let article = [
         precio: 1258.00,
         cantidad:1
        }
+       
 ]
 
 const cartController = {
