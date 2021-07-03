@@ -20,22 +20,11 @@ app.listen(PORT, () => {  // Se inicializa el servidor
 
 // Rutas 
 app.use('/', rutasMain);
-app.use('/product-detail', rutasProduct);
+app.use('/', rutasProduct);
 app.use('/', rutasUser);
-app.use('/register', rutasUser);
-app.use('/resetPassword', rutasUser);
+/*app.use('/register', rutasUser);
+app.use('/resetPassword', rutasUser);*/
 app.use('/', rutasCart);
 //app.use('/index', rutasCart);
 
-app.get('/privacidad', (req, res) => {
-    res.sendFile(path.resolve('views/privacidad.html'));
-});
-
-app.get('/legal', (req, res) => {
-    res.sendFile(path.resolve('views/legal.html'));
-});
-
-app.get('/terminos', (req, res) => {
-    res.sendFile(path.resolve('views/terminos.html'));
-});
 
