@@ -1,0 +1,104 @@
+/* Main */
+main{
+    background-color: #ffffff;
+    display: flexbox;
+    margin: 25px 30px;
+    padding: 15px 30px;
+    display: flexbox;
+    border: double 2px #ed5556; 
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgb(41, 173, 184);
+
+}
+
+.logo{
+    width: 90px;
+    height: 90px;
+    display: block;
+    margin: auto;
+    transition: transform 450ms linear;
+}
+.logo:hover{
+    filter: saturate(180%);
+    border-radius:50%;
+    -webkit-border-radius:50%;
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+}
+
+form {
+    display: flexbox;
+}
+
+h1{
+    margin: 0px;
+    margin-top: 17px;
+    text-align: center;
+    font-size: 15px;
+    color: #2c2d37;
+    font-style: oblique;
+}
+
+p.comunidad {
+    margin: 10px 0px;
+    font-size: 11px;
+    text-align: center;
+    color: #2c2d37;
+}
+
+
+div{
+    margin: 11px;
+}
+
+.admin{
+    text-align: center;
+}
+.admin .fa-plus-circle{
+    color: #ed5556;
+    font-size: 20px;
+}
+
+.admin .fa-edit{
+    color:rgb(41, 173, 184);
+    font-size: 20px;
+}
+
+/* Para los diferentes dispositivos - Media queries */
+/* Móvil */
+@media (min-width: 576px) {
+
+   
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+     /* Main */
+     main{
+        margin: 50px 190px;
+    }
+}
+
+
+/* Desktop */
+@media (min-width: 992px) {
+
+    /* Main */
+    main{
+        margin: 50px 260px;
+    }
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+    /* Main */
+    main{
+        margin: 50px 390px;
+        padding: 15px 60px;
+    
+    }
+
+}
+

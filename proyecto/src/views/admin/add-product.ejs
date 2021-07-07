@@ -1,0 +1,69 @@
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/styles-register.css">
+    <title>FitFunWear</title>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+    <main>
+        <div class = "seccion">
+            <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
+        </div>
+        <div class = "bienvenida">
+            <h1> AGREGAR NUEVO PRODUCTO </h1> 
+        </div>
+
+        <form action = "/" method = "GET">
+
+            <div class = "etiquetaNombre">
+                <label>Nombre del producto</label>
+            </div>
+            <div class = "nombreProducto">
+                <input type="text" placeholder ="" name="name" required>
+            </div>
+            
+            <div class = "etiquetaDescripcion">
+                <label>Descripción del producto</label>
+            </div>
+            <div class = "descripcionProducto">
+                <input type="text" placeholder ="" name="description">
+            </div>
+
+            <div class = "etiquetaImage">
+                <label>Agrega una imagen</label>
+            </div>
+            <div class = "imagenProducto">
+                <input type="file" placeholder ="" name="image" accept=".jpg">
+            </div>
+
+            <div class = "etiquetaCategoria">
+                <label>Selecciona su categoría</label>
+            </div>
+            <div class = "categoria">
+                <input type="checkbox" name="category" value="Hombre"> Hombre
+                <input type="checkbox" name="category" value="Mujer"> Mujer 
+                <input type="checkbox" name="category" value="Ofertas"> Ofertas
+            </div>
+
+            <div class = "etiquetaPrecio">
+                <label>Precio del producto</label>
+            </div>
+            <div class = "precio">
+                <input type="text" placeholder ="" name="price">
+            </div>
+
+            <div class ="boton">
+                <button class="Enviar" type = "submit">AGREGAR</button>
+            </div>
+                
+            <div>
+                <p class = "editarProducto"> ¿Quieres editar algún producto existente? <a class = "editarProducto" href="/edit-product">Editar producto</a> </p>
+            </div>
+        
+        </form>
+
+    </main>
+    <%- include('../partials/footer') %>    
+</body>
+
+</html>

@@ -6,6 +6,6 @@ const userController = require('../controllers/userController');
 // Rutas
 router.get('/login', userController.login);
 router.get('/register', userController.register);
-router.get('/resetPassword', userController.resetPassword);
+router.get('/reset-password', userController.resetPassword);
 
 module.exports = router;
