@@ -20,11 +20,11 @@ app.listen(PORT, () => {  // Se inicializa el servidor
 
 // Rutas 
 app.use('/', rutasMain);
-app.use('/', rutasProduct);
-app.use('/', rutasUser);
+app.use('/product', rutasProduct);
+app.use('/user', rutasUser);
 /*app.use('/register', rutasUser);
 app.use('/resetPassword', rutasUser);*/
-app.use('/', rutasCart);
+app.use('/cart', rutasCart);
 //app.use('/index', rutasCart);
 
 
