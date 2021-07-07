@@ -7,6 +7,7 @@ const rutasMain = require('./routes/main');
 const rutasProduct = require('./routes/product');
 const rutasUser = require('./routes/user');
 const rutasCart = require('./routes/cart');
+const rutasAdmin = require('./routes/admin');
 
 const app = express();  // Se almacena el objeto que devuelve express()
 const PORT = 3000; // Se toma el puerto del entorno o el 3030
@@ -26,5 +27,6 @@ app.use('/user', rutasUser);
 app.use('/resetPassword', rutasUser);*/
 app.use('/cart', rutasCart);
 //app.use('/index', rutasCart);
+app.use('/', rutasAdmin);
 
 

@@ -9,7 +9,7 @@ const userController = {
     },
 
     resetPassword: function (req, res) {
-        res.render('user/resetPassword');
+        res.render('user/reset-password');
     }
 
 };
