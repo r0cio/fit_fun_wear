@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "nombre": "Tenis para hombre marca NIKE",
+        "descripcion": "lorem",
+        "imagen": "/img/jade-tennis.jpg",
+        "categoria": "ofertas",
+        "genero": "hombre",
+        "disponible": true,
+        "color": "Verde",
+        "talla": "27",
+        "modelo": "Lorem Ipsum",
+        "precio": 2270.00,
+        "descuento": 50,
+        "cantidad": 1
+    },
+    {
+        "id": 2,
+        "nombre": "Conjunto de short y playera marca FILA",
+        "descripcion": "lorem",
+        "imagen": "/img/conjuntoFila.jpg",
+        "categoria": "tendencias",
+        "genero": "mujer",
+        "disponible": true,
+        "color": "Azul",
+        "talla": "L",
+        "modelo": "Lorem Ipsum",
+        "precio": 1258.00,
+        "descuento": 50,
+        "cantidad": 1
+    },
+    {
+        "id": 3,
+        "nombre": "Otro producto",
+        "descripcion": "lorem ipsum",
+        "imagen": "/img/dusan-jovic-uTlMDzkAz-M-unsplash.jpg",
+        "categoria": "ofertas",
+        "genero": "mujer",
+        "disponible": true,
+        "color": "Rosa",
+        "talla": "M",
+        "modelo": "Lorem Ipsum",
+        "precio": 1558.00,
+        "descuento": 10,
+        "cantidad": 1
+    }
+]
