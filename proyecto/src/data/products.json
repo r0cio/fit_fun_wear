@@ -7,12 +7,19 @@
         "categoria": "ofertas",
         "genero": "hombre",
         "disponible": true,
-        "color": "Verde",
-        "talla": "27",
+        "color": [
+            "Verde",
+            "Azul"
+        ],
+        "talla": [
+            27,
+            30,
+            35
+        ],
         "modelo": "Lorem Ipsum",
         "precio": 2270.00,
         "descuento": 50,
-        "cantidad": 1
+        "cantidad": 10
     },
     {
         "id": 2,
@@ -22,8 +29,14 @@
         "categoria": "tendencias",
         "genero": "mujer",
         "disponible": true,
-        "color": "Azul",
-        "talla": "L",
+        "color": [
+            "Azul"
+        ],
+        "talla": [
+            "L",
+            "M",
+            "N"
+        ],
         "modelo": "Lorem Ipsum",
         "precio": 1258.00,
         "descuento": 50,
@@ -37,8 +50,15 @@
         "categoria": "ofertas",
         "genero": "mujer",
         "disponible": true,
-        "color": "Rosa",
-        "talla": "M",
+        "color": [
+            "Rosa",
+            "Azul"
+        ],
+        "talla": [
+            "M",
+            "N",
+            "O"
+        ],
         "modelo": "Lorem Ipsum",
         "precio": 1558.00,
         "descuento": 10,
