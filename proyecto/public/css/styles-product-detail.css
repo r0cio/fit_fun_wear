@@ -13,6 +13,8 @@ div.img-product img {
     display: block;
     width: 80%;
     padding: 10px;
+    max-height: 433px;
+    object-fit: contain;
 }
 
 .product-name {
@@ -46,8 +48,23 @@ div.price {
 }
 
 div.description {
+    line-height: 2rem;
     text-align: justify;
     padding: 0 25px;
+}
+
+.center {
+    text-align: center;
+}
+
+select {
+    padding: 3px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+select:focus {
+    border: 2px solid #29adb8;
 }
 
 .buy-now, .add-cart {
@@ -216,6 +233,7 @@ div.description {
     .container-desktop {
         display: flex;
         align-items: center;
+        justify-content: space-evenly;
     }
 
     div.description {
