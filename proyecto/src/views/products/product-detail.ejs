@@ -8,24 +8,66 @@
             <main>
                 <section class="product-detail">
                     <div class="img-product">
-                        <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" class="img-product"
-                            alt="Imagen de producto">
+                        <img src="<%= producto.imagen %>" class="img-product" alt="Imagen de producto">
                     </div>
-                    <h1 class="product-name">Nombre del producto</h1>
+                    <h1 class="product-name">
+                        <%= producto.nombre %>
+                    </h1>
                     <div class="img-product-small">
-                        <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" alt="Imagen pequeña producto">
-                        <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" alt="Imagen pequeña producto">
-                        <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" alt="Imagen pequeña producto">
+                        <img src="<%= producto.imagen %>" alt="Imagen pequeña producto">
+                        <img src="<%= producto.imagen %>" alt="Imagen pequeña producto">
+                        <img src="<%= producto.imagen %>" alt="Imagen pequeña producto">
                     </div>
                     <div class="price">
-                        <p><b>$250.00</b></p>
+                        <% if (producto.descuento !=0) { %>
+                            <p>
+                                <b><del>
+                                        $<%= producto.precio %></del>
+                                </b>
+                            </p>
+                            <p> Descuento: <%= producto.descuento %>%
+                            </p>
+                            <p> Precio con el descuento: <b>$<%= producto.precio - (producto.precio *
+                                        producto.descuento/100) %>
+                                </b>
+                            </p>
+                            <% } else { %>
+                                <b>
+                                    $<%= producto.precio %>
+                                </b>
+                                <% } %>
                     </div>
                     <div class="description">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A dolor explicabo nihil nisi culpa?
-                            Tempora
-                            iste voluptatum earum amet. Temporibus provident nobis quasi magnam facilis, consequatur
-                            quidem
-                            sapiente aut excepturi.</p>
+                        <p>
+                            <%= producto.descripcion %>
+                        </p>
+                        <p class="center">Colores disponibles:
+                            <select name="color" title="Colores disponibles">
+                                <% for(let i=0; i < producto.color.length; i++) { %>
+                                    <option value="<%= producto.color[i] %> ">
+                                        <%= producto.color[i] %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                        </p>
+                        <p class="center">Tallas disponibles:
+                            <select name="tallas" title="Tallas disponibles">
+                                <% for(let i=0; i < producto.talla.length; i++) { %>
+                                    <option value="<%= producto.talla[i] %> ">
+                                        <%= producto.talla[i] %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                        </p>
+                        <p class="center">Cantidad:
+                            <select name="cantidad" title="Cantidad">
+                                <% for(let i=1; i <=producto.cantidad; i++) { %>
+                                    <option value="<%= i %> ">
+                                        <%= i %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                        </p>
                     </div>
                     <div>
                         <a class="buy-now" href="#">Comprar ahora</a>
@@ -47,28 +89,75 @@
                     <div class="container-desktop">
                         <div class="img-product-desktop">
                             <div class="img-product">
-                                <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" class="img-product"
-                                    alt="Imagen de producto">
+                                <img src="<%= producto.imagen %>" class="img-product" alt="Imagen de producto">
                             </div>
                             <div class="img-product-small">
-                                <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" alt="Imagen pequeña producto">
-                                <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" alt="Imagen pequeña producto">
-                                <img src="/img/peter-albanese-Gqlmzo-q6mY-unsplash.jpg" alt="Imagen pequeña producto">
+                                <img src="<%= producto.imagen %>" alt="Imagen pequeña producto">
+                                <img src="<%= producto.imagen %>" alt="Imagen pequeña producto">
+                                <img src="<%= producto.imagen %>" alt="Imagen pequeña producto">
                             </div>
                         </div>
                         <div class="details">
-                            <h1 class="product-name">Nombre del producto</h1>
+                            <h1 class="product-name">
+                                <%= producto.nombre %>
+                            </h1>
                             <div class="price">
-                                <p><b>$250.00</b></p>
+                                <% if (producto.descuento !=0) { %>
+                                    <p>
+                                        <b><del>
+                                                $<%= producto.precio %></del>
+                                        </b>
+                                    </p>
+                                    <p> Descuento: <%= producto.descuento %>%
+                                    </p>
+                                    <p> Precio con el descuento: <b>$<%= producto.precio - (producto.precio *
+                                                producto.descuento/100) %>
+                                        </b>
+                                    </p>
+                                    <% } else { %>
+                                        <b>
+                                            $<%= producto.precio %>
+                                        </b>
+                                        <% } %>
                             </div>
                             <div class="description">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A dolor explicabo nihil nisi
-                                    culpa?
-                                    Tempora
-                                    iste voluptatum earum amet. Temporibus provident nobis quasi magnam facilis,
-                                    consequatur
-                                    quidem
-                                    sapiente aut excepturi.</p>
+                                <p>
+                                    <%= producto.descripcion %>
+                                </p>
+                                <p>Colores disponibles:
+                                    <select name="color" title="Colores disponibles">
+                                        <% for(let i=0; i < producto.color.length; i++) { %>
+                                            <option value="<%= producto.color[i] %> ">
+                                                <%= producto.color[i] %>
+                                            </option>
+                                            <% } %>
+                                    </select>
+                                </p>
+                                <p>Tallas disponibles:
+                                    <select name="tallas" title="Tallas disponibles">
+                                        <% for(let i=0; i < producto.talla.length; i++) { %>
+                                            <option value="<%= producto.talla[i] %> ">
+                                                <%= producto.talla[i] %>
+                                            </option>
+                                            <% } %>
+                                    </select>
+                                </p>
+                                <p>Cantidad:
+                                    <select name="cantidad" title="Cantidad">
+                                        <% for(let i=1; i <=producto.cantidad; i++) { %>
+                                            <option value="<%= i %>">
+                                                <%= i %>
+                                            </option>
+                                            <% } %>
+                                    </select>
+                                </p>
+                                <p>
+                                    <small>
+                                        Categoria: <i>
+                                            <%= producto.categoria %>
+                                        </i>
+                                    </small>
+                                </p>
                             </div>
                             <div>
                                 <a class="buy-now" href="#">Comprar ahora</a>
