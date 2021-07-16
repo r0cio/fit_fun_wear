@@ -1,0 +1,30 @@
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/styles-index.css">
+    <title>FitFunWear</title>
+    </head>
+
+    <body>
+        <%- include('../partials/header') %>
+            <main>
+                <section class="trending">
+                    <h2 class="title-section">Todos los productos</h2>
+                    <!-- Show the "tendencia" products. Se agrega el for -->
+                    <div class="trending-articles">
+                        <% for (let producto of productos) { %>
+                            <article class="section-item pointer">
+                                <a href="/product/product-detail/<%= producto.id %>"> <img src="<%=producto.imagen%>"
+                                        class="img-item" alt="Artículo">
+                                    <p class="item-name">
+                                        <%= producto.nombre %>
+                                    </p>
+                                    <p class="item-price"><b>$<%= producto.precio %></b></p>
+                                </a>
+                            </article>
+                            <% } %>
+                    </div>
+                </section>
+            </main>
+            <%- include('../partials/footer') %>
+    </body>
+
+    </html>

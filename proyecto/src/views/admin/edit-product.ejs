@@ -1,137 +1,139 @@
 <%- include('../partials/head') %>
     <link rel="stylesheet" href="/css/styles-register.css">
     <title>FitFunWear</title>
-</head>
+    </head>
 
-<body>
-    <%- include('../partials/header') %>
-    <main>
-        <div class = "seccion">
-            <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
-        </div>
-        <div class = "bienvenida">
-            <h1> EDITAR PRODUCTO EXISTENTE</h1> 
-        </div>
+    <body>
+        <%- include('../partials/header') %>
+            <main>
+                <div class="seccion">
+                    <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
+                </div>
+                <div class="bienvenida">
+                    <h1> EDITAR PRODUCTO </h1>
+                </div>
 
-        <form action = "/" method = "GET">
+                <form action="/" method="GET">
 
-            <div class = "etiquetaID">
-                <label>ID del producto</label>
-            </div>
-            <div class = "idProducto">
-                <input type="text" placeholder ="" name="id" required>
-            </div>
+                    <div class="etiquetaNombre">
+                        <label>Nombre del producto</label>
+                    </div>
+                    <div class="nombreProducto">
+                        <input type="text" placeholder="" name="nombre" required>
+                    </div>
 
-            <div class = "etiquetaNombre">
-                <label>Editar nombre del producto</label>
-            </div>
-            <div class = "nombreProducto">
-                <input type="text" placeholder ="Nuevo nombre" name="name" required>
-            </div>
-            
-            <div class = "etiquetaDescripcion">
-                <label>Editar descripción del producto</label>
-            </div>
-            <div class = "descripcionProducto">
-                <input type="text" placeholder ="" name="description">
-            </div>
+                    <div class="etiquetaDescripcion">
+                        <label>Descripción del producto</label>
+                    </div>
+                    <div class="descripcionProducto">
+                        <input type="text" placeholder="" name="descripcion">
+                    </div>
 
-            <div class = "etiquetaImage">
-                <label>Editar imagen</label>
-            </div>
-            <div class = "imagenProducto">
-                <input type="file" placeholder ="" name="image" accept=".jpg">
-            </div>
+                    <div class="etiquetaImage">
+                        <label>Agrega una imagen</label>
+                    </div>
+                    <div class="imagenProducto">
+                        <input type="file" placeholder="" name="imagen" accept=".jpg">
+                    </div>
 
-            <div class = "etiquetaCategoria">
-                <label>Editar categoría</label>
-            </div>
-            <div class = "categoria">
-                <input type="checkbox" name="category" value="Hombre"> Hombre
-                <input type="checkbox" name="category" value="Mujer"> Mujer 
-                <input type="checkbox" name="category" value="Ofertas"> Ofertas
-            </div>
+                    <div class="etiquetaCategoria">
+                        <label>Selecciona su categoría</label>
+                    </div>
+                    <div class="categoria">
+                        <input type="checkbox" name="categoria" value="tendencia"> Tendencia
+                        <input type="checkbox" name="categoria" value="mas-vendidos"> Más vendidos
+                        <input type="checkbox" name="categoria" value="Ofertas"> Ofertas
+                    </div>
+                    <div class="etiquetaGenero">
+                        <label>Género</label>
+                    </div>
+                    <div class="genero">
+                        <input type="radio" name="genero" value="hombre"> Hombre
+                        <input type="radio" name="genero" value="mujer"> Mujer
+                    </div>
+                    <div class="etiquetaDisponibilidad">
+                        <label>¿Producto disponible?</label>
+                    </div>
+                    <div class="disponibilidad">
+                        <input type="radio" name="disponible" value="true"> Sí
+                        <input type="radio" name="disponible" value="false"> No
+                    </div>
+                    <div class="etiquetaColor">
+                        <label>Color</label>
+                    </div>
+                    <div class="categoria">
+                        <input type="checkbox" name="color" value="Rosa"> Rosa
+                        <input type="checkbox" name="color" value="Negro"> Negro
+                        <input type="checkbox" name="color" value="Azul"> Azul
+                        <input type="checkbox" name="color" value="Verde"> Verde
+                        <input type="checkbox" name="color" value="Morado"> Morado
+                        <input type="checkbox" name="color" value="Fucsia"> Fucsia
+                        <input type="checkbox" name="color" value="Gris"> Gris
+                        <input type="checkbox" name="color" value="Amarillo"> Amarillo
+                        <input type="checkbox" name="color" value="Blanco"> Blanco
+                        <input type="checkbox" name="color" value="Dorado"> Dorado
+                        <input type="checkbox" name="color" value="Anaranjado"> Anaranjado
+                        <input type="checkbox" name="color" value="Rojo"> Rojo
+                    </div>
 
-            <div class = "etiquetaGenero">
-                <label>Género</label>
-            </div>
-            <div class = "genero">
-                <input type="radio" name="gender" value="Hombre"> Hombre
-                <input type="radio" name="gender" value="Mujer"> Mujer
-            </div>
-            <div class = "etiquetaDisponibilidad">
-                <label>¿Producto disponible?</label>
-            </div>
-            <div class = "disponibilidad">
-                <input type="radio" name="availability" value="True"> Sí
-                <input type="radio" name="availability" value="False"> No
-            </div>
-            <div class = "etiquetaColor">
-                <label>Color</label>
-            </div>
-            <div class = "categoria">
-                <input type="checkbox" name="color" value="Rosa"> Rosa
-                <input type="checkbox" name="color" value="#000000"> Negro 
-                <input type="checkbox" name="color" value="#0000FF"> Azul
-                <input type="checkbox" name="color" value="#008000"> Verde
-                <input type="checkbox" name="color" value="#800080"> Morado
-                <input type="checkbox" name="color" value="#800080"> Fucsia
-                <input type="checkbox" name="color" value="#800080"> Gris
-                <input type="checkbox" name="color" value="#800080"> Amarillo
-                <input type="checkbox" name="color" value="#FFFFFF"> Blanco
-                <input type="checkbox" name="color" value="#FFD700"> Dorado
-                <input type="checkbox" name="color" value="#FC4B08"> Anaranjado
-                <input type="checkbox" name="color" value="#FF0000"> Rojo
-            </div>
+                    <div class="etiquetaTalla">
+                        <label>Talla</label>
+                    </div>
+                    <div class="talla">
+                        <input type="checkbox" name="talla" value="22"> 22
+                        <input type="checkbox" name="talla" value="22.5"> 22.5
+                        <input type="checkbox" name="talla" value="23"> 23
+                        <input type="checkbox" name="talla" value="23.5"> 23.5
+                        <input type="checkbox" name="talla" value="24"> 24
+                        <input type="checkbox" name="talla" value="24.5"> 24.5
+                        <input type="checkbox" name="talla" value="25"> 25
+                        <input type="checkbox" name="talla" value="25.5"> 25.5
+                        <input type="checkbox" name="talla" value="26"> 26
+                        <input type="checkbox" name="talla" value="26.5"> 26.5
+                        <input type="checkbox" name="talla" value="27"> 27
+                        <input type="checkbox" name="talla" value="27.5"> 27.5
+                        <input type="checkbox" name="talla" value="28"> 28
+                        <input type="checkbox" name="talla" value="28.5"> 28.5
+                        <input type="checkbox" name="talla" value="29"> 29
+                        <input type="checkbox" name="talla" value="29.5"> 29.5
+                    </div>
 
-            <div class = "etiquetaTalla">
-                <label>Talla</label>
-            </div>
-            <div class = "talla">
-                <input type="checkbox" name="talla" value="22"> 22
-                <input type="checkbox" name="talla" value="22.5"> 22.5 
-                <input type="checkbox" name="talla" value="23"> 23
-                <input type="checkbox" name="talla" value="23.5"> 23.5
-                <input type="checkbox" name="talla" value="24"> 24
-                <input type="checkbox" name="talla" value="24.5"> 24.5
-                <input type="checkbox" name="talla" value="25"> 25
-                <input type="checkbox" name="talla" value="25.5"> 25.5
-                <input type="checkbox" name="talla" value="26"> 26
-                <input type="checkbox" name="talla" value="26.5"> 26.5
-                <input type="checkbox" name="talla" value="27"> 27
-                <input type="checkbox" name="talla" value="27.5"> 27.5
-                <input type="checkbox" name="talla" value="28"> 28
-                <input type="checkbox" name="talla" value="28.5"> 28.5
-                <input type="checkbox" name="talla" value="29"> 29
-                <input type="checkbox" name="talla" value="29.5"> 29.5
-            </div>
+                    <div class="etiquetaModelo">
+                        <label>Modelo</label>
+                    </div>
+                    <div class="modelo">
+                        <input type="text" placeholder="" name="modelo">
+                    </div>
 
-            <div class = "etiquetaModelo">
-                <label>Modelo</label>
-            </div>
-            <div class = "modelo">
-                <input type="text" placeholder ="" name="model">
-            </div>
+                    <div class="etiquetaPrecio">
+                        <label>Precio del producto</label>
+                    </div>
+                    <div class="precio">
+                        <input type="text" placeholder="" name="precio">
+                    </div>
 
-            <div class = "etiquetaPrecio">
-                <label>Editar precio</label>
-            </div>
-            <div class = "precio">
-                <input type="text" placeholder ="Nuevo precio" name="price">
-            </div>
+                    <div class="etiquetaDescuento">
+                        <label>Descuento</label>
+                    </div>
+                    <div class="descuento">
+                        <input type="text" placeholder="" name="descuento">
+                    </div>
 
-            <div class ="boton">
-                <button class="Enviar" type = "submit">GUARDAR</button>
-            </div>
-                
-            <div>
-                <p class = "agregarProducto"> ¿Quieres agregar un nuevo producto? <a class = "agregarProducto" href="/add-product">Agregar nuevo producto</a> </p>
-            </div>
-        
-        </form>
+                    <div class="etiquetaCantidad">
+                        <label>Cantidad</label>
+                    </div>
+                    <div class="cantidad">
+                        <input type="text" placeholder="" name="cantidad">
+                    </div>
 
-    </main>
-    <%- include('../partials/footer') %>    
-</body>
+                    <div class="boton">
+                        <button class="Enviar" type="submit">EDITAR</button>
+                    </div>
 
-</html>
+                </form>
+
+            </main>
+            <%- include('../partials/footer') %>
+    </body>
+
+    </html>

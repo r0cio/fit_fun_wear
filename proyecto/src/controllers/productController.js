@@ -6,6 +6,10 @@ const date = Date.now();
 
 const productController = {
 
+    index: function (req, res) {
+        res.render('products/products', { productos: products });
+    },
+
     detalle: function (req, res) {
         let id = req.params.id;
         let producto;

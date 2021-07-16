@@ -19,6 +19,7 @@
         "modelo": "Lorem Ipsum",
         "precio": 2270.00,
         "descuento": 50,
+        "enCarrito": false,
         "cantidad": 10
     },
     {
@@ -40,6 +41,7 @@
         "modelo": "Lorem Ipsum",
         "precio": 1258.00,
         "descuento": 50,
+        "enCarrito": false,
         "cantidad": 1
     },
     {
@@ -62,6 +64,29 @@
         "modelo": "Lorem Ipsum",
         "precio": 1558.00,
         "descuento": 10,
+        "enCarrito": false,
+        "cantidad": 1
+    },
+    {
+        "id": 3,
+        "nombre": "Otro conjunto de short y playera marca FILA",
+        "descripcion": "lorem",
+        "imagen": "/img/conjuntoFila.jpg",
+        "categoria": "tendencias",
+        "genero": "mujer",
+        "disponible": true,
+        "color": [
+            "Azul"
+        ],
+        "talla": [
+            "L",
+            "M",
+            "N"
+        ],
+        "modelo": "Lorem Ipsum",
+        "precio": 1258.00,
+        "descuento": 50,
+        "enCarrito": false,
         "cantidad": 1
     }
 ]

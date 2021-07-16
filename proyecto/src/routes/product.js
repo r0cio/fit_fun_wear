@@ -7,7 +7,7 @@ const productController = require('../controllers/productController');
 /* Rutas */
 
 // listado de todos los productos
-router.get('/');
+router.get('/', productController.index);
 
 // obtener el formulario de creación de productos
 router.get('/create');

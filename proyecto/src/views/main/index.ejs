@@ -14,32 +14,36 @@
                 <section class="trending">
                     <h2 class="title-section">Tendencias</h2>
                     <!-- Show the "tendencia" products. Se agrega el for -->
-                    <% for (let producto of productosTendencia) { %>
-                        <div class="trending-articles">
-                        <article class="section-item pointer">
-                            <a href="/product/product-detail/<%= producto.id %>"> <img src="<%=producto.imagen%>"
-                                    class="img-item" alt="Artículo">
-                                <p class="item-name"><%= producto.nombre %></p>
-                                <p class="item-price"><b>$<%= producto.precio %></b></p>
-                            </a>
-                        </article>
-                        </div>
-                    <% } %>
-                </section>
-                <section class="best-seller">
-                    <h2 class="title-section">Más vendidos</h2>
-                    <!-- Show the "tendencia" products. Se agrega el for -->
-                    <% for (let producto of productosOferta) { %>
-                        <div class="best-seller-articles">
+                    <div class="trending-articles">
+                        <% for (let producto of productosTendencia) { %>
                             <article class="section-item pointer">
-                                <a href="/product/product-detail/<%= producto.id %>"> <img src="<%=producto.imagen%>"
+                                <a href="/products/product-detail/<%= producto.id %>"> <img src="<%=producto.imagen%>"
                                         class="img-item" alt="Artículo">
-                                    <p class="item-name"><%= producto.nombre %></p>
+                                    <p class="item-name">
+                                        <%= producto.nombre %>
+                                    </p>
                                     <p class="item-price"><b>$<%= producto.precio %></b></p>
                                 </a>
                             </article>
-                        </div>
-                    <% } %>
+                            <% } %>
+                    </div>
+                </section>
+                <section class="best-seller">
+                    <h2 class="title-section" id="mas-vendidos">Ofertas</h2>
+                    <!-- Show the "tendencia" products. Se agrega el for -->
+                    <div class="best-seller-articles">
+                        <% for (let producto of productosOferta) { %>
+                            <article class="section-item pointer">
+                                <a href="/products/product-detail/<%= producto.id %>"> <img src="<%=producto.imagen%>"
+                                        class="img-item" alt="Artículo">
+                                    <p class="item-name">
+                                        <%= producto.nombre %>
+                                    </p>
+                                    <p class="item-price"><b>$<%= producto.precio %></b></p>
+                                </a>
+                            </article>
+                            <% } %>
+                    </div>
                 </section>
             </main>
             <%- include('../partials/footer') %>
