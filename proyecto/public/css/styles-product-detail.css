@@ -63,6 +63,15 @@ select {
     font-weight: 700;
 }
 
+.admin-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.admin-buttons button a {
+    color: #fff!important;
+}
+
 select:focus {
     border: 2px solid #29adb8;
 }

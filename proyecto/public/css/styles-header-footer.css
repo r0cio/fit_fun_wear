@@ -17,7 +17,7 @@ main {
 
 a {
     color: #063b52!important;
-    text-decoration: none;
+    text-decoration: none!important;
 }
 
 a:visited {
