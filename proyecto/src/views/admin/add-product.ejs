@@ -13,7 +13,7 @@
                     <h1> AGREGAR NUEVO PRODUCTO </h1>
                 </div>
 
-                <form action="/products-admin" method="POST">
+                <form action="/products" method="POST">
 
                     <div class="etiquetaNombre">
                         <label>Nombre del producto</label>
@@ -40,8 +40,8 @@
                         <label>Selecciona su categoría</label>
                     </div>
                     <div class="categoria">
-                        <input type="checkbox" name="categoria" value="tendencia"> Tendencia
-                        <input type="checkbox" name="categoria" value="mas-vendidos"> Más vendidos
+                        <input type="checkbox" name="categoria" value="Tendencia"> Tendencia
+                        <input type="checkbox" name="categoria" value="Mas Vendidos"> Más vendidos
                         <input type="checkbox" name="categoria" value="Ofertas"> Ofertas
                     </div>
                     <div class="etiquetaGenero">
@@ -132,7 +132,7 @@
 
                     <div>
                         <p class="editarProducto"> ¿Quieres editar algún producto existente? <a class="editarProducto"
-                                href="/edit-product">Editar producto</a> </p>
+                                href="/products/">Editar producto</a> </p>
                     </div>
 
                 </form>

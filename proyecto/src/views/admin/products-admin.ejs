@@ -1,30 +1,31 @@
 <%- include('../partials/head') %>
     <link rel="stylesheet" href="/css/styles-products-admin.css">
     <title>Administrador</title>
-</head>
+    </head>
 
-<body>
-    <%- include('../partials/header') %>
-    <main>
-        <div class = "seccion">
-            <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
-        </div>
-        <div class = "bienvenida">
-            <h1> ¡ HOLA ADMINISTRADOR ! </h1> 
-            <p class = "comunidad"> ¿Qué deseas hacer hoy? </p>
-        </div>
+    <body>
+        <%- include('../partials/header') %>
+            <main>
+                <div class="seccion">
+                    <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
+                </div>
+                <div class="bienvenida">
+                    <h1> ¡ HOLA ADMINISTRADOR ! </h1>
+                    <p class="comunidad"> ¿Qué deseas hacer hoy? </p>
+                </div>
 
-        <form action = "/" method = "GET">
+                <form action="/" method="GET">
 
-            <div class="admin">
-                <a href="/add-product" title="Agregar producto"><i class="fas fa-plus-circle"></i></a> Agregar producto
-                <a href="/edit-product" title="Editar producto"><i class="fas fa-edit"></i></a> Editar producto
-            </div>
-        
-        </form>
+                    <div class="admin">
+                        <a href="/products/create" title="Agregar producto"><i class="fas fa-plus-circle"></i></a>
+                        Agregar producto
+                        <a href="/products/" title="Editar producto"><i class="fas fa-edit"></i></a> Editar producto
+                    </div>
 
-    </main>
-    <%- include('../partials/footer') %>    
-</body>
+                </form>
 
-</html>
+            </main>
+            <%- include('../partials/footer') %>
+    </body>
+
+    </html>

@@ -17,7 +17,7 @@
             35
         ],
         "modelo": "Lorem Ipsum",
-        "precio": 2270.00,
+        "precio": 2270,
         "descuento": 50,
         "enCarrito": false,
         "cantidad": 10
@@ -39,7 +39,7 @@
             "N"
         ],
         "modelo": "Lorem Ipsum",
-        "precio": 1258.00,
+        "precio": 1258,
         "descuento": 50,
         "enCarrito": false,
         "cantidad": 1
@@ -62,13 +62,13 @@
             "O"
         ],
         "modelo": "Lorem Ipsum",
-        "precio": 1558.00,
+        "precio": 1558,
         "descuento": 10,
         "enCarrito": false,
         "cantidad": 1
     },
     {
-        "id": 3,
+        "id": 4,
         "nombre": "Otro conjunto de short y playera marca FILA",
         "descripcion": "lorem",
         "imagen": "/img/conjuntoFila.jpg",
@@ -84,7 +84,7 @@
             "N"
         ],
         "modelo": "Lorem Ipsum",
-        "precio": 1258.00,
+        "precio": 1258,
         "descuento": 50,
         "enCarrito": false,
         "cantidad": 1

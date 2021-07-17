@@ -78,6 +78,12 @@
                     <div class="heart">
                         <i class="far fa-heart"></i>
                     </div>
+                    <div class="admin-buttons mb-4">
+                        <button type="button" class="btn btn-info"> <a href="/products/edit/<%= producto.id %>">
+                                Editar producto </a></button>
+                        <button type="button" class="btn btn-danger"> <a href="/products/delete/<%= producto.id %>">
+                                Eliminar producto </a></button>
+                    </div>
                     <select name="comments" id="comments">
                         <option value="comments" selected disabled>Comentarios</option>
                         <option value="uno">Uno</option>
@@ -124,57 +130,76 @@
                                 <p>
                                     <%= producto.descripcion %>
                                 </p>
-                                <p>Colores disponibles:
-                                    <select name="color" title="Colores disponibles">
-                                        <% for(let i=0; i < producto.color.length; i++) { %>
-                                            <option value="<%= producto.color[i] %> ">
-                                                <%= producto.color[i] %>
+                                <% if (typeof(producto.color)=='string' ) { %>
+                                    <p>Colores disponibles:
+                                        <select name="color" title="Colores disponibles">
+                                            <option value="<%= producto.color %>">
+                                                <%= producto.color %>
                                             </option>
-                                            <% } %>
-                                    </select>
-                                </p>
-                                <p>Tallas disponibles:
-                                    <select name="tallas" title="Tallas disponibles">
-                                        <% for(let i=0; i < producto.talla.length; i++) { %>
-                                            <option value="<%= producto.talla[i] %> ">
-                                                <%= producto.talla[i] %>
-                                            </option>
-                                            <% } %>
-                                    </select>
-                                </p>
-                                <p>Cantidad:
-                                    <select name="cantidad" title="Cantidad">
-                                        <% for(let i=1; i <=producto.cantidad; i++) { %>
-                                            <option value="<%= i %>">
-                                                <%= i %>
-                                            </option>
-                                            <% } %>
-                                    </select>
-                                </p>
-                                <p>
-                                    <small>
-                                        Categoria: <i>
-                                            <%= producto.categoria %>
-                                        </i>
-                                    </small>
-                                </p>
+                                        </select>
+                                    </p>
+                                    <% } else { %>
+                                        <p>Colores disponibles:
+                                            <select name="color" title="Colores disponibles">
+                                                <% for(let i=0; i < producto.color.length; i++) { %>
+                                                    <option value="<%= producto.color[i] %>">
+                                                        <%= producto.color[i] %>
+                                                    </option>
+                                                    <% } %>
+                                            </select>
+                                        </p>
+                                        <% } %>
+                                            <% if (typeof(producto.talla)=='string' ) { %>
+                                                <p>Tallas disponibles:
+                                                    <select name="tallas" title="Tallas disponibles">
+                                                        <option value="<%= producto.talla %> ">
+                                                            <%= producto.talla %>
+                                                        </option>
+                                                    </select>
+                                                </p>
+                                                <% } else { %>
+                                                    <p>Tallas disponibles:
+                                                        <select name="tallas" title="Tallas disponibles">
+                                                            <% for(let i=0; i < producto.talla.length; i++) { %>
+                                                                <option value="<%= producto.talla[i] %> ">
+                                                                    <%= producto.talla[i] %>
+                                                                </option>
+                                                                <% } %>
+                                                        </select>
+                                                    </p>
+                                                    <% } %>
+                                                        <p>Cantidad:
+                                                            <select name="cantidad" title="Cantidad">
+                                                                <% for(let i=1; i <=producto.cantidad; i++) { %>
+                                                                    <option value="<%= i %>">
+                                                                        <%= i %>
+                                                                    </option>
+                                                                    <% } %>
+                                                            </select>
+                                                        </p>
+                                                        <p>
+                                                            <small>
+                                                                Categoria: <i>
+                                                                    <%= producto.categoria %>
+                                                                </i>
+                                                            </small>
+                                                        </p>
                             </div>
                             <div>
                                 <a class="buy-now" href="#">Comprar ahora</a>
+                                <a class="add-cart" href="#">Añadir al carrito</a>
                             </div>
                             <div class="container-button">
-                                <div class="button-add-cart">
-                                    <a class="add-cart" href="#">Añadir al carrito</a>
-                                </div>
                                 <div class="heart pointer">
                                     <i class="far fa-heart"></i>
                                 </div>
                             </div>
                             <div class="admin-buttons">
-                                <button type="button" class="btn btn-primary">Primary</button>
-                                <button type="button" class="btn btn-secondary">Secondary</button>
-                                <button type="button" class="btn btn-success">Success</button>
-                                <button type="button" class="btn btn-danger">Danger</button>
+                                <button type="button" class="btn btn-info"> <a href="/products/edit/<%= producto.id %>">
+                                        Editar producto </a></button>
+                                <form action="/products/delete/<%= producto.id%>?_method=DELETE" method="POST"><button
+                                        type="submit" class="btn btn-danger"> <a> Eliminar
+                                            producto </a></button> </form>
                             </div>
                         </div>
                     </div>
