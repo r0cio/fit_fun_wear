@@ -12,16 +12,19 @@
                     <div class="trending-articles">
                         <% for (let producto of productos) { %>
                             <article class="section-item pointer">
-                                <a href="/products/product-detail/<%= producto.id %>"> <img src="/img/<%=producto.imagen%>"
-                                        class="img-item" alt="Artículo">
+                                <a href="/products/product-detail/<%= producto.id %>"> <img
+                                        src="/img/<%=producto.imagen%>" class="img-item" alt="Artículo">
                                     <p class="item-name">
                                         <%= producto.nombre %>
                                     </p>
                                     <p class="item-price"><b>$<%= producto.precio %></b></p>
                                 </a>
-                                
+
                             </article>
                             <% } %>
+                    </div>
+                    <div class ="boton">                    
+                        <button class="newProduct"><a href="/products/create">Crear un nuevo producto</a></button>
                     </div>
                 </section>
             </main>
