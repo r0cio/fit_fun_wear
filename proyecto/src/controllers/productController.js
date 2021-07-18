@@ -2,6 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const productsFilePath = path.join(__dirname, '../data/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
 const date = Date.now();
 
 const productController = {
@@ -23,13 +26,27 @@ const productController = {
     },
 
     // método que contiene la lógica cuando se guarda un producto
-    store: function (req, res) {
+    store: (req, res) => {
+		let product = {
+            "id": date,
+            "nombre": req.body.nombre,
+            "descripcion": req.body.descripcion,
+            "imagen": req.file.filename,
+            "categoria": req.body.categoria,
+            "genero": req.body.genero,
+            "disponible": req.body.disponible,
+            "color": req.body.color,
+            "talla": req.body.talla,
+            "modelo": req.body.modelo,
+            "precio": req.body.precio,
+            "descuento": req.body.descuento,
+            "enCarrito": false,
+            "cantidad": req.body.cantidad,
+        };
+        products.push(product);
 
-
-
-
-
-
+		productsJSON = JSON.stringify(products);
+		fs.writeFileSync(productsFilePath, productsJSON);
         res.redirect('/products');
     },
 
@@ -63,19 +80,12 @@ const productController = {
             "id": date,
             "nombre": req.body.nombre,
             "descripcion": req.body.descripcion,
-            "imagen": "/img/jade-tennis.jpg",
+            "imagen": req.file.filename,
             "categoria": req.body.categoria,
             "genero": req.body.genero,
             "disponible": req.body.disponible,
-            "color": [
-                "Verde",
-                "Azul"
-            ],
-            "talla": [
-                27,
-                30,
-                35
-            ],
+            "color": req.body.color,
+            "talla": req.body.talla,
             "modelo": req.body.modelo,
             "precio": req.body.precio,
             "descuento": req.body.descuento,

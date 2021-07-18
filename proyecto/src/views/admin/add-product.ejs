@@ -13,7 +13,7 @@
                     <h1> AGREGAR NUEVO PRODUCTO </h1>
                 </div>
 
-                <form action="/products" method="POST">
+                <form action="/products" method="POST" enctype="multipart/form-data">
 
                     <div class="etiquetaNombre">
                         <label>Nombre del producto</label>
@@ -26,21 +26,21 @@
                         <label>Descripción del producto</label>
                     </div>
                     <div class="descripcionProducto">
-                        <input type="text" placeholder="" name="descripcion">
+                        <textarea name="descripcion" id="descripcion" class="form-input"></textarea>
                     </div>
 
                     <div class="etiquetaImage">
                         <label>Agrega una imagen</label>
                     </div>
                     <div class="imagenProducto">
-                        <input type="file" placeholder="" name="imagen" accept=".jpg">
+                        <input type="file" id="imagen" name="imagen" accept=".jpg">
                     </div>
 
                     <div class="etiquetaCategoria">
                         <label>Selecciona su categoría</label>
                     </div>
                     <div class="categoria">
-                        <input type="checkbox" name="categoria" value="Tendencia"> Tendencia
+                        <input type="checkbox" name="categoria" value="Tendencia"> Tendencias
                         <input type="checkbox" name="categoria" value="Mas Vendidos"> Más vendidos
                         <input type="checkbox" name="categoria" value="Ofertas"> Ofertas
                     </div>

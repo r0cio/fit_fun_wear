@@ -72,6 +72,11 @@ p.iniciaSesion{
     padding-top: 10px;
 }
 
+textarea.form-input{
+    display: flexbox;
+    width: 100%;
+    height: 100px;
+}
 
 div{
     display: flexbox;

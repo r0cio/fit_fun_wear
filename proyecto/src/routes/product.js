@@ -1,8 +1,23 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const path = require("path");
 
 // Controlador de productos
 const productController = require('../controllers/productController');
+
+// Multer para aceptar imagenes en los formulario
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb (null, '../public/img');
+    },
+    filename: (req, file, cb) => {
+        const newFileName = 'product' + Date.now() + path.extname(file.originalname);
+        cb (null, newFileName);
+    },
+});
+
+const upload = multer({ storage });
 
 /* Rutas */
 
@@ -16,7 +31,7 @@ router.get('/products-admin', productController.admin);
 router.get('/create', productController.add);
 
 // acción de creación, donde se envía el formulario de creación de productos
-router.post('/', productController.store);
+router.post('/', upload.single('imagen'), productController.store);
 
 // detalle de un producto
 router.get('/product-detail/:id', productController.detalle);

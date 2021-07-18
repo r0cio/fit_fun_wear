@@ -10,23 +10,25 @@
                     <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
                 </div>
                 <div class="bienvenida">
-                    <h1> EDITAR PRODUCTO </h1>
+                    <h1> EDITAR PRODUCTO: <i>
+                        <%= producto.id %></i>
+                    </h1>
                 </div>
 
-                <form action="/" method="GET">
+                <form action="/products" method="POST">
 
                     <div class="etiquetaNombre">
                         <label>Nombre del producto</label>
                     </div>
                     <div class="nombreProducto">
-                        <input type="text" placeholder="" name="nombre" required>
+                        <input type="text" placeholder="" name="nombre" value="<%= producto.nombre %>" required>
                     </div>
 
                     <div class="etiquetaDescripcion">
                         <label>Descripción del producto</label>
                     </div>
                     <div class="descripcionProducto">
-                        <input type="text" placeholder="" name="descripcion">
+                        <input type="text" placeholder="" name="descripcion" value="<%= producto.descripcion %>">
                     </div>
 
                     <div class="etiquetaImage">
@@ -34,6 +36,9 @@
                     </div>
                     <div class="imagenProducto">
                         <input type="file" placeholder="" name="imagen" accept=".jpg">
+                    <p>
+                        <label class="img-actual">Imagen actual</span> <img src="/img/<%= producto.imagen %>" alt="Imagen actual"></label>
+                    </p>
                     </div>
 
                     <div class="etiquetaCategoria">
@@ -102,28 +107,28 @@
                         <label>Modelo</label>
                     </div>
                     <div class="modelo">
-                        <input type="text" placeholder="" name="modelo">
+                        <input type="text" placeholder="" name="modelo" value="<%= producto.modelo %>">
                     </div>
 
                     <div class="etiquetaPrecio">
                         <label>Precio del producto</label>
                     </div>
                     <div class="precio">
-                        <input type="text" placeholder="" name="precio">
+                        <input type="text" placeholder="" name="precio" value="<%= producto.precio%>">
                     </div>
 
                     <div class="etiquetaDescuento">
                         <label>Descuento</label>
                     </div>
                     <div class="descuento">
-                        <input type="text" placeholder="" name="descuento">
+                        <input type="text" placeholder="" name="descuento" value="<%= producto.descuento %>">
                     </div>
 
                     <div class="etiquetaCantidad">
                         <label>Cantidad</label>
                     </div>
                     <div class="cantidad">
-                        <input type="text" placeholder="" name="cantidad">
+                        <input type="text" placeholder="" name="cantidad" value="<%= producto.cantidad %>">
                     </div>
 
                     <div class="boton">
