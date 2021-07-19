@@ -12,7 +12,27 @@ const productController = {
     // listado de todos los productos
     index: function (req, res) {
         let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-        res.render('products/products', { productos: currentProducts });
+        let titelId = 0; // Indica que el título será: Todos los productos
+        res.render('products/products', { productos: currentProducts, titelId:titelId  });
+    },
+    mujer: function (req, res) {
+        // se leen los productos del archivo json
+        let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+		// Productos de mujer
+        let titelId = 1; // Indica que el título será: Todos los productos de mujer
+		let productsList = currentProducts.filter( (producto) => {
+			return producto.genero == "mujer";
+		});
+        res.render('products/products', { productos: productsList, titelId:titelId  });
+    },
+    hombre: function (req, res) {
+        let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+        // Productos de hombre
+        let titelId = 2; // Indica que el título será: Todos los productos de mujer
+		let productsList = currentProducts.filter( (producto) => {
+			return producto.genero == "hombre";
+		});
+        res.render('products/products', { productos: productsList, titelId:titelId });
     },
 
     // página del administrador, donde se ven las opciones de crear y editar un producto

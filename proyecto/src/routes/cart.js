@@ -8,6 +8,6 @@ router.get('/index', cartController.index);
 router.get('/sacarItem/:id', cartController.sacarItem);
 console.log("llegue aqui");
 router.get('/consultarItem', cartController.consultarItem);
-router.get('/agregarItem', cartController.agregarItem);
+router.get('/agregarItem/:id', cartController.agregarItem);
 
 module.exports = router;

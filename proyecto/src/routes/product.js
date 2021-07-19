@@ -23,6 +23,8 @@ const upload = multer({ storage });
 
 // listado de todos los productos
 router.get('/', productController.index);
+router.get('/mujer', productController.mujer);
+router.get('/hombre', productController.hombre);
 
 // página de administrador
 router.get('/products-admin', productController.admin);

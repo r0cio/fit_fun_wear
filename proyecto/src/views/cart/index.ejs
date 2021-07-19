@@ -29,7 +29,7 @@
                 <% for( let i=0; i< article.length; i++) { %>                    
                     <article>
                         <div class="check">
-                                <img src= <%= article[i].imagen %> alt="articulo" class="product_img">
+                                <img src= "/img/<%= article[i].imagen %>" alt="articulo" class="product_img">
                                 <div class="disponible">
                                     <% if (article[i].disponible) { %>
                                         <p>Disponible</p>
@@ -64,7 +64,7 @@
                                         <label>EDITAR</label>
                                     </div>
                                     <div class="eliminar">
-                                        <a href="/sacarItem/<%= i+1 %>" title="Eliminar elemento">
+                                        <a href="/cart/sacarItem/<%= article[i].id %>" title="Eliminar elemento">
                                         <label>ELIMINAR</label>
                                         </a>
                                     </div>

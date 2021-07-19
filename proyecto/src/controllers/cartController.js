@@ -1,55 +1,67 @@
-let article = [
+const fs = require('fs');
+const path = require('path');
+const productsFilePath = path.join(__dirname, '../data/products.json');
+let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-    {
-        id: "1",
-        imagen: "/img/jade-tennis.jpg",
-        disponible: true,
-        desc: "Tenis para hombre marca NIKE",
-        color: "Verde",
-        talla: "27",
-        modelo: "Lorem Ipsum",
-        precio: 2270.00,
-        cantidad: 1
-    },
-    {
-        id: "2",
-        imagen: "/img/conjuntoFila.jpg",
-        disponible: true,
-        desc: "Conjunto de short y playera marca FILA",
-        color: "Azul",
-        talla: "L",
-        modelo: "Lorem Ipsum",
-        precio: 1258.00,
-        cantidad: 1
-    }
-
-]
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const cartController = {
     // Listado de los productos en el carrito
     index: function (req, res) {
-        res.render('cart/index', { 'article': article });
-        //res.render('/carritoVacio');
+        //let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+		// Productos en el carrito
+		let productsList = products.filter( (producto) => {
+			return producto.enCarrito == true;
+		});
+        res.render('cart/index', { article: productsList });
+
     },
     // Saca Item del carrito
     sacarItem: function (req, res) {
-        //res.render('/sacarItem');
+        //let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+        let id = req.params.id;
+
+        for (let i = 0; i < products.length; i++) {
+            if (products[i].id == id) {
+                products[i].enCarrito = false;
+            }
+        }
+
+        let productsList = products.filter( (producto) => {
+			return producto.enCarrito == true;
+		});
+        res.render('cart/index', { article: productsList });
+
+        /*
         articulo = article.filter(articulo => articulo.id == req.params.id)[0];
         console.log("el articulo a quitar es " + (articulo.id).toString());
         article.splice((articulo.id) - 1, 1);
         res.render('cart/index', { 'article': article });
-        //res.send('Estoy en sacarItem')
+        */
     },
     // Consulta item del carrito
     consultarItem: function (req, res) {
         //res.render('/consultarItem');
         res.send('Estoy en consultarItem')
-        //res.render('detalleMenu', {'articulo':article[articulo.id-1]});
     },
     // Agrega item al carrito
     agregarItem: function (req, res) {
-        //res.render('/agregarItem');
-        res.send('Estoy en agregarItem')
+        let id = req.params.id;
+
+        for (let i = 0; i < products.length; i++) {
+            if (products[i].id == id) {
+                products[i].enCarrito = true;
+            }
+        }
+        let productsList = products.filter( (producto) => {
+			return producto.enCarrito == true;
+		});
+
+        //productsJSON = JSON.stringify(products);
+        //fs.writeFileSync(productsFilePath, productsJSON);
+
+        res.render('cart/index', { article: productsList });
+
     },
 }
 
