@@ -12,18 +12,18 @@ const mainController = {
         // se leen los productos del archivo json
         products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-		// Productos visitados
-		let productosTendencia = products.filter( (producto) => {
-			return producto.categoria == "tendencias";
-		});
+        // Productos visitados
+        let productosTendencia = products.filter((producto) => {
+            return producto.categoria == "tendencias";
+        });
 
-		// productos en oferta
-		let productosOferta = products.filter( (producto) => {
-			return producto.categoria == "ofertas";
-		})
+        // productos en oferta
+        let productosOferta = products.filter((producto) => {
+            return producto.categoria == "ofertas";
+        })
 
-		// se renderiza la vista con esos elementos
-		res.render("main/index", { productosOferta, productosTendencia, toThousand});
+        // se renderiza la vista con esos elementos
+        res.render("main/index", { productosOferta, productosTendencia, toThousand });
         //res.render('main/index');
     },
 
@@ -37,6 +37,18 @@ const mainController = {
 
     terminos: function (req, res) {
         res.render('main/terminos');
+    },
+
+    faq: function (req, res) {
+        res.render('main/faq');
+    },
+
+    about: function (req, res) {
+        res.render('main/about');
+    },
+
+    contact: function (req, res) {
+        res.render('main/contacto');
     }
 
 };

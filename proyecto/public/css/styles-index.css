@@ -4,6 +4,10 @@ main {
     padding: 10px 0;
 }
 
+.btn-link:hover {
+    text-decoration: none!important;
+}
+
 /* Main - Carrousel section */
 .carrousel {
     align-items: center;
