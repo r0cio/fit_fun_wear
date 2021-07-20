@@ -43,20 +43,24 @@
                         </p>
                         <p class="center">Colores disponibles:
                             <select name="color" title="Colores disponibles">
+                                <% if (producto.color) { %>
                                 <% for(let i=0; i < producto.color.length; i++) { %>
                                     <option value="<%= producto.color[i] %> ">
                                         <%= producto.color[i] %>
                                     </option>
                                     <% } %>
+                                <% } %>    
                             </select>
                         </p>
                         <p class="center">Tallas disponibles:
                             <select name="tallas" title="Tallas disponibles">
+                                <% if (producto.talla) { %>
                                 <% for(let i=0; i < producto.talla.length; i++) { %>
                                     <option value="<%= producto.talla[i] %> ">
                                         <%= producto.talla[i] %>
                                     </option>
                                     <% } %>
+                                <% } %>
                             </select>
                         </p>
                         <p class="center">Cantidad:
@@ -141,11 +145,13 @@
                                     <% } else { %>
                                         <p>Colores disponibles:
                                             <select name="color" title="Colores disponibles">
+                                                <% if (producto.color) { %>
                                                 <% for(let i=0; i < producto.color.length; i++) { %>
                                                     <option value="<%= producto.color[i] %>">
                                                         <%= producto.color[i] %>
                                                     </option>
                                                     <% } %>
+                                                <% } %>
                                             </select>
                                         </p>
                                         <% } %>
@@ -160,11 +166,13 @@
                                                 <% } else { %>
                                                     <p>Tallas disponibles:
                                                         <select name="tallas" title="Tallas disponibles">
+                                                            <% if (producto.talla) { %>
                                                             <% for(let i=0; i < producto.talla.length; i++) { %>
                                                                 <option value="<%= producto.talla[i] %> ">
                                                                     <%= producto.talla[i] %>
                                                                 </option>
                                                                 <% } %>
+                                                            <% } %>
                                                         </select>
                                                     </p>
                                                     <% } %>

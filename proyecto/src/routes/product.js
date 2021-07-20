@@ -42,7 +42,7 @@ router.get('/product-detail/:id', productController.detalle);
 router.get('/edit/:id', productController.edit);
 
 // acción de edición, donde se envía el formulario de edición de productos
-router.put('/:id', productController.update);
+router.put('/:id', upload.single('imagen'), productController.update);
 
 // acción de borrado de un producto
 router.delete('/delete/:id', productController.delete);

@@ -15,6 +15,7 @@ const productController = {
         let titelId = 0; // Indica que el título será: Todos los productos
         res.render('products/products', { productos: currentProducts, titelId:titelId  });
     },
+
     mujer: function (req, res) {
         // se leen los productos del archivo json
         let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -25,6 +26,7 @@ const productController = {
 		});
         res.render('products/products', { productos: productsList, titelId:titelId  });
     },
+    
     hombre: function (req, res) {
         let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
         // Productos de hombre
@@ -47,11 +49,12 @@ const productController = {
 
     // método que contiene la lógica cuando se guarda un producto
     store: (req, res) => {
-		let product = {
+        if (req.file == undefined) {
+		var product = {
             "id": date,
             "nombre": req.body.nombre,
             "descripcion": req.body.descripcion,
-            "imagen": req.file.filename,
+            "imagen": 'default-image.png',
             "categoria": req.body.categoria,
             "genero": req.body.genero,
             "disponible": req.body.disponible,
@@ -62,7 +65,25 @@ const productController = {
             "descuento": req.body.descuento,
             "enCarrito": false,
             "cantidad": req.body.cantidad,
-        };
+            };
+        } else {
+            var product = {
+                "id": date,
+                "nombre": req.body.nombre,
+                "descripcion": req.body.descripcion,
+                "imagen": req.file.filename,
+                "categoria": req.body.categoria,
+                "genero": req.body.genero,
+                "disponible": req.body.disponible,
+                "color": req.body.color,
+                "talla": req.body.talla,
+                "modelo": req.body.modelo,
+                "precio": req.body.precio,
+                "descuento": req.body.descuento,
+                "enCarrito": false,
+                "cantidad": req.body.cantidad,
+                };
+        }
         products.push(product);
 
 		productsJSON = JSON.stringify(products);
@@ -82,7 +103,6 @@ const productController = {
 
     // metodo que devuelve el formulario de edición de un producto
     edit: function (req, res) {
-        // Falta probar esto
         let id = req.params.id;
         let productoActual;
         for (producto of products) {
@@ -93,14 +113,22 @@ const productController = {
     },
 
     // acción que actualiza el producto
-    update: function (req, res) {
-        // Falta probar esto
+    update: function (req, res) {        
         let id = req.params.id;
-        let product = {
-            "id": date,
+        
+        // Se obtiene el producto actual por si no se modifican algunos datos como la imágen
+		let productoActual;
+		for (producto of products) {
+			if (producto.id == id) productoActual = producto;
+		}
+
+        // Si no se actualiza la imagen        
+		if (req.file == undefined) {
+        var product = {
+            "id": productoActual.id,
             "nombre": req.body.nombre,
             "descripcion": req.body.descripcion,
-            "imagen": req.file.filename,
+            "imagen": productoActual.imagen,
             "categoria": req.body.categoria,
             "genero": req.body.genero,
             "disponible": req.body.disponible,
@@ -111,7 +139,25 @@ const productController = {
             "descuento": req.body.descuento,
             "enCarrito": false,
             "cantidad": req.body.cantidad
-        };
+            };
+        } else { // Si se actualiza la imagen            
+            var product = {
+                "id": productoActual.id,
+                "nombre": req.body.nombre,
+                "descripcion": req.body.descripcion,
+                "imagen": req.file.filename,
+                "categoria": req.body.categoria,
+                "genero": req.body.genero,
+                "disponible": req.body.disponible,
+                "color": req.body.color,
+                "talla": req.body.talla,
+                "modelo": req.body.modelo,
+                "precio": req.body.precio,
+                "descuento": req.body.descuento,
+                "enCarrito": false,
+                "cantidad": req.body.cantidad
+                };
+        }
 
         for (let i = 0; i < products.length; i++) {
             if (products[i].id == id) {
@@ -122,23 +168,22 @@ const productController = {
         productsJSON = JSON.stringify(products);
         fs.writeFileSync(productsFilePath, productsJSON);
 
-        res.redirect('/products/detail/' + id);
+        res.redirect('/products/product-detail/' + id);
     },
 
     // acción de borrado de un producto
-    delete: (req, res) => {
-        // Falta probar esto
+    delete: (req, res) => {        
         let id = req.params.id;
         console.log(id);
-        /*newProducts = products.filter((product) => {
+        newProducts = products.filter((product) => {
             return product.id != id ? product : undefined;
-        });*/
-        let newProducts = [];
+        });
+        /* let newProducts = [];
         for (let i = 0; i < products.length; i++) {
             if (products[i].id != id) {
                 newProducts.push(products[i]);
             }
-        }
+        } */
 
         productsJSON = JSON.stringify(newProducts);
         fs.writeFileSync(productsFilePath, productsJSON);

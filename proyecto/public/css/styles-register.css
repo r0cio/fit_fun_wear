@@ -103,6 +103,10 @@ button.Enviar{
     
 }
 
+.precio input, .descuento input, .cantidad input{
+    width: 100%;
+}
+
 /* Para los diferentes dispositivos - Media queries */
 /* Móvil */
 @media (min-width: 576px) {

@@ -33,15 +33,15 @@
                         <label>Agrega una imagen</label>
                     </div>
                     <div class="imagenProducto">
-                        <input type="file" id="imagen" name="imagen" accept=".jpg">
+                        <input type="file" id="imagen" name="imagen" accept="image/*">
                     </div>
 
                     <div class="etiquetaCategoria">
                         <label>Selecciona su categoría</label>
                     </div>
-                    <div class="categoria">
-                        <input type="checkbox" name="categoria" value="Tendencia"> Tendencias
-                        <input type="checkbox" name="categoria" value="Mas Vendidos"> Más vendidos
+                    <div class="categoria" required>
+                        <input type="checkbox" name="categoria" value="Tendencias"> Tendencias
+                        <input type="checkbox" name="categoria" value="Mas vendidos"> Más vendidos
                         <input type="checkbox" name="categoria" value="Ofertas"> Ofertas
                     </div>
                     <div class="etiquetaGenero">
@@ -109,21 +109,21 @@
                         <label>Precio del producto</label>
                     </div>
                     <div class="precio">
-                        <input type="text" placeholder="" name="precio">
+                        <input type="number" placeholder="" name="precio">
                     </div>
 
                     <div class="etiquetaDescuento">
                         <label>Descuento</label>
                     </div>
                     <div class="descuento">
-                        <input type="text" placeholder="" name="descuento">
+                        <input type="number" placeholder="" name="descuento">
                     </div>
 
                     <div class="etiquetaCantidad">
                         <label>Cantidad</label>
                     </div>
                     <div class="cantidad">
-                        <input type="text" placeholder="" name="cantidad">
+                        <input type="number" placeholder="" name="cantidad">
                     </div>
 
                     <div class="boton">
