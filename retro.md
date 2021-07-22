@@ -45,3 +45,19 @@
 
 ## Dejar de hacer
 ### Queremos dejar de asignar la fecha límite el día de la entrega del sprint, en vez de eso asignar las tareas en un plazo adecuado para así tener un tiempo extra respecto a la entrega del sprint por cualquier eventualidad. 
+
+# Conclusiones Sprint 4
+## Empezar a hacer
+### Preguntar a los profesores para resolver de mejor manera nuestras dudas respecto al sprint en cuestion, esto debido a que se han dejado cosas sin resolver completamente en sprints pasados.
+
+## Hacer más
+### Subdividir las tareas en asignaciones pequeñas con el fin de ser más claros en la especificación de las mismas, y aunado a esto se propiciará tener commits más frecuentes.
+
+## Continuar haciendo
+### Seguir definiendo de mejor forma las tareas e implementar como grupo etiquetas de dificultad en cada una de las tareas asignadas, con esto podremos calcular mejor la duración de cada una de las actividades.
+
+## Hacer menos
+### Un aspecto que deseamos realizar en menor medida es dejar los pendientes para lo último y realizarlos a la par del sprint.
+
+## Dejar de hacer
+### Dejar de prolongar los tiempos y preguntar nuestras dudas a los profesores.
