@@ -262,5 +262,63 @@
         "descuento": "25",
         "enCarrito": false,
         "cantidad": "6"
+    },
+    {
+        "id": 1627063050089,
+        "nombre": "Prueba 23",
+        "descripcion": "Haciendo una prueba",
+        "imagen": "product1627063379087.jpg",
+        "categoria": "Tendencias",
+        "genero": "mujer",
+        "disponible": "true",
+        "color": [
+            "Verde",
+            "Anaranjado"
+        ],
+        "talla": "24.5",
+        "modelo": "Vintage",
+        "precio": "1200",
+        "descuento": "50",
+        "enCarrito": false,
+        "cantidad": "6"
+    },
+    {
+        "id": 1627063735315,
+        "nombre": "Prueba 22",
+        "descripcion": "Prueba con carpeta de imágenes",
+        "imagen": "product1627063802890.jpg",
+        "categoria": "Tendencias",
+        "genero": "mujer",
+        "disponible": "true",
+        "color": [
+            "Negro",
+            "Blanco"
+        ],
+        "talla": "22",
+        "modelo": "Vintage",
+        "precio": "750",
+        "descuento": "10",
+        "enCarrito": false,
+        "cantidad": "20"
+    },
+    {
+        "id": 1627063735315,
+        "nombre": "Prueba después de carpeta",
+        "descripcion": "Haciendo prueba después de añadir carpeta",
+        "imagen": "product1627064099733.jpg",
+        "categoria": "Tendencias",
+        "genero": "mujer",
+        "disponible": "true",
+        "color": [
+            "Rosa",
+            "Negro",
+            "Amarillo"
+        ],
+        "talla": "26",
+        "modelo": "Vintage",
+        "precio": "750",
+        "descuento": "10",
+        "enCarrito": false,
+        "cantidad": "6"
     }
 ]

@@ -9,7 +9,7 @@ const productController = require('../controllers/productController');
 // Multer para aceptar imagenes en los formulario
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb (null, '../public/img');
+        cb (null, '../public/img/products');
     },
     filename: (req, file, cb) => {
         const newFileName = 'product' + Date.now() + path.extname(file.originalname);

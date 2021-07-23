@@ -8,7 +8,7 @@
             <main>
                 <section class="carrousel">
                     <i class="fas fa-chevron-left pointer"><a href="#" title="Previo"></a></i>
-                    <img src="/img/jade-scarlato-dT6wB15xdoA-unsplash.jpg" alt="Imagen de carrusel" class="pointer">
+                    <img src="/img/products/jade-scarlato-dT6wB15xdoA-unsplash.jpg" alt="Imagen de carrusel" class="pointer">
                     <i class="fas fa-chevron-right pointer"></i>
                 </section>
                 <section class="trending">
@@ -18,7 +18,7 @@
                         <% for (let producto of productosTendencia) { %>
                             <article class="section-item pointer">
                                 <a href="/products/product-detail/<%= producto.id %>"> <img
-                                        src="/img/<%=producto.imagen%>" class="img-item" alt="Artículo">
+                                        src="/img/products/<%=producto.imagen%>" class="img-item" alt="Artículo">
                                     <p class="item-name">
                                         <%= producto.nombre %>
                                     </p>
@@ -35,7 +35,7 @@
                         <% for (let producto of productosOferta) { %>
                             <article class="section-item pointer">
                                 <a href="/products/product-detail/<%= producto.id %>"> <img
-                                        src="/img/<%=producto.imagen%>" class="img-item" alt="Artículo">
+                                        src="/img/products/<%=producto.imagen%>" class="img-item" alt="Artículo">
                                     <p class="item-name">
                                         <%= producto.nombre %>
                                     </p>
