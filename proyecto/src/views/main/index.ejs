@@ -5,11 +5,52 @@
 
     <body>
         <%- include('../partials/header') %>
-            <main>
-                <section class="carrousel">
-                    <i class="fas fa-chevron-left pointer"><a href="#" title="Previo"></a></i>
-                    <img src="/img/products/jade-scarlato-dT6wB15xdoA-unsplash.jpg" alt="Imagen de carrusel" class="pointer">
-                    <i class="fas fa-chevron-right pointer"></i>
+            <main>                                      
+                <section class="carrusel">
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <a href="/products/product-detail/<%= productosTendencia[productosTendencia.length-1].id %>" class="text-white"><img src="/img/products/<%= productosTendencia[productosTendencia.length-1].imagen %> " class="d-block w-100 img-carr" alt="Imagen de producto"></a>
+                        <div class="carousel-caption d-none d-md-block mb-3">
+                         <a href="/products/product-detail/<%= productosTendencia[productosTendencia.length-1].id %>" class="text-white">
+                            <h5 class="font-weight-bold label-product-carusel"> <%= productosTendencia[productosTendencia.length-1].nombre %> </h5>
+                          <p class="font-weight-bold label-product-carusel"><%= productosTendencia[productosTendencia.length-1].descripcion %></p>                        
+                        </a>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <a href="/products/product-detail/<%= productosOferta[productosOferta.length-1].id %>" class="text-white"><img src="/img/products/<%= productosOferta[productosOferta.length-1].imagen %> " class="d-block w-100 img-carr" alt="Imagen de producto"></a>
+                        <div class="carousel-caption d-none d-md-block mb-3">
+                         <a href="/products/product-detail/<%= productosOferta[productosOferta.length-1].id %>" class="text-white">
+                            <h5 class="font-weight-bold label-product-carusel"> <%= productosOferta[productosOferta.length-1].nombre %> </h5>
+                          <p class="font-weight-bold label-product-carusel"><%= productosTendencia[productosOferta.length-1].descripcion %></p>                        
+                        </a>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <a href="/products/product-detail/<%= productosTendencia[productosTendencia.length-2].id %>" class="text-white"><img src="/img/products/<%= productosTendencia[productosTendencia.length-2].imagen %> " class="d-block w-100 img-carr" alt="Imagen de producto"></a>
+                        <div class="carousel-caption d-none d-md-block mb-3">
+                         <a href="/products/product-detail/<%= productosTendencia[productosTendencia.length-2].id %>" class="text-white">
+                            <h5 class="font-weight-bold label-product-carusel"> <%= productosTendencia[productosTendencia.length-2].nombre %> </h5>
+                          <p class="font-weight-bold label-product-carusel"><%= productosTendencia[productosTendencia.length-2].descripcion %></p>                        
+                        </a>
+                        </div>
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
                 </section>
                 <section class="trending">
                     <h2 class="title-section">Tendencias</h2>
