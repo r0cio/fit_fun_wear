@@ -1,0 +1,25 @@
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/styles-index.css">
+    <title>FitFunWear</title>
+    <style>
+        .main-404 {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    </head>
+
+    <body>
+        <%- include('../partials/header') %>
+            <main class="main-404">
+                <h1>Página no encontrada <i class="far fa-frown-open"></i></h1>
+                <p>Lo sentimos, pero la página a la que estás intentando acceder no existe</p>
+                <p>Puedes regresar al <a href="/"><u>inicio</u></a> y seguir explorando</p>
+            </main>
+            <%- include('../partials/footer') %>
+    </body>
+
+    </html>

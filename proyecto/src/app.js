@@ -31,3 +31,8 @@ app.use('/', rutasMain);
 app.use('/products', rutasProduct);
 app.use('/user', rutasUser);
 app.use('/cart', rutasCart);
+
+// Ruta para el error 404
+app.use(function (req, res, next) {
+    res.status(404).render('main/error-404');
+})
