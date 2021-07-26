@@ -98,8 +98,8 @@
                     <div class="etiquetaColor">
                         <label>Color</label>
                     </div>
-                    <div class="categoria"> 
-                        <% if (producto.color) { %>                                           
+                    <% if (producto.color && typeof(producto.color) != 'string') { %>                                           
+                    <div class="categoria">                          
                         <input type="checkbox" name="color" value="Rosa" 
                         <% i= producto.color.length; j=0; %>
                         <% while ( j < i) { %>
@@ -162,6 +162,46 @@
                             <%= producto.color[j] == 'Rojo' ? 'checked' : '' %>
                         <% j++; } %> > Rojo                    
                     </div> <% } %>
+                    <% if (typeof(producto.color) == 'string') { %>
+                        <div class="categoria">                                                                                                 
+                            <input type="checkbox" name="color" value="Rosa"                             
+                                <%= producto.color == 'Rosa' ? 'checked' : '' %>                            
+                            > Rosa
+                            <input type="checkbox" name="color" value="Negro"                            
+                                <%= producto.color == 'Negro' ? 'checked' : '' %>
+                            > Negro
+                            <input type="checkbox" name="color" value="Azul"                            
+                                <%= producto.color == 'Azul' ? 'checked' : '' %>
+                            > Azul
+                            <input type="checkbox" name="color" value="Verde"                             
+                                <%= producto.color == 'Verde' ? 'checked' : '' %>
+                            > Verde
+                            <input type="checkbox" name="color" value="Morado"                            
+                                <%= producto.color == 'Morado' ? 'checked' : '' %>
+                            > Morado
+                            <input type="checkbox" name="color" value="Fucsia"                            
+                                <%= producto.color == 'Fucsia' ? 'checked' : '' %>
+                            > Fucsia
+                            <input type="checkbox" name="color" value="Gris"                            
+                                <%= producto.color == 'Gris' ? 'checked' : '' %>
+                            > Gris
+                            <input type="checkbox" name="color" value="Amarillo"                            
+                                <%= producto.color == 'Amarillo' ? 'checked' : '' %>
+                            > Amarillo
+                            <input type="checkbox" name="color" value="Blanco"                            
+                                <%= producto.color == 'Blanco' ? 'checked' : '' %>
+                            > Blanco
+                            <input type="checkbox" name="color" value="Dorado"                            
+                                <%= producto.color == 'Dorado' ? 'checked' : '' %>
+                            > Dorado
+                            <input type="checkbox" name="color" value="Anaranjado"                            
+                                <%= producto.color == 'Anaranjado' ? 'checked' : '' %>
+                            > Anaranjado
+                            <input type="checkbox" name="color" value="Rojo"                             
+                                <%= producto.color == 'Rojo' ? 'checked' : '' %>
+                            > Rojo                    
+                        </div>
+                    <% } %>
 
                     <div class="etiquetaTalla">
                         <label>Talla</label>

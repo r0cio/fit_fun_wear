@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const productsFilePath = path.join(__dirname, '../data/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const { validationResult } = require('express-validator');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -49,46 +50,52 @@ const productController = {
 
     // método que contiene la lógica cuando se guarda un producto
     store: (req, res) => {
-        if (req.file == undefined) {
-            var product = {
-                "id": date,
-                "nombre": req.body.nombre,
-                "descripcion": req.body.descripcion,
-                "imagen": 'default-image.png',
-                "categoria": req.body.categoria,
-                "genero": req.body.genero,
-                "disponible": req.body.disponible,
-                "color": req.body.color,
-                "talla": req.body.talla,
-                "modelo": req.body.modelo,
-                "precio": req.body.precio,
-                "descuento": req.body.descuento,
-                "enCarrito": false,
-                "cantidad": req.body.cantidad,
-            };
-        } else {
-            var product = {
-                "id": date,
-                "nombre": req.body.nombre,
-                "descripcion": req.body.descripcion,
-                "imagen": req.file.filename,
-                "categoria": req.body.categoria,
-                "genero": req.body.genero,
-                "disponible": req.body.disponible,
-                "color": req.body.color,
-                "talla": req.body.talla,
-                "modelo": req.body.modelo,
-                "precio": req.body.precio,
-                "descuento": req.body.descuento,
-                "enCarrito": false,
-                "cantidad": req.body.cantidad,
-            };
-        }
-        products.push(product);
+        let errors = validationResult(req);
+        let product = {};              
+        if (errors.isEmpty()) { // si no hay errores, se guarda el producto
+            if (req.file == undefined) { // si no se sube una imagen, se pone la imagen por defecto
+                product = {
+                    "id": date,
+                    "nombre": req.body.nombre,
+                    "descripcion": req.body.descripcion,
+                    "imagen": 'default-image.png',
+                    "categoria": req.body.categoria,
+                    "genero": req.body.genero,
+                    "disponible": req.body.disponible,
+                    "color": req.body.color,
+                    "talla": req.body.talla,
+                    "modelo": req.body.modelo,
+                    "precio": req.body.precio,
+                    "descuento": req.body.descuento,
+                    "enCarrito": false,
+                    "cantidad": req.body.cantidad,
+                };
+            } else {
+                product = {
+                    "id": date,
+                    "nombre": req.body.nombre,
+                    "descripcion": req.body.descripcion,
+                    "imagen": req.file.filename,
+                    "categoria": req.body.categoria,
+                    "genero": req.body.genero,
+                    "disponible": req.body.disponible,
+                    "color": req.body.color,
+                    "talla": req.body.talla,
+                    "modelo": req.body.modelo,
+                    "precio": req.body.precio,
+                    "descuento": req.body.descuento,
+                    "enCarrito": false,
+                    "cantidad": req.body.cantidad,
+                };
+            }
+            products.push(product);
 
-        productsJSON = JSON.stringify(products);
-        fs.writeFileSync(productsFilePath, productsJSON);
-        res.redirect('/products');
+            productsJSON = JSON.stringify(products);
+            fs.writeFileSync(productsFilePath, productsJSON);
+            res.redirect('/products');
+        } else { // si existe algún error, se renderiza de nuevo el formulario
+            res.render('admin/add-product', { error: errors.mapped(), old: req.body });
+        }
     },
 
     // página de detalle de un producto
@@ -173,8 +180,7 @@ const productController = {
 
     // acción de borrado de un producto
     delete: (req, res) => {
-        let id = req.params.id;
-        console.log(id);
+        let id = req.params.id;        
         newProducts = products.filter((product) => {
             return product.id != id ? product : undefined;
         });

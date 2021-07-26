@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require("path");
+const { check } = require('express-validator');
 
 // Controlador de productos
 const productController = require('../controllers/productController');
@@ -19,6 +20,20 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+// Validación para el formulario de creación de un producto
+const validaciones = [
+    check('nombre').notEmpty().withMessage('Debes escribir un nombre para el producto'),
+    check('descripcion').notEmpty().withMessage('Debes escribir una descripción para el producto'),
+    check('categoria').notEmpty().withMessage('Debes elegir al menos 1 categoria'),
+    check('genero').notEmpty().withMessage('Elige un genero'),
+    check('disponible').notEmpty().withMessage('Debes especificar si el producto estará disponible o no'),
+    check('color').notEmpty().withMessage('Debes elegir al menos 1 color'),
+    check('talla').notEmpty().withMessage('Debes elegir al menos 1 talla'),
+    check('precio').notEmpty().withMessage('Tienes que especificar un precio').bail().isInt().withMessage('El precio tiene que ser un número'),
+    check('descuento').optional({ checkFalsy: true }).isInt().withMessage('Debes escribir un número entero'),
+    check('cantidad').notEmpty().withMessage('Debes asignar una cantidad de productos')
+];
+
 /* Rutas */
 
 // listado de todos los productos
@@ -33,7 +48,7 @@ router.get('/products-admin', productController.admin);
 router.get('/create', productController.add);
 
 // acción de creación, donde se envía el formulario de creación de productos
-router.post('/', upload.single('imagen'), productController.store);
+router.post('/', upload.single('imagen'), validaciones, productController.store);
 
 // detalle de un producto
 router.get('/product-detail/:id', productController.detalle);

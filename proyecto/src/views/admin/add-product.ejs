@@ -19,15 +19,26 @@
                         <label>Nombre del producto</label>
                     </div>
                     <div class="nombreProducto">
-                        <input type="text" placeholder="" name="nombre" required>
+                     <input type="text" placeholder="" name="nombre" class="<%= locals.error && error.nombre ? 'border border-danger' : '' %> <%= locals.old && old.nombre ? 'border border-success': '' %>"
+                        value="<%= locals.old && old.nombre ? old.nombre : '' %>">
                     </div>
+                    <% if (locals.error && error.nombre) { %>
+                     <p class="text-danger">
+                         <%= error.nombre.msg %> 
+                     </p>
+                    <% } %>
 
                     <div class="etiquetaDescripcion">
                         <label>Descripción del producto</label>
                     </div>
                     <div class="descripcionProducto">
-                        <textarea name="descripcion" id="descripcion" class="form-input"></textarea>
+                        <textarea name="descripcion" id="descripcion" class="form-input <%= locals.error && error.descripcion ? 'border border-danger' : '' %> <%= locals.old && old.descripcion ? 'border border-success': '' %>"><%= locals.old && old.descripcion ? old.descripcion : '' %></textarea>
                     </div>
+                    <% if (locals.error && error.descripcion) { %>
+                        <p class="text-danger">
+                            <%= error.descripcion.msg %> 
+                        </p>
+                       <% } %>
 
                     <div class="etiquetaImage">
                         <label>Agrega una imagen</label>
@@ -39,25 +50,43 @@
                     <div class="etiquetaCategoria">
                         <label>Selecciona su categoría</label>
                     </div>
-                    <div class="categoria" required>
-                        <input type="checkbox" name="categoria" value="Tendencias"> Tendencias
-                        <input type="checkbox" name="categoria" value="Mas vendidos"> Más vendidos
-                        <input type="checkbox" name="categoria" value="Ofertas"> Ofertas
-                    </div>
+                        <div class="categoria" required>
+                            <input type="checkbox" name="categoria" value="Tendencias"> Tendencia
+                            <input type="checkbox" name="categoria" value="Mas vendidos"> Más vendidos
+                            <input type="checkbox" name="categoria" value="Ofertas"> Ofertas
+                        </div>                    
+                    <% if (locals.error && error.categoria) { %>
+                        <p class="text-danger">
+                            <%= error.categoria.msg %> 
+                        </p>
+                        <% } %>
+
                     <div class="etiquetaGenero">
                         <label>Género</label>
                     </div>
                     <div class="genero">
-                        <input type="radio" name="genero" value="hombre"> Hombre
-                        <input type="radio" name="genero" value="mujer"> Mujer
+                        <input type="radio" name="genero" value="hombre" <%=locals.old && old.genero == 'hombre' ? 'checked' : '' %>> Hombre
+                        <input type="radio" name="genero" value="mujer" <%=locals.old && old.genero == 'mujer' ? 'checked' : '' %>> Mujer
                     </div>
+                    <% if (locals.error && error.genero) { %>
+                        <p class="text-danger">
+                            <%= error.genero.msg %> 
+                        </p>
+                       <% } %>
+
                     <div class="etiquetaDisponibilidad">
                         <label>¿Producto disponible?</label>
                     </div>
                     <div class="disponibilidad">
-                        <input type="radio" name="disponible" value="true"> Sí
-                        <input type="radio" name="disponible" value="false"> No
+                        <input type="radio" name="disponible" value="true" <%=locals.old && old.disponible == true || locals.old && old.disponible == 'true' ? 'checked' : '' %>> Sí
+                        <input type="radio" name="disponible" value="false" <%=locals.old && old.disponible == false || locals.old && old.disponible == 'true' ? 'checked' : '' %>> No
                     </div>
+                    <% if (locals.error && error.disponible) { %>
+                        <p class="text-danger">
+                            <%= error.disponible.msg %> 
+                        </p>
+                       <% } %>
+
                     <div class="etiquetaColor">
                         <label>Color</label>
                     </div>
@@ -75,6 +104,11 @@
                         <input type="checkbox" name="color" value="Anaranjado"> Anaranjado
                         <input type="checkbox" name="color" value="Rojo"> Rojo
                     </div>
+                    <% if (locals.error && error.color) { %>
+                        <p class="text-danger">
+                            <%= error.color.msg %> 
+                        </p>
+                       <% } %>
 
                     <div class="etiquetaTalla">
                         <label>Talla</label>
@@ -97,6 +131,11 @@
                         <input type="checkbox" name="talla" value="29"> 29
                         <input type="checkbox" name="talla" value="29.5"> 29.5
                     </div>
+                    <% if (locals.error && error.talla) { %>
+                        <p class="text-danger">
+                            <%= error.talla.msg %> 
+                        </p>
+                       <% } %>
 
                     <div class="etiquetaModelo">
                         <label>Modelo</label>
@@ -109,8 +148,13 @@
                         <label>Precio del producto</label>
                     </div>
                     <div class="precio">
-                        <input type="number" placeholder="" name="precio">
+                        <input type="number" placeholder="" name="precio" class="<%= locals.error && error.precio ? 'border border-danger' : '' %> <%= locals.old && old.precio ? 'border border-success': '' %>  " value="<%= locals.old && old.precio ? old.precio : '' %>">
                     </div>
+                    <% if (locals.error && error.precio) { %>
+                        <p class="text-danger">
+                            <%= error.precio.msg %> 
+                        </p>
+                       <% } %>
 
                     <div class="etiquetaDescuento">
                         <label>Descuento</label>
@@ -118,13 +162,23 @@
                     <div class="descuento">
                         <input type="number" placeholder="" name="descuento">
                     </div>
+                    <% if (locals.error && error.descuento) { %>
+                        <p class="text-danger">
+                            <%= error.descuento.msg %> 
+                        </p>
+                       <% } %>
 
                     <div class="etiquetaCantidad">
                         <label>Cantidad</label>
                     </div>
                     <div class="cantidad">
-                        <input type="number" placeholder="" name="cantidad">
+                        <input type="number" placeholder="" name="cantidad" class="<%= locals.error && error.cantidad ? 'border border-danger' : '' %> <%= locals.old && old.cantidad ? 'border border-success': '' %>" value="<%= locals.old && old.cantidad ? old.cantidad : '' %>">
                     </div>
+                    <% if (locals.error && error.cantidad) { %>
+                        <p class="text-danger">
+                            <%= error.cantidad.msg %> 
+                        </p>
+                       <% } %>
 
                     <div class="boton">
                         <button class="Enviar" type="submit">AGREGAR</button>
