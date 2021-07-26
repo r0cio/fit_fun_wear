@@ -14,12 +14,12 @@ const mainController = {
 
         // Productos visitados
         let productosTendencia = products.filter((producto) => {
-            return producto.categoria == "tendencias";
+            return producto.categoria == "Tendencias";
         });
 
         // productos en oferta
         let productosOferta = products.filter((producto) => {
-            return producto.categoria == "ofertas";
+            return producto.categoria == "Ofertas";
         })
 
         // se renderiza la vista con esos elementos

@@ -13,28 +13,28 @@ const productController = {
     index: function (req, res) {
         let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
         let titelId = 0; // Indica que el título será: Todos los productos
-        res.render('products/products', { productos: currentProducts, titelId:titelId  });
+        res.render('products/products', { productos: currentProducts, titelId: titelId });
     },
 
     mujer: function (req, res) {
         // se leen los productos del archivo json
         let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-		// Productos de mujer
+        // Productos de mujer
         let titelId = 1; // Indica que el título será: Todos los productos de mujer
-		let productsList = currentProducts.filter( (producto) => {
-			return producto.genero == "mujer";
-		});
-        res.render('products/products', { productos: productsList, titelId:titelId  });
+        let productsList = currentProducts.filter((producto) => {
+            return producto.genero == "mujer";
+        });
+        res.render('products/products', { productos: productsList, titelId: titelId });
     },
-    
+
     hombre: function (req, res) {
         let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
         // Productos de hombre
         let titelId = 2; // Indica que el título será: Todos los productos de mujer
-		let productsList = currentProducts.filter( (producto) => {
-			return producto.genero == "hombre";
-		});
-        res.render('products/products', { productos: productsList, titelId:titelId });
+        let productsList = currentProducts.filter((producto) => {
+            return producto.genero == "hombre";
+        });
+        res.render('products/products', { productos: productsList, titelId: titelId });
     },
 
     // página del administrador, donde se ven las opciones de crear y editar un producto
@@ -50,21 +50,21 @@ const productController = {
     // método que contiene la lógica cuando se guarda un producto
     store: (req, res) => {
         if (req.file == undefined) {
-		var product = {
-            "id": date,
-            "nombre": req.body.nombre,
-            "descripcion": req.body.descripcion,
-            "imagen": 'default-image.png',
-            "categoria": req.body.categoria,
-            "genero": req.body.genero,
-            "disponible": req.body.disponible,
-            "color": req.body.color,
-            "talla": req.body.talla,
-            "modelo": req.body.modelo,
-            "precio": req.body.precio,
-            "descuento": req.body.descuento,
-            "enCarrito": false,
-            "cantidad": req.body.cantidad,
+            var product = {
+                "id": date,
+                "nombre": req.body.nombre,
+                "descripcion": req.body.descripcion,
+                "imagen": 'default-image.png',
+                "categoria": req.body.categoria,
+                "genero": req.body.genero,
+                "disponible": req.body.disponible,
+                "color": req.body.color,
+                "talla": req.body.talla,
+                "modelo": req.body.modelo,
+                "precio": req.body.precio,
+                "descuento": req.body.descuento,
+                "enCarrito": false,
+                "cantidad": req.body.cantidad,
             };
         } else {
             var product = {
@@ -82,12 +82,12 @@ const productController = {
                 "descuento": req.body.descuento,
                 "enCarrito": false,
                 "cantidad": req.body.cantidad,
-                };
+            };
         }
         products.push(product);
 
-		productsJSON = JSON.stringify(products);
-		fs.writeFileSync(productsFilePath, productsJSON);
+        productsJSON = JSON.stringify(products);
+        fs.writeFileSync(productsFilePath, productsJSON);
         res.redirect('/products');
     },
 
@@ -98,7 +98,7 @@ const productController = {
         for (let i = 0; i < products.length; i++) {
             if (products[i].id == id) producto = products[i];
         }
-        res.render('products/product-detail', { producto: producto });
+        res.render('products/product-detail', { producto: producto, productos: products });
     },
 
     // metodo que devuelve el formulario de edición de un producto
@@ -113,32 +113,32 @@ const productController = {
     },
 
     // acción que actualiza el producto
-    update: function (req, res) {        
+    update: function (req, res) {
         let id = req.params.id;
-        
+
         // Se obtiene el producto actual por si no se modifican algunos datos como la imágen
-		let productoActual;
-		for (producto of products) {
-			if (producto.id == id) productoActual = producto;
-		}
+        let productoActual;
+        for (producto of products) {
+            if (producto.id == id) productoActual = producto;
+        }
 
         // Si no se actualiza la imagen        
-		if (req.file == undefined) {
-        var product = {
-            "id": productoActual.id,
-            "nombre": req.body.nombre,
-            "descripcion": req.body.descripcion,
-            "imagen": productoActual.imagen,
-            "categoria": req.body.categoria,
-            "genero": req.body.genero,
-            "disponible": req.body.disponible,
-            "color": req.body.color,
-            "talla": req.body.talla,
-            "modelo": req.body.modelo,
-            "precio": req.body.precio,
-            "descuento": req.body.descuento,
-            "enCarrito": false,
-            "cantidad": req.body.cantidad
+        if (req.file == undefined) {
+            var product = {
+                "id": productoActual.id,
+                "nombre": req.body.nombre,
+                "descripcion": req.body.descripcion,
+                "imagen": productoActual.imagen,
+                "categoria": req.body.categoria,
+                "genero": req.body.genero,
+                "disponible": req.body.disponible,
+                "color": req.body.color,
+                "talla": req.body.talla,
+                "modelo": req.body.modelo,
+                "precio": req.body.precio,
+                "descuento": req.body.descuento,
+                "enCarrito": false,
+                "cantidad": req.body.cantidad
             };
         } else { // Si se actualiza la imagen            
             var product = {
@@ -156,7 +156,7 @@ const productController = {
                 "descuento": req.body.descuento,
                 "enCarrito": false,
                 "cantidad": req.body.cantidad
-                };
+            };
         }
 
         for (let i = 0; i < products.length; i++) {
@@ -172,7 +172,7 @@ const productController = {
     },
 
     // acción de borrado de un producto
-    delete: (req, res) => {        
+    delete: (req, res) => {
         let id = req.params.id;
         console.log(id);
         newProducts = products.filter((product) => {

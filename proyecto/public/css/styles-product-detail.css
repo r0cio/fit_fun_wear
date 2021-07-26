@@ -15,6 +15,13 @@ div.img-product img {
     padding: 10px;
     max-height: 433px;
     object-fit: contain;
+    transition: all 2s ease-in-out;
+}
+
+div.img-product img:hover {    
+    max-height: 500px;
+    object-fit: cover;
+    cursor: zoom-in;
 }
 
 .product-name {
