@@ -11,7 +11,9 @@ const validations = [
         .notEmpty().withMessage("Escribe tu nombre").bail()
         .isLength({ min: 3}).withMessage("La longitud mínima es de 3 caracteres").bail()
         .isAlpha().withMessage("Debe haber solo caracteres del alfabeto"),
-    body("password").notEmpty().withMessage("Escribe tu password"),
+    body("password").
+        notEmpty().withMessage("Escribe tu password").bail()
+        .isLength({ min: 8}).withMessage("La longitud mínima es de 8 caracteres"),
     body("email")
         .notEmpty().withMessage("Escribe tu correo electrónico").bail()
         .isEmail().withMessage("El formato debe ser válido"),

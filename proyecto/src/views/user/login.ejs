@@ -15,14 +15,14 @@
                         <label>Correo electrónico</label>
                     </div>
                     <div class="Usuario">
-                        <input type="email" placeholder=" Inserte su correo electrónico" name="emailUsuario"
+                        <input type="email" placeholder=" Inserte su correo electrónico" name="email"
                             minlength="8" required
-                            class = "form-input <%= locals.errors && errors.emailUsuario ? 'border border-danger' : '' %> <%= locals.oldData && oldData.emailUsuario ? 'border border-success' : '' %>"
-                            value ="<%= locals.oldData && oldData.emailUsuario ? oldData.emailUsuario : null %>"
+                            class = "form-input <%= locals.errors && errors.email ? 'border border-danger' : '' %> <%= locals.oldData && oldData.email ? 'border border-success' : '' %>"
+                            value ="<%= locals.oldData && oldData.email ? oldData.email : null %>"
                             >
-                            <% if(locals.errors && errors.emailUsuario) { %>
+                            <% if(locals.errors && errors.email) { %>
                                 <div class="text-danger">
-                                    <%= errors.emailUsuario.msg %>
+                                    <%= errors.email.msg %>
                                 </div>
                             <% } %>	
                     </div>

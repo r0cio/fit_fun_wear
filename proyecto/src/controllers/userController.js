@@ -19,9 +19,20 @@ const userController = {
 			});
 		}
         // No hay errores
-        // Verifica si el usuario ya está logueado
+        let userToLogin = User.findByField('email', req.body.email);
+        console.log(userToLogin);
+        if( userToLogin) {
+            return res.send('Ok, puedes ingresar');
+        }
+        return res.render('user/login', {
+            errors: {
+                email: {
+                    msg: 'No se encuentra este email en nuestra base de datos'
+                }
+            },
+            oldData: req.body,
+        });
 
-        return res.send(req.body);
     },
 
     register: function (req, res) {
