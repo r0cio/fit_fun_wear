@@ -178,14 +178,6 @@
   "password": "GYIbcUyRf",
   "category": "user",
   "image": "user_20.jpg"
- },
- {
-  "id": 21,
-  "firstName": "Pepe",
-  "lastName": "Merino",
-  "email": "ppmerino@hola.com",
-  "password": "skskd",
-  "category": "user",
-  "image": "default.img"
  }
+
 ]
