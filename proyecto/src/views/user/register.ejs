@@ -14,34 +14,68 @@
             <p class = "comunidad"> Crea tu perfil y descubre una increíble experiencia, tendrás acceso a beneficios exclusivos y a los mejores productos deportivos. </p>
         </div>
 
-        <form action = "/" method = "GET">
+        <form action = "/user/register" method = "POST">
 
             <div class = "etiquetaNombre">
                 <label>Nombre*</label>
             </div>
             <div class = "nombre">
-                <input type="text" placeholder =" Inserte su nombre" name="nombre" required>
+                <input type="text" placeholder =" Inserte su nombre" name="nombre" required
+                class = "form-input <%= locals.errors && errors.nombre ? 'border border-danger' : '' %> <%= locals.oldData && oldData.nombre ? 'border border-success' : '' %>"
+                value ="<%= locals.oldData && oldData.nombre ? oldData.nombre : null %>"
+                >
+                <% if(locals.errors && errors.nombre) { %>
+                    <div class="text-danger">
+                        <%= errors.nombre.msg %>
+                    </div>
+                <% } %>	
             </div>
             
             <div class = "etiquetaApellido">
                 <label>Apellido</label>
             </div>
             <div class = "apellido">
-                <input type="text" placeholder =" Inserte su apellido" name="apellido" pattern = "[a-zA-Z]">
+                <!--
+                    <input type="text" placeholder =" Inserte su apellido" name="apellido" pattern = "[a-zA-Z]">
+                -->
+                <input type="text" placeholder =" Inserte su apellido" name="apellido" 
+                class = "form-input <%= locals.errors && errors.apellido ? 'border border-danger' : '' %> <%= locals.oldData && oldData.apellido ? 'border border-success' : '' %>"
+                value ="<%= locals.oldData && oldData.apellido ? oldData.apellido : null %>"
+                >
+                <% if(locals.errors && errors.apellido) { %>
+                    <div class="text-danger">
+                        <%= errors.apellido.msg %>
+                    </div>
+                <% } %>	
             </div>
 
             <div class = "etiquetaCorreo">
                 <label>Correo electrónico</label>
             </div>
             <div class = "correo">
-                <input type="email" placeholder =" Inserte su correo electrónico" name="email" minlength="@" required>
+                <input type="email" placeholder =" Inserte su correo electrónico" name="email" minlength="@" required
+                class = "form-input <%= locals.errors && errors.email ? 'border border-danger' : '' %> <%= locals.oldData && oldData.email ? 'border border-success' : '' %>"
+                value ="<%= locals.oldData && oldData.email ? oldData.email : null %>"
+                >
+                <% if(locals.errors && errors.email) { %>
+                    <div class="text-danger">
+                        <%= errors.email.msg %>
+                    </div>
+                <% } %>	
             </div>
 
             <div class = "etiquetaContraseña">
                 <label>Contraseña</label>
             </div>
             <div class = "Contraseña" >
-                <input type="password" placeholder =" Cree una contraseña" name="password" maxlength="8" required>
+                <input type="password" placeholder =" Cree una contraseña" name="password" maxlength="8" required
+                class = "form-input <%= locals.errors && errors.password ? 'border border-danger' : '' %> <%= locals.oldData && oldData.password ? 'border border-success' : '' %>"
+                >
+                <% if(locals.errors && errors.password) { %>
+                    <div class="text-danger">
+                        <%= errors.password.msg %>
+                    </div>
+                <% } %>	
             </div>
             <div class="etiquetaImage">
                 <label>Agrega una imagen de perfil</label>
