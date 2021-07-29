@@ -178,6 +178,21 @@
   "password": "GYIbcUyRf",
   "category": "user",
   "image": "user_20.jpg"
+ },
+ {
+  "id": 21,
+  "nombre": "Jose",
+  "apellido": "Aguilar",
+  "email": "nikdos@mail.com",
+  "password": "xxxxx",
+  "imagen": "default.jpg"
+ },
+ {
+  "id": 22,
+  "nombre": "Ana",
+  "apellido": "Perez",
+  "email": "nikoj64758@edmondpt.com",
+  "password": "sssss",
+  "imagen": "default.jpg"
  }
-
 ]

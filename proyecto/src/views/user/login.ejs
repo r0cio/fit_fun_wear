@@ -9,14 +9,22 @@
                 <div>
                     <h1> Iniciar sesión </h1>
                 </div>
-                <form action="/" method="GET">
+                <form action="/user/login" method="POST">
 
                     <div class="etiquetaUsuario">
                         <label>Correo electrónico</label>
                     </div>
                     <div class="Usuario">
                         <input type="email" placeholder=" Inserte su correo electrónico" name="emailUsuario"
-                            minlength="8" required>
+                            minlength="8" required
+                            class = "form-input <%= locals.errors && errors.emailUsuario ? 'border border-danger' : '' %> <%= locals.oldData && oldData.emailUsuario ? 'border border-success' : '' %>"
+                            value ="<%= locals.oldData && oldData.emailUsuario ? oldData.emailUsuario : null %>"
+                            >
+                            <% if(locals.errors && errors.emailUsuario) { %>
+                                <div class="text-danger">
+                                    <%= errors.emailUsuario.msg %>
+                                </div>
+                            <% } %>	
                     </div>
 
                     <div class="etiquetaContraseña">
@@ -24,7 +32,14 @@
                     </div>
                     <div class="Contraseña">
                         <input type="password" placeholder=" Inserte su contraseña" name="password" maxlength="8"
-                            required>
+                            required
+                            class = "form-input <%= locals.errors && errors.password ? 'border border-danger' : '' %> <%= locals.oldData && oldData.password ? 'border border-success' : '' %>"
+                        >
+                        <% if(locals.errors && errors.password) { %>
+                            <div class="text-danger">
+                                <%= errors.password.msg %>
+                            </div>
+                        <% } %>	
                     </div>
 
                     <div class="Recordarme">

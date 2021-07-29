@@ -9,6 +9,21 @@ const userController = {
         res.render('user/login');
     },
 
+    loginProcess: (req, res) => {
+        const resultValidation = validationResult(req);
+        // Verifica si hay errores
+		if( resultValidation.errors.length > 0){
+			return res.render('user/login', {
+				errors: resultValidation.mapped(),
+				oldData: req.body,
+			});
+		}
+        // No hay errores
+        // Verifica si el usuario ya está logueado
+
+        return res.send(req.body);
+    },
+
     register: function (req, res) {
         res.render('user/register');
     },
