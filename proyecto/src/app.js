@@ -3,12 +3,14 @@ const express = require('express');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware');
 
 // Se importan las rutas del subdirectorio routes/
 const rutasMain = require('./routes/main');
 const rutasProduct = require('./routes/product');
 const rutasUser = require('./routes/user');
 const rutasCart = require('./routes/cart');
+const userController = require('./controllers/userController');
 
 const app = express();  // Se almacena el objeto que devuelve express()
 const PORT = 3000; // Se toma el puerto 3000
@@ -21,6 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(session({ secret: 'FitFunWear', resave: false, saveUninitialized: false }));
+app.use(userLoggedMiddleware);
 app.use(methodOverride('_method')); // Para sobrescribir el method="POST" en el formulario por PUT y DELETE
 
 

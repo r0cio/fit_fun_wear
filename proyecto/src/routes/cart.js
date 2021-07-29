@@ -6,7 +6,6 @@ const cartController = require('../controllers/cartController');
 // Rutas
 router.get('/index', cartController.index);
 router.get('/sacarItem/:id', cartController.sacarItem);
-console.log("llegue aqui");
 router.get('/consultarItem', cartController.consultarItem);
 router.get('/agregarItem/:id', cartController.agregarItem);
 

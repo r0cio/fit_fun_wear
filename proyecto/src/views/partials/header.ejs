@@ -12,14 +12,30 @@
         <div class="search-bar">
             <a href="/#" title="Buscar algo"><i class="fas fa-search pointer"></i></a>
         </div>
-        <div class="user">
-            <a href="/user/login" title="Iniciar sesión / Registrarse"><i class="fas fa-user pointer"></i></a>
-        </div>
-        <div class="shop-car">
-            <a href="/cart/index" title="Ver carrito"><i class="fas fa-shopping-cart pointer"></i></a>
-        </div>
-        <div class="bars">
-            <a href="#" title="Más opciones"><i class="fas fa-bars pointer"></i></a>
-        </div>
+        <% if (!locals.isLogged) { %>         
+            <div class="user">
+                <a href="/user/login" title="Iniciar sesión / Registrarse"><i class="fas fa-user pointer"></i></a>
+            </div>
+        <% } else { %>                    
+            <div class="btn-group">                
+                <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <img src="/img/users/<%= userLogged.imagen %> " alt="Imagen del usuario" width="45px" style="border-radius: 100%;">
+                    <%= userLogged.nombre %>
+                </button>
+                <div class="dropdown-menu">                    
+                    <a class="dropdown-item" href="/products">Ir a todos los productos</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/user/logout">Cerrar sesión</a>
+                </div>
+            </div>
+            <% } %>
+
+                <div class="shop-car">
+                    <a href="/cart/index" title="Ver carrito"><i class="fas fa-shopping-cart pointer"></i></a>
+                </div>
+                <div class="bars">
+                    <a href="#" title="Más opciones"><i class="fas fa-bars pointer"></i></a>
+                </div>
     </nav>
 </header>

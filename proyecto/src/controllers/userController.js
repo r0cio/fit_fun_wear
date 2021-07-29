@@ -1,5 +1,6 @@
 // ************ Express validator Require ************
 const {validationResult} = require("express-validator");
+const bycrypt = require('bcryptjs');
 
 const User = require('../models/User');
 
@@ -19,10 +20,24 @@ const userController = {
 			});
 		}
         // No hay errores
-        let userToLogin = User.findByField('email', req.body.email);
-        console.log(userToLogin);
+        let userToLogin = User.findByField('email', req.body.email);        
         if( userToLogin) {
-            return res.send('Ok, puedes ingresar');
+            let correctPassword = bycrypt.compareSync(req.body.password, userToLogin.password);
+            if (correctPassword) {
+                delete userToLogin.password;
+                req.session.userLogged = userToLogin;
+                return res.redirect('/');
+            }  
+            return res.render('user/login', {
+                errors: {
+                    email: {
+                        msg: 'Los datos no son correctos'
+                    },
+                    password: {
+                        msg: 'Los datos no son correctos'
+                    }
+                }               
+            });          
         }
         return res.render('user/login', {
             errors: {
@@ -35,7 +50,7 @@ const userController = {
 
     },
 
-    register: function (req, res) {
+    register: function (req , res ) {
         res.render('user/register');
     },
 
@@ -69,18 +84,25 @@ const userController = {
 		let userToCreate = {
 
             ...req.body,
+            password: bycrypt.hashSync(req.body.password, 10),
+            category: 'user',
             /*
             imagen: req.file.filename
             */
-           imagen: 'default.jpg'
+           imagen: 'default-image.png'
         }
 
         let userCreated = User.create(userToCreate);
-		return res.redirect('/user/login');
+		return res.render('user/login', { msgSuccess: 'Te has registrado con éxito'});
     },
 
     resetPassword: function (req, res) {
         res.render('user/reset-password');
+    },
+
+    logout: function (req, res) {
+        req.session.destroy();
+        return res.redirect('/');
     }
 
 };

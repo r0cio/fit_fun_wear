@@ -194,5 +194,23 @@
   "email": "nikoj64758@edmondpt.com",
   "password": "ssssssss",
   "imagen": "default.jpg"
+ },
+ {
+  "id": 24,
+  "nombre": "Diego",
+  "apellido": "Apellido",
+  "email": "1@g.com",
+  "password": "12345678",
+  "imagen": "default.jpg",
+  "category": "user"
+ },
+ {
+  "id": 25,
+  "nombre": "Diego",
+  "apellido": "apelii",
+  "email": "1@hola.com",
+  "password": "$2a$10$xkXVOAw6RcfmA4bOq8WWyuLXECk3.VW9k0hLtoY7FHB6MDcqokcOy",
+  "imagen": "default-image.png",
+  "category": "user"
  }
 ]

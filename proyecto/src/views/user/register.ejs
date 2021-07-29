@@ -20,7 +20,7 @@
                 <label>Nombre*</label>
             </div>
             <div class = "nombre">
-                <input type="text" placeholder =" Inserte su nombre" name="nombre" required
+                <input type="text" placeholder =" Inserte su nombre" name="nombre" 
                 class = "form-input <%= locals.errors && errors.nombre ? 'border border-danger' : '' %> <%= locals.oldData && oldData.nombre ? 'border border-success' : '' %>"
                 value ="<%= locals.oldData && oldData.nombre ? oldData.nombre : null %>"
                 >
@@ -32,7 +32,7 @@
             </div>
             
             <div class = "etiquetaApellido">
-                <label>Apellido</label>
+                <label>Apellido*</label>
             </div>
             <div class = "apellido">
                 <!--
@@ -50,10 +50,10 @@
             </div>
 
             <div class = "etiquetaCorreo">
-                <label>Correo electrónico</label>
+                <label>Correo electrónico*</label>
             </div>
             <div class = "correo">
-                <input type="email" placeholder =" Inserte su correo electrónico" name="email" minlength="@" required
+                <input type="email" placeholder =" Inserte su correo electrónico" name="email" minlength="@" 
                 class = "form-input <%= locals.errors && errors.email ? 'border border-danger' : '' %> <%= locals.oldData && oldData.email ? 'border border-success' : '' %>"
                 value ="<%= locals.oldData && oldData.email ? oldData.email : null %>"
                 >
@@ -65,10 +65,10 @@
             </div>
 
             <div class = "etiquetaContraseña">
-                <label>Contraseña</label>
+                <label>Contraseña*</label>
             </div>
             <div class = "Contraseña" >
-                <input type="password" placeholder =" Cree una contraseña" name="password" maxlength="8" required
+                <input type="password" placeholder =" Cree una contraseña" name="password" minlength="8" 
                 class = "form-input <%= locals.errors && errors.password ? 'border border-danger' : '' %> <%= locals.oldData && oldData.password ? 'border border-success' : '' %>"
                 >
                 <% if(locals.errors && errors.password) { %>
@@ -84,15 +84,21 @@
                 <input type="file" id="imagen" name="imagen" accept="image/*">
             </div>
             <div>
-                <p class = "terminos"> Al crear una cuenta aceptas la <a class = "box" href="/privacidad">Política de privacidad</a> y los <a class = "box" href="/terminos">Términos de uso </a>de Fit Fun Wear</p>
+                <!-- <p class = "terminos"> Al crear una cuenta aceptas la <a class = "box" href="/privacidad">Política de privacidad</a> y los <a class = "box" href="/terminos">Términos de uso </a>de Fit Fun Wear</p> -->
+                <br><input type="checkbox" name="terminos" id="terminos"> Al crear una cuenta aceptas la <a href="/privacidad"><u>Política de privacidad</u></a> y los <a href="/terminos"><u>Términos de uso</u></a> de Fit Fun Wear
             </div>
+            <% if(locals.errors && errors.terminos) { %>
+                <div class="text-danger">
+                    <%= errors.terminos.msg %>
+                </div>
+            <% } %>
 
             <div class ="boton">
                 <button class="Enviar" type = "submit">ÚNETE</button>
             </div>
                 
             <div>
-                <p class = "iniciaSesion"> ¿Ya eres parte de la comunidad? <a class = "iniciarSesion" href="/login">Inicia sesión</a> </p>
+                <p class = "iniciaSesion"> ¿Ya eres parte de la comunidad? <a class = "iniciarSesion" href="/user/login">Inicia sesión</a> </p>
             </div>
         
         </form>

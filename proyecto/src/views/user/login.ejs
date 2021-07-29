@@ -6,6 +6,14 @@
     <body>
         <%- include('../partials/header') %>
             <main>
+                <% if (locals.msgSuccess) { %>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">                       
+                       <p><%= msgSuccess %> </p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                <% } %>
                 <div>
                     <h1> Iniciar sesión </h1>
                 </div>
@@ -15,8 +23,7 @@
                         <label>Correo electrónico</label>
                     </div>
                     <div class="Usuario">
-                        <input type="email" placeholder=" Inserte su correo electrónico" name="email"
-                            minlength="8" required
+                        <input type="email" placeholder=" Inserte su correo electrónico" name="email"                            
                             class = "form-input <%= locals.errors && errors.email ? 'border border-danger' : '' %> <%= locals.oldData && oldData.email ? 'border border-success' : '' %>"
                             value ="<%= locals.oldData && oldData.email ? oldData.email : null %>"
                             >
@@ -31,8 +38,8 @@
                         <label>Contraseña</label>
                     </div>
                     <div class="Contraseña">
-                        <input type="password" placeholder=" Inserte su contraseña" name="password" maxlength="8"
-                            required
+                        <input type="password" placeholder=" Inserte su contraseña" name="password" minlength="8"
+                            
                             class = "form-input <%= locals.errors && errors.password ? 'border border-danger' : '' %> <%= locals.oldData && oldData.password ? 'border border-success' : '' %>"
                         >
                         <% if(locals.errors && errors.password) { %>
