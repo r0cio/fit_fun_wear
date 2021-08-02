@@ -1,8 +1,15 @@
 // ************ Express validator Require ************
 const {validationResult} = require("express-validator");
 const bycrypt = require('bcryptjs');
+const fs = require('fs');
+const path = require('path');
+const usersFilePath = path.join(__dirname, '../data/users.json');
+const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const User = require('../models/User');
+const date = Date.now();
 
 const userController = {
 
@@ -80,16 +87,22 @@ const userController = {
 				oldData: req.body,
 			});
         }
+        let userToCreate = {}
+        if (req.file == undefined) { // Sino se agrega una imagen de perfil se agrega una por default.
+            userToCreate = {
+                ...req.body,
+                password: bycrypt.hashSync(req.body.password, 10),
+                category: 'user',
+                imagen: 'default-image.png',
+            };
+        } else {  // En caso contrario se agrega la imagen que sube el usuario.
+            userToCreate = {
+                ...req.body,
+                password: bycrypt.hashSync(req.body.password, 10),
+                category: 'user',
+                imagen: req.file.filename,
+            };
 
-		let userToCreate = {
-
-            ...req.body,
-            password: bycrypt.hashSync(req.body.password, 10),
-            category: 'user',
-            /*
-            imagen: req.file.filename
-            */
-           imagen: 'default-image.png'
         }
 
         let userCreated = User.create(userToCreate);

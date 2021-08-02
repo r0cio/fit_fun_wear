@@ -1,183 +1,203 @@
 [
  {
   "id": 1,
-  "firstName": "Paola",
-  "lastName": "Chazier",
+  "nombre": "Paola",
+  "apellido": "Chazier",
   "email": "pchazier0@barnesandnoble.com",
   "password": "gNI8OBKIRO",
-  "category": "user",
-  "image": "user_1.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 2,
-  "firstName": "Jon",
-  "lastName": "Hemshall",
+  "nombre": "Jon",
+  "apellido": "Hemshall",
   "email": "jhemshall1@acquirethisname.com",
   "password": "142EeUr8fxO",
-  "category": "user",
-  "image": "user_2.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 3,
-  "firstName": "Gris",
-  "lastName": "Rehme",
+  "nombre": "Gris",
+  "apellido": "Rehme",
   "email": "grehme2@com.com",
   "password": "rM42hj",
-  "category": "user",
-  "image": "user_3.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 4,
-  "firstName": "Yves",
-  "lastName": "Noto",
+  "nombre": "Yves",
+  "apellido": "Noto",
   "email": "ynoto3@umich.edu",
   "password": "M0XdZAiJ6vv",
-  "category": "user",
-  "image": "user_4.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 5,
-  "firstName": "Moises",
-  "lastName": "Peasegod",
+  "nombre": "Moises",
+  "apellido": "Peasegod",
   "email": "mpeasegod4@google.de",
   "password": "ZBhtYR",
-  "category": "user",
-  "image": "user_5.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 6,
-  "firstName": "Imogene",
-  "lastName": "Erdely",
+  "nombre": "Imogene",
+  "apellido": "Erdely",
   "email": "ierdely5@walmart.com",
   "password": "K8QtKpf",
-  "category": "user",
-  "image": "user_6.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 7,
-  "firstName": "Baldwin",
-  "lastName": "Eastby",
+  "nombre": "Baldwin",
+  "apellido": "Eastby",
   "email": "beastby6@dailymail.co.uk",
   "password": "76UsLW",
-  "category": "user",
-  "image": "user_7.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 8,
-  "firstName": "Humbert",
-  "lastName": "Pheasant",
+  "nombre": "Humbert",
+  "apellido": "Pheasant",
   "email": "hpheasant7@ted.com",
   "password": "4knb9ZaO2xb",
-  "category": "user",
-  "image": "user_8.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 9,
-  "firstName": "Ikey",
-  "lastName": "Lehr",
+  "nombre": "Ikey",
+  "apellido": "Lehr",
   "email": "ilehr8@123-reg.co.uk",
   "password": "gDv3ewYA9",
-  "category": "user",
-  "image": "user_9.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 10,
-  "firstName": "Rancell",
-  "lastName": "Denidge",
+  "nombre": "Rancell",
+  "apellido": "Denidge",
   "email": "rdenidge9@prlog.org",
   "password": "ohkd1Nx4SNEq",
-  "category": "user",
-  "image": "user_10.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 11,
-  "firstName": "Sheba",
-  "lastName": "Maffioni",
+  "nombre": "Sheba",
+  "apellido": "Maffioni",
   "email": "smaffionia@fda.gov",
   "password": "AETMefS5cJn",
-  "category": "user",
-  "image": "user_11.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 12,
-  "firstName": "Kyle",
-  "lastName": "Chawkley",
+  "nombre": "Kyle",
+  "apellido": "Chawkley",
   "email": "kchawkleyb@chicagotribune.com",
   "password": "AXUDAR1C8Qs",
-  "category": "user",
-  "image": "user_12.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 13,
-  "firstName": "Jayson",
-  "lastName": "Michiel",
+  "nombre": "Jayson",
+  "apellido": "Michiel",
   "email": "jmichielc@nasa.gov",
   "password": "YCBHgZ",
-  "category": "user",
-  "image": "user_13.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 14,
-  "firstName": "Jay",
-  "lastName": "Dewire",
+  "nombre": "Jay",
+  "apellido": "Dewire",
   "email": "jdewired@dyndns.org",
   "password": "KgtOaMhgSl",
-  "category": "user",
-  "image": "user_14.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 15,
-  "firstName": "Quintus",
-  "lastName": "McCathay",
+  "nombre": "Quintus",
+  "apellido": "McCathay",
   "email": "qmccathaye@barnesandnoble.com",
   "password": "Ww5iv2Nzc",
-  "category": "user",
-  "image": "user_15.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 16,
-  "firstName": "Maurise",
-  "lastName": "Prigg",
+  "nombre": "Maurise",
+  "apellido": "Prigg",
   "email": "mpriggf@wunderground.com",
   "password": "srKkPCQ5Wq",
-  "category": "user",
-  "image": "user_16.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 17,
-  "firstName": "Nikolas",
-  "lastName": "Churchill",
+  "nombre": "Nikolas",
+  "apellido": "Churchill",
   "email": "nchurchillg@purevolume.com",
   "password": "kLVtWE3Rmf",
-  "category": "user",
-  "image": "user_17.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 18,
-  "firstName": "Nydia",
-  "lastName": "Flack",
+  "nombre": "Nydia",
+  "apellido": "Flack",
   "email": "nflackh@blog.com",
   "password": "u45k7EwBMid",
-  "category": "user",
-  "image": "user_18.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 19,
-  "firstName": "Doralin",
-  "lastName": "Flips",
+  "nombre": "Doralin",
+  "apellido": "Flips",
   "email": "dflipsi@timesonline.co.uk",
   "password": "L2HB3j",
-  "category": "user",
-  "image": "user_19.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 20,
-  "firstName": "Byran",
-  "lastName": "Courtes",
+  "nombre": "Byran",
+  "apellido": "Courtes",
   "email": "bcourtesj@usnews.com",
   "password": "GYIbcUyRf",
-  "category": "user",
-  "image": "user_20.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 21,
@@ -185,7 +205,9 @@
   "apellido": "Aguilar",
   "email": "nikdos@mail.com",
   "password": "xxxxxxxx",
-  "imagen": "default.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 22,
@@ -193,7 +215,9 @@
   "apellido": "Perez",
   "email": "nikoj64758@edmondpt.com",
   "password": "ssssssss",
-  "imagen": "default.jpg"
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
  },
  {
   "id": 24,
@@ -201,7 +225,8 @@
   "apellido": "Apellido",
   "email": "1@g.com",
   "password": "12345678",
-  "imagen": "default.jpg",
+  "imagen": "default-image.png",
+  "terminos": "on",
   "category": "user"
  },
  {
@@ -211,6 +236,117 @@
   "email": "1@hola.com",
   "password": "$2a$10$xkXVOAw6RcfmA4bOq8WWyuLXECk3.VW9k0hLtoY7FHB6MDcqokcOy",
   "imagen": "default-image.png",
+  "terminos": "on",
   "category": "user"
+ },
+ {
+  "id": 26,
+  "nombre": "Abi",
+  "apellido": "Montes",
+  "email": "hola@prueba.com",
+  "password": "$2a$10$yzM6Pmc277rD8pnIA5pDmOC3EFAudk962KNupsJKKFxWH6Uvr5R1a",
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
+ },
+ {
+  "id": 27,
+  "nombre": "Quetzalli",
+  "apellido": "Pinzón",
+  "email": "quetzalli.pinzon@gmail.com",
+  "password": "$2a$10$32HxMalcumSblB7ZRJJhh.359v5GdmhocOhROKTv5yrHA/ybKLWca",
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
+ },
+ {
+  "id": 28,
+  "nombre": "Usuario",
+  "apellido": "Prueba",
+  "email": "usuario@prueba.com",
+  "password": "$2a$10$vfYZHBXu.4PJpodcDAxym.a0mg8KRRTjPfxutc7RuT4trCjVMY4xe",
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
+ },
+ {
+  "id": 29,
+  "nombre": "Usuario2",
+  "apellido": "Prueba",
+  "email": "usuario2@prueba.com",
+  "password": "$2a$10$qbBzSejuAJWgxVFLKdZPEuUw/GenryAWpGPQWg8H/QPaOUjGfBCzu",
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
+ },
+ {
+  "id": 30,
+  "nombre": "Usuario3 ",
+  "apellido": "prueba3",
+  "email": "usuario3@prueba.com",
+  "password": "$2a$10$uL5JsnmS77YhJ2djJF6dquOU1UEnAHB5RNpWzVm3rnnFzSw3/NLFy",
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
+ },
+ {
+  "id": 31,
+  "nombre": "Usuario4",
+  "apellido": "Prueba",
+  "email": "usuario4@prueba.com",
+  "password": "$2a$10$jneZIWigoJorJnVBQnNMRODhNzhwdyTky/KOqFHjkZEVuaQ9R47wG",
+  "imagen": "default-image.png",
+  "terminos": "on",
+  "category": "user"
+ },
+ {
+  "id": 32,
+  "nombre": "Andrea",
+  "apellido": "Jimenez",
+  "email": "andrea@prueba.com",
+  "password": "$2a$10$Gsl4rqHQMPQOYuSgUL2oVOrVLQEnn7vapGLvtnE9yajRGcv1Z.VSS",
+  "terminos": "on",
+  "category": "user",
+  "imagen": "user1627865462339.png"
+ },
+ {
+  "id": 33,
+  "nombre": "Usuario img default",
+  "apellido": "prueba",
+  "email": "usuarioprueba@prueba.com",
+  "password": "$2a$10$ulp9K6/83d4agC4Uycs2FOeDhEBhSdM9BlJTAdBm2usKyyFeeL6Qi",
+  "terminos": "on",
+  "category": "user",
+  "imagen": "default-image.png"
+ },
+ {
+  "id": 34,
+  "nombre": "Quetzalli",
+  "apellido": "Pinzón",
+  "email": "quetzalli@prueba.com",
+  "password": "$2a$10$9EJ555bnQpaurPnhw/FnuerjusRC7WkFoiTXsgVVsDLHffbrrPBzm",
+  "terminos": "on",
+  "category": "user",
+  "imagen": "user1627866310439.jpg"
+ },
+ {
+  "id": 35,
+  "nombre": "Bruno",
+  "apellido": "Cazares",
+  "email": "bruno@prueba.com",
+  "password": "$2a$10$h4Ri0kCqcqPK3nFkkJUHYuJgbfDERlYf5FOTO0YtZTSLkVxwLLfcO",
+  "terminos": "on",
+  "category": "user",
+  "imagen": "user1627866671900.png"
+ },
+ {
+  "id": 36,
+  "nombre": "Carlos",
+  "apellido": "Rodriguez",
+  "email": "carlos@prueba.com",
+  "password": "$2a$10$mVf1ySlfqNhtqe7Zs1jUfe/0345OrlXMfQFZVwRdTKvTzkuwnsAve",
+  "terminos": "on",
+  "category": "user",
+  "imagen": "user1627867344731.png"
  }
 ]
