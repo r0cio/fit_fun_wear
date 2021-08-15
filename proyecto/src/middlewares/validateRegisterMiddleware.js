@@ -19,7 +19,7 @@ const validations = [
         .isEmail().withMessage("El formato debe ser válido"),
     body("terminos").notEmpty().withMessage('Debes aceptar la política de privacidad y los términos de uso para continuar'),
         
-        /*
+        
     body("imagen").custom((value, {req}) => {
         let file = req.file;
 
@@ -35,7 +35,7 @@ const validations = [
         
         return true;
     })
-    */
+    
 ];
 
 module.exports = validations;

@@ -83,10 +83,17 @@
             <div class="imagenPerfil">
                 <input type="file" id="imagen" name="imagen" accept="image/*">
             </div>
+            <% if(locals.errors && errors.imagen) { %>
+                <div class="text-danger">
+                    <%= errors.imagen.msg %>
+                </div>
+            <% } %>	
             <div>
                 <!-- <p class = "terminos"> Al crear una cuenta aceptas la <a class = "box" href="/privacidad">Política de privacidad</a> y los <a class = "box" href="/terminos">Términos de uso </a>de Fit Fun Wear</p> -->
                 <br><input type="checkbox" name="terminos" id="terminos"> Al crear una cuenta aceptas la <a href="/privacidad"><u>Política de privacidad</u></a> y los <a href="/terminos"><u>Términos de uso</u></a> de Fit Fun Wear
+            
             </div>
+
             <% if(locals.errors && errors.terminos) { %>
                 <div class="text-danger">
                     <%= errors.terminos.msg %>
