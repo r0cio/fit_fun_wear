@@ -61,3 +61,19 @@
 
 ## Dejar de hacer
 ### Dejar de prolongar los tiempos y preguntar nuestras dudas a los profesores.
+
+# Conclusiones Sprint 5
+## Empezar a hacer
+### Deseamos empezar a darle mejor vista a nuestro sito debido a que estamos dejando para lo último los detalles visuales, esto ha provocado que en algunas vistas no se vean estandarizadas.
+
+## Hacer más
+### Queremos ser más autodidactas como grupo para que cada quien pueda saber las distintas herramientas que se pueden agregar a nuestro proyecto y mejorar en grupo.
+
+## Continuar haciendo
+### Queremos mantener la velocidad de realización de nuestros sprints, esto se ha podido debido a que tenemos un buen ambiente grupal y por ello avanzamos de gran forma.
+
+## Hacer menos
+### Algo que queremos hacer en menor medida es olvidar Trello y mantenernos al pendiente de todas las tareas.
+
+## Dejar de hacer
+### Dejar de posponer los daily sprints.
