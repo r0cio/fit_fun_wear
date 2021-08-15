@@ -33,7 +33,7 @@ const userController = {
             if (correctPassword) {
                 delete userToLogin.password;
                 req.session.userLogged = userToLogin;
-                return res.redirect('/');
+                return res.redirect('user/profile');
             }  
             return res.render('user/login', {
                 errors: {
@@ -116,6 +116,12 @@ const userController = {
     logout: function (req, res) {
         req.session.destroy();
         return res.redirect('/');
+    },
+
+    profile: (req, res) => {
+        return res.render('userProfile', {
+            user: req.session.userLogged
+        });
     }
 
 };

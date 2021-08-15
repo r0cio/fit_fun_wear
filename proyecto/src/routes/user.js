@@ -42,4 +42,7 @@ router.get('/reset-password', userController.resetPassword);
 // ************ Cierra sesión ************
 router.get('/logout', userController.logout);
 
+// ************ Perfil de usuario ************
+router.get('/profile', usersController.profile);
+
 module.exports = router;
