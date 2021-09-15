@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
         // Una talla le pertenece a muchos productos
         Size.belongsToMany(models.Product, {
             as: 'sizes_products',
-            throught: 'attributes',
+            through: 'attributes',
             foreignKey: 'id_size',
             otherKey: 'product_id',
             timestamps: false

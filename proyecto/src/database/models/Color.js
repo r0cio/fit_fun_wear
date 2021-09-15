@@ -24,7 +24,7 @@ module.exports = function (sequelize, dataTypes) {
         // Una color le pertenece a muchos productos
         Color.belongsToMany(models.Product, {
             as: 'colors_products',
-            throught: 'attributes',
+            through: 'attributes',
             foreignKey: 'id_color',
             otherKey: 'product_id',
             timestamps: false

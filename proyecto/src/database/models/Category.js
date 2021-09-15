@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
         // Una categoria le pertenece a muchos productos
         Category.belongsToMany(models.Product, {
             as: 'categories_products',
-            throught: 'attributes',
+            through: 'attributes',
             foreignKey: 'id_category',
             otherKey: 'product_id',
             timestamps: false

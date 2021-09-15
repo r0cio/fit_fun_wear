@@ -7,14 +7,22 @@ const { validationResult } = require('express-validator');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const date = Date.now();
+const db = require('../database/models/');
 
 const productController = {
 
     // listado de todos los productos
     index: function (req, res) {
-        let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+        db.Product.findAll()
+            .then(function (products) {
+                res.render('products/products', { productos: products, titelId: 1 });
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
+        /* let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
         let titelId = 0; // Indica que el título será: Todos los productos
-        res.render('products/products', { productos: currentProducts, titelId: titelId });
+        res.render('products/products', { productos: currentProducts, titelId: titelId }); */
     },
 
     mujer: function (req, res) {
@@ -51,7 +59,7 @@ const productController = {
     // método que contiene la lógica cuando se guarda un producto
     store: (req, res) => {
         let errors = validationResult(req);
-        let product = {};              
+        let product = {};
         if (errors.isEmpty()) { // si no hay errores, se guarda el producto
             if (req.file == undefined) { // si no se sube una imagen, se pone la imagen por defecto
                 product = {
@@ -180,7 +188,7 @@ const productController = {
 
     // acción de borrado de un producto
     delete: (req, res) => {
-        let id = req.params.id;        
+        let id = req.params.id;
         newProducts = products.filter((product) => {
             return product.id != id ? product : undefined;
         });
