@@ -41,7 +41,7 @@ module.exports = function (sequelize, DataTypes) {
         Product.belongsToMany(models.Category, {
             as: 'products_categories',
             through: 'attributes',
-            foreignKey: 'id_product',
+            foreignKey: 'product_id',
             otherKey: 'category_id'
         });
 
@@ -49,7 +49,7 @@ module.exports = function (sequelize, DataTypes) {
         Product.belongsToMany(models.Color, {
             as: 'products_colors',
             through: 'attributes',
-            foreignKey: 'id_product',
+            foreignKey: 'product_id',
             otherKey: 'color_id'
         });
 
@@ -57,8 +57,15 @@ module.exports = function (sequelize, DataTypes) {
         Product.belongsToMany(models.Size, {
             as: 'products_sizes',
             through: 'attributes',
-            foreignKey: 'id_product',
+            foreignKey: 'product_id',
             otherKey: 'size_id'
+        });
+
+        //
+        // Un producto tiene muchos atributos
+        Product.hasMany(models.Attribute, {
+            as: 'products_attributes',
+            foreignKey: 'product_id',
         });
     }
 

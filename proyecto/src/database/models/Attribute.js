@@ -55,7 +55,13 @@ module.exports = (sequelize, DataTypes) => {
         Attribute.hasMany(models.Cart, {
             as: 'carts',
             foreignKey: 'attribute_id'
-        })
+        });
+
+        // Un atributo le pertenece a un producto
+        Attribute.belongsTo(models.Product, {
+            as: 'products',
+            foreignKey: 'product_id',
+        });
     }
 
     return Attribute;
