@@ -10,25 +10,69 @@ const date = Date.now();
 const db = require('../database/models');
 const Attribute = require('../database/models/Attribute');
 
+
 const productController = {
 
     // listado de todos los productos
     index: function (req, res) {
         db.Product.findAll({
-            include: [{ association: "products_categories" }, { association: "products_colors" }, { association: "products_sizes" }, { association: "products_attributes" }]
+            include : [ { model: db.Attribute,
+                            as: "products_attributes" }]
         })
-            .then(function (products) {
-                res.render('products/products', { productos: products, titelId: 0 });
-            })
-            .catch(function (err) {
-                console.log(err);
-            })
-        /* let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-        let titelId = 0; // Indica que el título será: Todos los productos
-        res.render('products/products', { productos: currentProducts, titelId: titelId }); */
+        .then( products => {
+            let producto = [];
+            products.forEach(element => {
+                let este = element.dataValues.products_attributes;
+                let tempPro = {};
+                if(este.length > 0){
+                    tempPro = {
+                        id_product: element.dataValues.id_product,
+                        name: element.dataValues.name,
+                        price: este[0].dataValues.price,
+                        image: este[0].dataValues.image
+                    }
+                    //console.log(element.dataValues.products_attributes[0].dataValues)
+                    //return res.send(producto);
+                    producto.push(tempPro);
+                }
+            });
+            //console.log(producto);
+            //res.send(producto);
+            res.render('products/products', { productos: producto, titelId: 0 })
+        }) 
+        .catch(function (err) {
+            console.log(err);
+        })
     },
 
     mujer: function (req, res) {
+        db.Product.findAll({
+            include : [ { model: db.Attribute,
+                            as: "products_attributes",
+                            where: { gender: 'M' }}]
+        })
+        .then( products => {
+            let producto = [];
+            products.forEach(element => {
+                let este = element.dataValues.products_attributes;
+                let tempPro = {};
+                if(este.length > 0){
+                    tempPro = {
+                        id_product: element.dataValues.id_product,
+                        name: element.dataValues.name,
+                        price: este[0].dataValues.price,
+                        image: este[0].dataValues.image
+                    }
+                    producto.push(tempPro);
+                }
+            });
+            //console.log(producto);
+            res.render('products/products', { productos: producto, titelId: 1 })
+        }) 
+        .catch(function (err) {
+            console.log(err);
+        })
+        /*
         db.Product.findAll({
             include: [{ association: "products_categories" }, { association: "products_colors" }, { association: "products_sizes" }, { association: "products_attributes", where: { gender: 'M' } }]
         })
@@ -39,20 +83,38 @@ const productController = {
             .catch(function (err) {
                 console.log(err);
             })
-        //const [results, metadata] = await db.sequelize.query("SELECT `Product`.`id_product`, `Product`.`name`, `Product`.`description`, `Product`.`model`, `Product`.`created_at`, `Product`.`updated_at`, `products_categories`.`id_category` AS `products_categories.id_category`, `products_categories`.`name` AS `products_categories.name`, `products_categories->attributes`.`product_id` AS `products_categories.attributes.product_id`, `products_categories->attributes`.`size_id` AS `products_categories.attributes.size_id`, `products_colors`.`id_color` AS `products_colors.id_color`, `products_colors`.`name` AS `products_colors.name`, `products_colors->attributes`.`product_id` AS `products_colors.attributes.product_id`, `products_colors->attributes`.`size_id` AS `products_colors.attributes.size_id`, `products_sizes`.`id_size` AS `products_sizes.id_size`, `products_sizes`.`name` AS `products_sizes.name`, `products_sizes->attributes`.`product_id` AS `products_sizes.attributes.product_id`, `products_sizes->attributes`.`size_id` AS `products_sizes.attributes.size_id`, `products_attributes`.`id_attribute` AS `products_attributes.id_attribute`, `products_attributes`.`available` AS `products_attributes.available`, `products_attributes`.`image` AS `products_attributes.image`, `products_attributes`.`price` AS `products_attributes.price`, `products_attributes`.`discount` AS `products_attributes.discount`, `products_attributes`.`quantity` AS `products_attributes.quantity`, `products_attributes`.`gender` AS `products_attributes.gender`, `products_attributes`.`size_id` AS `products_attributes.size_id`, `products_attributes`.`color_id` AS `products_attributes.color_id`, `products_attributes`.`category_id` AS `products_attributes.category_id`, `products_attributes`.`product_id` AS `products_attributes.product_id` FROM `products` AS `Product` LEFT OUTER JOIN ( `attributes` AS `products_categories->attributes` INNER JOIN `categories` AS `products_categories` ON `products_categories`.`id_category` = `products_categories->attributes`.`category_id`) ON `Product`.`id_product` = `products_categories->attributes`.`product_id` LEFT OUTER JOIN ( `attributes` AS `products_colors->attributes` INNER JOIN `colors` AS `products_colors` ON `products_colors`.`id_color` = `products_colors->attributes`.`color_id`) ON `Product`.`id_product` = `products_colors->attributes`.`product_id` LEFT OUTER JOIN ( `attributes` AS `products_sizes->attributes` INNER JOIN `sizes` AS `products_sizes` ON `products_sizes`.`id_size` = `products_sizes->attributes`.`size_id`) ON `Product`.`id_product` = `products_sizes->attributes`.`product_id` LEFT OUTER JOIN `attributes` AS `products_attributes` ON `Product`.`id_product` = `products_attributes`.`product_id` where products_attributes.gender = 'M';");
-        //console.log(results);
-        //res.render('products/products', { productos: results, titelId: 1 });
-        /* // se leen los productos del archivo json
-        let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-        // Productos de mujer
-        let titelId = 1; // Indica que el título será: Todos los productos de mujer
-        let productsList = currentProducts.filter((producto) => {
-            return producto.genero == "mujer";
-        });
-        res.render('products/products', { productos: productsList, titelId: titelId }); */
+            */
+// aquí estaba código de Diego. Está en mis notas        
     },
 
     hombre: function (req, res) {
+        db.Product.findAll({
+            include : [ { model: db.Attribute,
+                            as: "products_attributes",
+                            where: { gender: 'H' }}]
+        })
+        .then( products => {
+            let producto = [];
+            products.forEach(element => {
+                let este = element.dataValues.products_attributes;
+                let tempPro = {};
+                if(este.length > 0){
+                    tempPro = {
+                        id_product: element.dataValues.id_product,
+                        name: element.dataValues.name,
+                        price: este[0].dataValues.price,
+                        image: este[0].dataValues.image
+                    }
+                    producto.push(tempPro);
+                }
+            });
+            //console.log(producto);
+            res.render('products/products', { productos: producto, titelId: 2 })
+        }) 
+        .catch(function (err) {
+            console.log(err);
+        })
+        /*
         db.Product.findAll({
             include: [{ association: "products_categories" }, { association: "products_colors" }, { association: "products_sizes" }, { association: "products_attributes", where: { gender: 'h' } }]
         })
@@ -63,6 +125,7 @@ const productController = {
             .catch(function (err) {
                 console.log(err);
             })
+            */
         /* let currentProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
         // Productos de hombre
         let titelId = 2; // Indica que el título será: Todos los productos de mujer
@@ -190,12 +253,129 @@ const productController = {
 
     // página de detalle de un producto
     detalle: function (req, res) {
+        const colores = [];
+        const tamanos = [];
+        const categorias = [];
         let id = req.params.id;
+/****************** Colors */
+        db.Product.findAll({
+            include : [ {   model: db.Color,
+                            as: "products_colors",
+                              }],
+            where: {id_product: id}
+        })
+        .then(colors => {
+            colors.forEach(element => {
+                
+                let este = element.dataValues.products_colors;
+                este.forEach( colorTemp => {
+                    //console.log(colorTemp.dataValues)
+                    let tempColor = {
+                        id_color : colorTemp.dataValues.id_color,
+                        name : colorTemp.dataValues.name
+                    };
+                    colores.push(tempColor);
+                })
+                //console.log(este);
+            });
+            //console.log(colores);
+        })
+        .catch(function (err) {
+            console.log(err);
+        })
+        console.log("colores ")
+/****************** Sizes */
+
+            db.Product.findAll({
+                include : [ 
+                    {   model: db.Size,
+                        as: "products_sizes"
+                    }],
+                where: {id_product: id}
+            })
+            .then(tam => {
+                //console.log(tam.length);
+
+                tam.forEach(element => {
+                    
+                    let este = element.dataValues.products_sizes;
+                    este.forEach( temp => {
+                        //console.log(temp.dataValues)
+                        let tempSize = {
+                            id_size : temp.dataValues.id_size,
+                            name : temp.dataValues.name
+                        };
+                        tamanos.push(tempSize);
+                    })
+                    //console.log(este);
+                });
+                //console.log(tamanos);
+
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
+
+
+        console.log("tamaños ")
+
+        db.Attribute.findAll({
+            group: ['id_attribute','available','image','price','discount','quantity','gender','size_id','color_id','category_id','product_id',
+                    'product_id'],
+            include : [ {   model: db.Product,
+                            as: "products",
+                            where: { id_product: id } }, 
+                      ],
+
+        })
+        .then( attributes => {
+            //console.log(attributes);
+            
+            let productos = [];
+            attributes.forEach(element => {
+                //console.log(element);
+
+                let este = element.dataValues;
+                //console.log(este);
+
+                let tempPro = {};
+
+                tempPro = {
+                    id: este.product_id,
+                    id_attribute: este.id_attribute,
+                    nombre: este.products.dataValues.name,
+                    precio: este.price,
+                    descuento: este.discount,
+                    descripcion: este.products.dataValues.description,
+                    cantidad: este.quantity,
+                    color: este.color_id,
+                    talla: este.size_id,
+                    imagen: este.image
+                };
+
+                productos.push(tempPro);
+
+            });
+
+            //console.log(producto);
+            
+            //res.send(productos);
+            res.render('products/product-detail', { productos: productos, colores: colores, tamanos: tamanos })
+
+        }) 
+
+        .catch(function (err) {
+            console.log(err);
+        })
+
+        /*
         let producto;
         for (let i = 0; i < products.length; i++) {
             if (products[i].id == id) producto = products[i];
         }
         res.render('products/product-detail', { producto: producto, productos: products });
+        */
+
     },
 
     // metodo que devuelve el formulario de edición de un producto
