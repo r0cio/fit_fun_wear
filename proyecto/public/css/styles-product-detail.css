@@ -142,6 +142,11 @@ select:focus {
 }
 
 /* Similar products */
+.similar-products {
+    display: flex;
+    justify-content: space-around;
+}
+
 .title-section {
     padding-bottom: 5px;
     padding-top: 20px;

@@ -1,5 +1,6 @@
 <%- include('../partials/head') %>
     <link rel="stylesheet" href="/css/styles-product-detail.css">
+    <script src="/js/productDetail.js"></script>
     <title>Detalle de producto</title>
     </head>
 
@@ -9,7 +10,7 @@
 
                 <section class="product-detail">
                     <div class="img-product">
-                        <img src="/img/products/<%= productos[0].imagen %>" class="img-product" alt="Imagen de producto">
+                        <img src="/img/products/<%= productos[0].imagen %>" class="img-product img-mob" alt="Imagen de producto">
                     </div>
 
                     <h1 class="product-name">
@@ -55,11 +56,11 @@
                         </p>
                         <!--aqui muestro los colores-->
                         <p class="center">Colores disponibles:
-                            <select name="color" title="Colores disponibles">
+                            <select name="color" class="color-mobile" title="Colores disponibles">
                                 <% if (colores) { %>
                                     <% for(let i=0; i < colores.length; i++) { %>
-                                        <option value="<%=colores[i].name%>">
-                                            <%= colores[i].name; %>
+                                        <option value="<%=colores[i].id_color%>">
+                                            <%= colores[i].name %>
                                         </option>
                                     <% } %>
                                 <% } %>    
@@ -73,8 +74,8 @@
                                         <!--aqui debefria obtener el valor que escogio el usuario de color-->
                                         <% if(productos[i].color == colores[0].id_color) {%>
                                             <%const sizo = tamanos.find(element => element.id_size === productos[i].talla )%>
-                                            <option value="<%= sizo.name %> ">
-                                                <%= sizo.name; %>
+                                            <option value="<%= sizo.id_size %>">
+                                                <%= sizo.name %>
                                             </option>
                                         <%}%>
 
@@ -95,7 +96,7 @@
 
                                             <% if(productos[i].color === colores[0].id_color && productos[0].talla === sizo.id_size) {%>
                                                 <% for(let j=1; j <=productos[i].cantidad; j++) { %>
-                                                    <option value="<%= j %> ">
+                                                    <option value="<%= j %>">
                                                         <%= j %>
                                                     </option>
                                                 <% } %>
@@ -127,24 +128,26 @@
                                 Editar producto </a></button>
                         <button type="button" class="btn btn-danger"> <a href="/products/delete/<%= productos[0].id %>">
                                 Eliminar producto </a></button>
-                    </div>
-                    <select name="comments" id="comments">
-                        <option value="comments" selected disabled>Comentarios</option>
-                        <option value="uno">Uno</option>
-                        <option value="dos">Dos</option>
-                        <option value="tres">Tres</option>
-                    </select>
+                    </div>                    
                 </section>
                 <section class="product-detail-desktop">
                     <div class="container-desktop">
                         <div class="img-product-desktop">
                             <div class="img-product">
-                                <img src="/img/products/<%= productos[0].imagen %>" class="img-product" alt="Imagen de producto">
+                                <img src="/img/products/<%= productos[0].imagen %>" class="img-product img-desk" alt="Imagen de producto">
                             </div>
                             <div class="img-product-small">
-                                <img src="/img/products/<%= productos[0].imagen %>" alt="Imagen pequeña producto">
-                                <img src="/img/products/<%= productos[0].imagen %>" alt="Imagen pequeña producto">
-                                <img src="/img/products/<%= productos[0].imagen %>" alt="Imagen pequeña producto">
+                                <%for( let j=0; j < colores.length; j++) {%>
+
+                                    <%for(let i=0; i < productos.length; i++ ) {%>
+
+                                        <%if(productos[i].color == colores[j].id_color) {%>
+                                            <img src="/img/products/<%= productos[i].imagen %>" alt="Imagen pequeña producto">
+
+                                        <%break;%>
+                                        <%}%>
+                                    <%}%>
+                                <%}%>
                             </div>
                         </div>
                         <div class="details">
@@ -173,11 +176,11 @@
                                 </p>
                                 <!--Guarde este codigo de colores en mis notas-->
                                 <p>Colores disponibles:
-                                    <select name="color" title="Colores disponibles">
+                                    <select name="color" class="color-desk" title="Colores disponibles">
                                         <% if (colores) { %>
                                         <% for(let i=0; i < colores.length; i++) { %>
-                                            <option value="<%= colores[i] %>">
-                                                <%= colores[i] %>
+                                            <option value="<%= colores[i].id_color %>">
+                                                <%= colores[i].name %>
                                             </option>
                                             <% } %>
                                         <% } %>
@@ -188,8 +191,8 @@
                                     <select name="tallas" title="Tallas disponibles">
                                         <% if (tamanos) { %>
                                         <% for(let i=0; i < tamanos.length; i++) { %>
-                                            <option value="<%= tamanos[i] %> ">
-                                                <%= tamanos[i] %>
+                                            <option value="<%= tamanos[i].id_size %>">
+                                                <%= tamanos[i].name %>
                                             </option>
                                             <% } %>
                                         <% } %>
@@ -204,13 +207,13 @@
                                         <% } %>
                                     </select>
                                 </p>
-                                <p>
+                                <!-- <p>
                                     <small>
                                         Categoria: <i>
-                                            <%= productos[0].categoria %>
+                                            <%= //productos[0].categoria %>
                                         </i>
                                     </small>
-                                </p>
+                                </p> -->
 
                             </div>
                             <div>
@@ -233,7 +236,7 @@
                             </div>
                         </div>
                     </div>
-                    <section class="user-comments">
+                    <!-- <section class="user-comments">
                         <h2 class="title-section">Comentarios</h2>
                         <div class="comment">
                             <i class="fas fa-user"></i>
@@ -249,12 +252,32 @@
                                 aspernatur
                                 quasi incidunt repudiandae libero quos accusantium suscipit!</p>
                         </div>
-                    </section>
+                    </section> -->
                 </section>
-                <section class="similar-products">
+                <section class="mt-5">
                     <h2 class="title-section">Productos similares</h2>
                     <!-- Guarde codigo productos similares en mis notas-->
-
+                    <div class="similar-products">
+                        <% if (productos) { %>                        
+                            <% for( let i = 0; i < productos.length; i++ ) { %>
+                                <article class="section-item pointer">
+                                    <a href="/products/product-detail/<%= productos[i].id %>">
+                                        <img src="/img/products/<%= productos[i].imagen %>"
+                                        class="img-item" alt="Artículo">
+                                        <p class="item-name"><%= productos[i].nombre %>
+                                        </p>
+                                        <p class="item-price">
+                                                <b>$<%= productos[i].precio %></b>
+                                        </p>
+                                    </a>
+        
+                                </article>
+                                <% if (i == 2) { %>
+                                    <% break; %> 
+                                <% } %>
+                            <% } %>
+                        <% } %>
+                        </div>
                 </section>
             </main>
             <%- include('../partials/footer') %>
