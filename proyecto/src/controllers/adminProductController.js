@@ -11,7 +11,7 @@ const db = require('../database/models');
 const Attribute = require('../database/models/Attribute');
 
 
-const productController = {
+const adminProductController = {
 
     // listado de todos los productos
     index: function (req, res) {
@@ -28,6 +28,9 @@ const productController = {
                 este.length > 0 */
                 /* El administrador debe ver también los productos que no tiene atributos
                 este.length >= 0 */
+                /* no se donde se ve esa distinción */
+                /* Estoy haciendo como si el usuario fuese administrador, pues no sé
+                cómo se hace esa distinción, entre administrador y usuario */
                 if(este.length > 0){
                     tempPro = {
                         id_product: element.dataValues.id_product,
@@ -38,6 +41,10 @@ const productController = {
                     //console.log(element.dataValues.products_attributes[0].dataValues)
                     //return res.send(producto);
                     producto.push(tempPro);
+                } else {
+                    /* esto sólo lo debería ver el administrador */
+                    
+
                 }
             });
             console.log(producto);
@@ -476,4 +483,4 @@ const productController = {
 
 };
 
-module.exports = productController;
+module.exports = adminProductController;
