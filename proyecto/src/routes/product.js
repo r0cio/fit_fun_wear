@@ -44,22 +44,22 @@ router.get('/hombre', productController.hombre);
 // página de administrador
 router.get('/products-admin', productController.admin);
 
-// obtener el formulario de creación de productos
+/* // obtener el formulario de creación de productos
 router.get('/create', productController.add);
 
 // acción de creación, donde se envía el formulario de creación de productos
-router.post('/', upload.single('imagen'), validaciones, productController.store);
+router.post('/', upload.single('imagen'), validaciones, productController.store); */
 
 // detalle de un producto
 router.get('/product-detail/:id', productController.detalle);
 
-// formulario de edición de productos
+/* // formulario de edición de productos
 router.get('/edit/:id', productController.edit);
 
 // acción de edición, donde se envía el formulario de edición de productos
 router.put('/:id', upload.single('imagen'), productController.update);
 
 // acción de borrado de un producto
-router.delete('/delete/:id', productController.delete);
+router.delete('/delete/:id', productController.delete); */
 
 module.exports = router;

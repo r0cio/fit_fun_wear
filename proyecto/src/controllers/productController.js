@@ -40,7 +40,7 @@ const productController = {
                     producto.push(tempPro);
                 }
             });
-            console.log(producto);
+            //console.log(producto);
             //res.send(producto);
             res.render('products/products', { productos: producto, titelId: 0 })
         }) 
@@ -144,7 +144,7 @@ const productController = {
         res.render('admin/products-admin');
     },
 
-    // página de creación de un producto
+    /* // página de creación de un producto
     add: function (req, res) {
         let promCategory = db.Category.findAll()
         let promColor = db.Color.findAll()
@@ -159,9 +159,9 @@ const productController = {
                 console.log(err);
             })
         //res.render('admin/add-product');
-    },
+    }, */
 
-    // método que contiene la lógica cuando se guarda un producto
+    /* // método que contiene la lógica cuando se guarda un producto
     store: (req, res) => {
         let errors = validationResult(req);
         console.log(req.body);
@@ -189,14 +189,14 @@ const productController = {
                     category_id: req.body.categoria
                 },]
             }, {
-                include: [/* db.Attribute, as: 'products' */{ model: db.Attribute, as: 'products_attributes' }]
-            })
+                include: [/* db.Attribute, as: 'products' *//*{ model: db.Attribute, as: 'products_attributes'// }]
+            //})
                 .then(function (resp) {
                     res.redirect('/products');
                 })
                 .catch(function (err) {
                     console.log(err);
-                })
+                }) */
             /* product = {
                 "id": date,
                 "nombre": req.body.nombre,
@@ -236,7 +236,7 @@ const productController = {
            productsJSON = JSON.stringify(products);
            fs.writeFileSync(productsFilePath, productsJSON);
            res.redirect('/products'); */
-        } else { // si existe algún error, se renderiza de nuevo el formulario
+        /* } else { // si existe algún error, se renderiza de nuevo el formulario
             console.log(req.body);
             console.log(req.file);
             let promCategory = db.Category.findAll()
@@ -253,7 +253,7 @@ const productController = {
                 })
             //res.render('admin/add-product', { error: errors.mapped(), old: req.body });
         }
-    },
+    }, */
 
     // página de detalle de un producto
     detalle: function (req, res) {
@@ -384,7 +384,7 @@ const productController = {
 
     },
 
-    // metodo que devuelve el formulario de edición de un producto
+    /* // metodo que devuelve el formulario de edición de un producto
     edit: function (req, res) {
         let id = req.params.id;
         let productoActual;
@@ -393,9 +393,9 @@ const productController = {
         }
 
         res.render('admin/edit-product', { producto: productoActual });
-    },
+    }, */
 
-    // acción que actualiza el producto
+    /* // acción que actualiza el producto
     update: function (req, res) {
         let id = req.params.id;
 
@@ -452,27 +452,21 @@ const productController = {
         fs.writeFileSync(productsFilePath, productsJSON);
 
         res.redirect('/products/product-detail/' + id);
-    },
+    }, */
 
-    // acción de borrado de un producto
+    /* // acción de borrado de un producto
     delete: (req, res) => {
         let id = req.params.id;
         newProducts = products.filter((product) => {
             return product.id != id ? product : undefined;
         });
-        /* let newProducts = [];
-        for (let i = 0; i < products.length; i++) {
-            if (products[i].id != id) {
-                newProducts.push(products[i]);
-            }
-        } */
 
         productsJSON = JSON.stringify(newProducts);
         fs.writeFileSync(productsFilePath, productsJSON);
 
         //alert("Se ha eliminado el producto");
         res.redirect('/products');
-    }
+    } */
 
 };
 

@@ -1,4 +1,4 @@
-window.onload = function () {
+window.addEventListener('load', function () {
     let colorSelectMobile = document.getElementsByClassName("color-mobile")[0];
     let colorSelectDesk = document.getElementsByClassName("color-desk")[0];
     let imgMobile = document.getElementsByClassName("img-mob")[0];    
@@ -9,7 +9,7 @@ window.onload = function () {
     console.log(colorSelectMobile);
     console.log(colorSelectDesk); */
 
-    colorSelectMobile.addEventListener("change", function (e) {
+    /* colorSelectMobile.addEventListener("change", function (e) {
         alert("cambio");
         imgMobile.src = "/img/products/default-image.png";
     });
@@ -17,5 +17,6 @@ window.onload = function () {
     colorSelectDesk.addEventListener("change", function (e) {
         alert("cambio");
         imgDesktop.src = "/img/products/default-image.png";
-    })
-}
+    }); */
+
+})

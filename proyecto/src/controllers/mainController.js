@@ -5,11 +5,36 @@ const productsFilePath = path.join(__dirname, '../data/products.json');
 let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const db = require('../database/models');
 
 const mainController = {
 
     index: function (req, res) {
-        // se leen los productos del archivo json
+        db.Product.findAll({
+            include : [ { model: db.Attribute,
+                            as: "products_attributes" }],
+                            order: [
+                                ['id_product', 'DESC']
+                            ]
+        })
+        .then( products => {
+            //let query = products[0].products_attributes[0].category_id;            
+            //return res.send(products[0]);
+            let productosOferta = [];            
+            let productosTendencia = [];
+            products.forEach(product => {
+                if (product.products_attributes[0].category_id == 1) {
+                    productosOferta.push(product);
+                } else {
+                    productosTendencia.push(product);
+                }
+            });
+            res.render("main/index", { productosOferta, productosTendencia });            
+        }) 
+        .catch(function (err) {
+            console.log(err);
+        })
+        /* // se leen los productos del archivo json
         products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
         // Productos visitados
@@ -22,8 +47,7 @@ const mainController = {
             return producto.categoria == "Ofertas";
         })
 
-        // se renderiza la vista con esos elementos
-        res.render("main/index", { productosOferta, productosTendencia, toThousand });
+        // se renderiza la vista con esos elementos */
         //res.render('main/index');
     },
 
