@@ -8,68 +8,39 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const date = Date.now();
 const db = require('../database/models');
-const Attribute = require('../database/models/Attribute');
 
 
-const adminProductController = {
+const attributeController = {
 
     // listado de todos los productos
     index: function (req, res) {
-        db.Product.findAll({
-            include : [ { model: db.Attribute,
-                            as: "products_attributes" }]
-        })
-        .then( products => {
-            let producto = [];
-            products.forEach(element => {
-                let este = element.dataValues.products_attributes;
-                let tempPro = {};
-                /* El usuario normal debería ver sólo los atributos que existen: 
-                este.length > 0 */
-                /* El administrador debe ver también los productos que no tiene atributos
-                este.length >= 0 */
-                if(este.length > 0){
-                    tempPro = {
-                        id_product: element.dataValues.id_product,
-                        name: element.dataValues.name,
-                        price: este[0].dataValues.price,
-                        image: este[0].dataValues.image
-                    }
-                    //console.log(element.dataValues.products_attributes[0].dataValues)
-                    //return res.send(producto);
-                    producto.push(tempPro);
-                } else {
-                    /* esto sólo lo debería ver el administrador */
-                    tempPro = {
-                        id_product: element.dataValues.id_product,
-                        name: element.dataValues.name,
-                        price: 0,
-                        image: 'default-image.png'
-                    }
-                    //console.log(element.dataValues.products_attributes[0].dataValues)
-                    //return res.send(producto);
-                    producto.push(tempPro);
+        let id = req.params.id;
+        console.log('id ' + id);
 
-                }
-            });
-            console.log(producto);
-            //res.send(producto);
-            res.render('adminProduct/admin-products', { productos: producto, titelId: 0 })
-        }) 
+        Promise.all([   db.Product.findByPk(id), 
+                        db.Attribute.findAll({ where: { product_id: id } }),
+                        db.Color.findAll(), 
+                        db.Size.findAll()])
+
+        //db.Product.destroy({ where: { id_product: id } })
+        .then(function ([resPro, resAttr, resColor, resSize]) {
+            //console.log(resPro)
+            res.render('adminProduct/admin-attribute', {productos: resAttr, 
+                                                        name: resPro.name,
+                                                        id: resPro.id_product,
+                                                        colors: resColor, 
+                                                        sizes: resSize })
+        })
         .catch(function (err) {
             console.log(err);
         })
     },
 
-   
-    // página del administrador, donde se ven las opciones de crear y editar un producto
-    admin: function (req, res) {
-        res.render('admin/products-admin');
-    },
-
     // página de creación de un producto
     add: function (req, res) {
-        res.render('admin/add-product');
+        console.log("estoy en add");
+        let id = req.params.id;
+        res.render('admin/add-attribute', {id:id});
     },
 
     // método que contiene la lógica cuando se guarda un producto
@@ -273,12 +244,12 @@ const adminProductController = {
     // metodo que devuelve el formulario de edición de un producto
     edit: function (req, res) {
         let id = req.params.id;
-        console.log('id ' + id);
-        db.Product.findByPk(id)
+        console.log('id attribute' + id);
+        db.Attribute.findByPk(id)
         .then( pro => {
             console.log(pro);
             //res.render('admin/edit-product', { producto: productoActual });
-            res.render('admin/edit-product', { producto: pro });
+            res.render('admin/edit-attribute', { producto: pro });
         })
         .catch(function (err) {
             console.log(err);
@@ -376,4 +347,4 @@ const adminProductController = {
 
 };
 
-module.exports = adminProductController;
+module.exports = attributeController;
