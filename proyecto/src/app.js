@@ -10,6 +10,7 @@ const rutasMain = require('./routes/main');
 const rutasProduct = require('./routes/product');
 const rutasUser = require('./routes/user');
 const rutasCart = require('./routes/cart');
+const rutasAdmin = require('./routes/admin')
 const userController = require('./controllers/userController');
 
 const app = express();  // Se almacena el objeto que devuelve express()
@@ -37,6 +38,7 @@ app.use('/', rutasMain);
 app.use('/products', rutasProduct);
 app.use('/user', rutasUser);
 app.use('/cart', rutasCart);
+app.use('/admin', rutasAdmin);
 
 // Ruta para el error 404
 app.use(function (req, res, next) {

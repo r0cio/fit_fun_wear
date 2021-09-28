@@ -38,7 +38,8 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER
         },
         product_id: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            onDelete: 'cascade'
         }
 
     }
@@ -61,6 +62,8 @@ module.exports = (sequelize, DataTypes) => {
         Attribute.belongsTo(models.Product, {
             as: 'products',
             foreignKey: 'product_id',
+            onDelete: 'cascade',
+            hooks: true,
         });
     }
 

@@ -1,0 +1,399 @@
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/styles-register.css">
+    <title>FitFunWear</title>
+    </head>
+
+    <body>
+        <%- include('../partials/header') %>
+            <main>
+                <div class="seccion">
+                    <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
+                </div>
+                <div class="bienvenida">
+                    <h1> EDITAR PRODUCTO: <i>
+                            <%= producto.id %>
+                        </i>
+                    </h1>
+                </div>
+
+                <form action="/products/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+
+                    <div class="etiquetaNombre">
+                        <label>Nombre del producto</label>
+                    </div>
+                    <div class="nombreProducto">
+                        <input type="text" placeholder="" name="nombre" value="<%= producto.nombre %>" required>
+                    </div>
+
+                    <div class="etiquetaDescripcion">
+                        <label>Descripción del producto</label>
+                    </div>
+                    <div class="descripcionProducto">
+                        <input type="text" placeholder="" name="descripcion" value="<%= producto.descripcion %>">
+                    </div>
+
+                    <div class="etiquetaImage">
+                        <label>Agrega una imagen</label>
+                    </div>
+                    <div class="imagenProducto">
+                        <input type="file" placeholder="" name="imagen" accept="image/*">
+                        <p>
+                            <label class="img-actual">Imagen actual</span> <img src="/img/products/<%= producto.imagen %>"
+                                    alt="Imagen actual"></label>
+                        </p>
+                    </div>
+
+                    <div class="etiquetaCategoria">
+                        <label>Selecciona su categoría</label>
+                    </div><% let i=0; let j=0; %>
+                    <% if (typeof(producto.categoria) == 'string') { %>                         
+                    <div class="categoria">
+                        <input type="checkbox" name="categoria" value="Tendencias"                         
+                            <%= producto.categoria == 'Tendencias' ? 'checked' : '' %>                        
+                            > Tendencia
+                        <input type="checkbox" name="categoria" value="Mas vendidos" 
+                            <%= producto.categoria == 'Mas vendidos' ? 'checked' : '' %>
+                            > Más vendidos
+                        <input type="checkbox" name="categoria" value="Ofertas"                     
+                            <%= producto.categoria == 'Ofertas' ? 'checked' : '' %>                        
+                            > Ofertas
+                    </div>
+                    <% } else { %>                        
+                    <div class="categoria">
+                        <% if (producto.categoria) { %>
+                        <input type="checkbox" name="categoria" value="Tendencias" 
+                        <% i= producto.categoria.length; j=0; %>                        
+                        <% while ( j < i) { %>
+                            <%= producto.categoria[j] == 'Tendencias' ? 'checked' : '' %>
+                        <% j++; } %>
+                            > Tendencia
+                            <input type="checkbox" name="categoria" value="Mas vendidos" 
+                        <% i= producto.categoria.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.categoria[j] == 'Mas vendidos' ? 'checked' : '' %>
+                        <% j++; } %>
+                            > Más vendidos
+                            <input type="checkbox" name="categoria" value="Ofertas" 
+                        <% i= producto.categoria.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.categoria[j] == 'Ofertas' ? 'checked' : '' %>
+                        <% j++; } %>
+                            > Ofertas
+                    </div> <% } %>
+                    <% } %>
+                    <div class="etiquetaGenero">
+                        <label>Género</label>
+                    </div>
+                    <div class="genero">
+                        <input type="radio" name="genero" value="hombre" <%=producto.genero == 'hombre' ? 'checked' : '' %> > Hombre
+                        <input type="radio" name="genero" value="mujer" <%=producto.genero == 'mujer' ? 'checked' : '' %> > Mujer
+                    </div>
+                    <div class="etiquetaDisponibilidad">
+                        <label>¿Producto disponible?</label>
+                    </div>
+                    <div class="disponibilidad">
+                        <input type="radio" name="disponible" value="true" <%=producto.disponible == true || producto.disponible == 'true' ? 'checked' : '' %> > Sí
+                        <input type="radio" name="disponible" value="false" <%=producto.disponible == false || producto.disponible == 'false' ? 'checked' : '' %> > No
+                    </div>
+                    <div class="etiquetaColor">
+                        <label>Color</label>
+                    </div>
+                    <% if (producto.color && typeof(producto.color) != 'string') { %>                                           
+                    <div class="categoria">                          
+                        <input type="checkbox" name="color" value="Rosa" 
+                        <% i= producto.color.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.color[j] == 'Rosa' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > Rosa
+                        <input type="checkbox" name="color" value="Negro"
+                        <% i= producto.color.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.color[j] == 'Negro' ? 'checked' : '' %>
+                        <% j++; } %> > Negro
+                        <input type="checkbox" name="color" value="Azul"
+                        <% i= producto.color.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.color[j] == 'Azul' ? 'checked' : '' %>
+                        <% j++; } %> > Azul
+                        <input type="checkbox" name="color" value="Verde" 
+                        <% i= producto.color.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.color[j] == 'Verde' ? 'checked' : '' %>
+                        <% j++; } %> > Verde
+                        <input type="checkbox" name="color" value="Morado"
+                        <% i= producto.color.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.color[j] == 'Morado' ? 'checked' : '' %>
+                        <% j++; } %> > Morado
+                        <input type="checkbox" name="color" value="Fucsia"
+                        <% i= producto.color.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.color[j] == 'Fucsia' ? 'checked' : '' %>
+                        <% j++; } %> > Fucsia
+                        <input type="checkbox" name="color" value="Gris"
+                        <% i= producto.color.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.color[j] == 'Gris' ? 'checked' : '' %>
+                        <% j++; } %> > Gris
+                        <input type="checkbox" name="color" value="Amarillo"
+                        <% i= producto.color.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.color[j] == 'Amarillo' ? 'checked' : '' %>
+                        <% j++; } %> > Amarillo
+                        <input type="checkbox" name="color" value="Blanco"
+                        <% i= producto.color.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.color[j] == 'Blanco' ? 'checked' : '' %>
+                        <% j++; } %> > Blanco
+                        <input type="checkbox" name="color" value="Dorado"
+                        <% i= producto.color.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.color[j] == 'Dorado' ? 'checked' : '' %>
+                        <% j++; } %> > Dorado
+                        <input type="checkbox" name="color" value="Anaranjado"
+                        <% i= producto.color.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.color[j] == 'Anaranjado' ? 'checked' : '' %>
+                        <% j++; } %> > Anaranjado
+                        <input type="checkbox" name="color" value="Rojo" 
+                        <% i= producto.color.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.color[j] == 'Rojo' ? 'checked' : '' %>
+                        <% j++; } %> > Rojo                    
+                    </div> <% } %>
+                    <% if (typeof(producto.color) == 'string') { %>
+                        <div class="categoria">                                                                                                 
+                            <input type="checkbox" name="color" value="Rosa"                             
+                                <%= producto.color == 'Rosa' ? 'checked' : '' %>                            
+                            > Rosa
+                            <input type="checkbox" name="color" value="Negro"                            
+                                <%= producto.color == 'Negro' ? 'checked' : '' %>
+                            > Negro
+                            <input type="checkbox" name="color" value="Azul"                            
+                                <%= producto.color == 'Azul' ? 'checked' : '' %>
+                            > Azul
+                            <input type="checkbox" name="color" value="Verde"                             
+                                <%= producto.color == 'Verde' ? 'checked' : '' %>
+                            > Verde
+                            <input type="checkbox" name="color" value="Morado"                            
+                                <%= producto.color == 'Morado' ? 'checked' : '' %>
+                            > Morado
+                            <input type="checkbox" name="color" value="Fucsia"                            
+                                <%= producto.color == 'Fucsia' ? 'checked' : '' %>
+                            > Fucsia
+                            <input type="checkbox" name="color" value="Gris"                            
+                                <%= producto.color == 'Gris' ? 'checked' : '' %>
+                            > Gris
+                            <input type="checkbox" name="color" value="Amarillo"                            
+                                <%= producto.color == 'Amarillo' ? 'checked' : '' %>
+                            > Amarillo
+                            <input type="checkbox" name="color" value="Blanco"                            
+                                <%= producto.color == 'Blanco' ? 'checked' : '' %>
+                            > Blanco
+                            <input type="checkbox" name="color" value="Dorado"                            
+                                <%= producto.color == 'Dorado' ? 'checked' : '' %>
+                            > Dorado
+                            <input type="checkbox" name="color" value="Anaranjado"                            
+                                <%= producto.color == 'Anaranjado' ? 'checked' : '' %>
+                            > Anaranjado
+                            <input type="checkbox" name="color" value="Rojo"                             
+                                <%= producto.color == 'Rojo' ? 'checked' : '' %>
+                            > Rojo                    
+                        </div>
+                    <% } %>
+
+                    <div class="etiquetaTalla">
+                        <label>Talla</label>
+                    </div>
+                    <% if (typeof(producto.talla) == 'string') { %>
+                    <div class="talla">                        
+                        <input type="checkbox" name="talla" value="22"                        
+                            <%= producto.talla == '22' ? 'checked' : '' %>                        
+                        > 22
+                        <input type="checkbox" name="talla" value="22.5"                        
+                            <%= producto.talla == '22.5' ? 'checked' : '' %>                        
+                        > 22.5
+                        <input type="checkbox" name="talla" value="23"                        
+                            <%= producto.talla == '23' ? 'checked' : '' %>                        
+                        > 23
+                        <input type="checkbox" name="talla" value="23.5"                        
+                            <%= producto.talla == '23.5' ? 'checked' : '' %>                        
+                        > 23.5
+                        <input type="checkbox" name="talla" value="24"                        
+                            <%= producto.talla == '24' ? 'checked' : '' %>                        
+                        > 24
+                        <input type="checkbox" name="talla" value="24.5"                        
+                            <%= producto.talla == '24.5' ? 'checked' : '' %>                        
+                        > 24.5
+                        <input type="checkbox" name="talla" value="25"                        
+                            <%= producto.talla == '25' ? 'checked' : '' %>                        
+                        > 25
+                        <input type="checkbox" name="talla" value="25.5"                        
+                            <%= producto.talla == '25.5' ? 'checked' : '' %>                        
+                        > 25.5
+                        <input type="checkbox" name="talla" value="26"                        
+                            <%= producto.talla == '26' ? 'checked' : '' %>                        
+                        > 26
+                        <input type="checkbox" name="talla" value="26.5"                        
+                            <%= producto.talla == '26.5' ? 'checked' : '' %>                        
+                        > 26.5
+                        <input type="checkbox" name="talla" value="27"                        
+                            <%= producto.talla == '27' ? 'checked' : '' %>                        
+                        > 27
+                        <input type="checkbox" name="talla" value="27.5"                        
+                            <%= producto.talla == '27.5' ? 'checked' : '' %>                        
+                        > 27.5
+                        <input type="checkbox" name="talla" value="28"                        
+                            <%= producto.talla == '28' ? 'checked' : '' %>                        
+                        > 28
+                        <input type="checkbox" name="talla" value="28.5"                        
+                            <%= producto.talla == '28.5' ? 'checked' : '' %>                        
+                        > 28.5
+                        <input type="checkbox" name="talla" value="29"                        
+                            <%= producto.talla == '29' ? 'checked' : '' %>                        
+                        > 29
+                        <input type="checkbox" name="talla" value="29.5"                        
+                            <%= producto.talla == '29.5' ? 'checked' : '' %>                        
+                        > 29.5
+                    </div>
+                    <% } else { %>
+                    <div class="talla">   
+                        <% if (producto.talla) { %>                     
+                        <input type="checkbox" name="talla" value="22"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '22' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 22
+                        <input type="checkbox" name="talla" value="22.5"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '22.5' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 22.5
+                        <input type="checkbox" name="talla" value="23"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '23' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 23
+                        <input type="checkbox" name="talla" value="23.5"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '23.5' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 23.5
+                        <input type="checkbox" name="talla" value="24"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '24' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 24
+                        <input type="checkbox" name="talla" value="24.5"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '24.5' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 24.5
+                        <input type="checkbox" name="talla" value="25"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '25' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 25
+                        <input type="checkbox" name="talla" value="25.5"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '25.5' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 25.5
+                        <input type="checkbox" name="talla" value="26"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '26' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 26
+                        <input type="checkbox" name="talla" value="26.5"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '26.5' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 26.5
+                        <input type="checkbox" name="talla" value="27"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '27' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 27
+                        <input type="checkbox" name="talla" value="27.5"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '27.5' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 27.5
+                        <input type="checkbox" name="talla" value="28"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '28' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 28
+                        <input type="checkbox" name="talla" value="28.5"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '28.5' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 28.5
+                        <input type="checkbox" name="talla" value="29"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '29' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 29
+                        <input type="checkbox" name="talla" value="29.5"
+                        <% i= producto.talla.length; j=0; %>
+                        <% while ( j < i) { %>
+                            <%= producto.talla[j] == '29.5' ? 'checked' : '' %>
+                        <% j++; } %>
+                        > 29.5
+                    </div> <% } %>
+                    <% } %>
+                    <div class="etiquetaModelo">
+                        <label>Modelo</label>
+                    </div>
+                    <div class="modelo">
+                        <input type="text" placeholder="" name="modelo" value="<%= producto.modelo %>">
+                    </div>
+
+                    <div class="etiquetaPrecio">
+                        <label>Precio del producto</label>
+                    </div>
+                    <div class="precio">
+                        <input type="text" placeholder="" name="precio" value="<%= producto.precio%>">
+                    </div>
+
+                    <div class="etiquetaDescuento">
+                        <label>Descuento</label>
+                    </div>
+                    <div class="descuento">
+                        <input type="text" placeholder="" name="descuento" value="<%= producto.descuento %>">
+                    </div>
+
+                    <div class="etiquetaCantidad">
+                        <label>Cantidad</label>
+                    </div>
+                    <div class="cantidad">
+                        <input type="text" placeholder="" name="cantidad" value="<%= producto.cantidad %>">
+                    </div>
+
+                    <div class="boton">
+                        <button class="Enviar" type="submit">EDITAR</button>
+                    </div>
+
+                </form>
+
+            </main>
+            <%- include('../partials/footer') %>
+    </body>
+
+    </html>
