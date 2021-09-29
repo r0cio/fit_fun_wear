@@ -10,11 +10,11 @@
                     <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
                 </div>
                 <div class="bienvenida">
-                    <h1> AGREGAR NUEVO PRODUCTO </h1>
+                    <h1> AGREGAR NUEVO ATRIBUTO AL PRODUCTO: <%=name%> </h1>
                 </div>
 
-                <form action="/products" method="POST" enctype="multipart/form-data">
-
+                <form action="/attribute/create/<%=id%>" method="POST" enctype="multipart/form-data">
+<!--
                     <div class="etiquetaNombre">
                         <label>Nombre del producto</label>
                     </div>
@@ -27,140 +27,142 @@
                         <p class="text-danger">
                             <%= error.nombre.msg %>
                         </p>
-                        <% } %>
+                    <% } %>
+-->
+<!--
+                    <div class="etiquetaDescripcion">
+                        <label>Descripción del producto</label>
+                    </div>
+                    <div class="descripcionProducto">
+                        <textarea name="descripcion" id="descripcion"
+                            class="form-input <%= locals.error && error.descripcion ? 'border border-danger' : '' %> <%= locals.old && old.descripcion ? 'border border-success': '' %>"><%= locals.old && old.descripcion ? old.descripcion : '' %></textarea>
+                    </div>
+                    <% if (locals.error && error.descripcion) { %>
+                        <p class="text-danger">
+                            <%= error.descripcion.msg %>
+                        </p>
+                    <% } %>
+-->
+                    <div class="etiquetaImage">
+                        <label>Agrega una imagen</label>
+                    </div>
+                    <div class="imagenProducto">
+                        <input type="file" id="imagen" name="imagen" accept="image/*">
+                    </div>
 
-                            <div class="etiquetaDescripcion">
-                                <label>Descripción del producto</label>
-                            </div>
-                            <div class="descripcionProducto">
-                                <textarea name="descripcion" id="descripcion"
-                                    class="form-input <%= locals.error && error.descripcion ? 'border border-danger' : '' %> <%= locals.old && old.descripcion ? 'border border-success': '' %>"><%= locals.old && old.descripcion ? old.descripcion : '' %></textarea>
-                            </div>
-                            <% if (locals.error && error.descripcion) { %>
-                                <p class="text-danger">
-                                    <%= error.descripcion.msg %>
-                                </p>
+                    <div class="etiquetaCategoria">
+                        <label>Selecciona su categoría</label>
+                    </div>
+                    <div class="categoria">
+                        <select name="categoria" class="categoria mb-3" id="">
+                            <option value="" selected disabled>Selecciona categoria</option>
+                            <% for( let i=0; i < categories.length; i++ ) { %>
+                                <option value="<%= categories[i].id_category %>">
+                                    <%= categories[i].name %>
+                                </option>
                                 <% } %>
-
-                                    <div class="etiquetaImage">
-                                        <label>Agrega una imagen</label>
-                                    </div>
-                                    <div class="imagenProducto">
-                                        <input type="file" id="imagen" name="imagen" accept="image/*">
-                                    </div>
-
-                                    <div class="etiquetaCategoria">
-                                        <label>Selecciona su categoría</label>
-                                    </div>
-                                    <div class="categoria">
-                                        <select name="categoria" class="categoria mb-3" id="">
-                                            <option value="" selected disabled>Selecciona categoria</option>
-                                            <% for( let i=0; i < categories.length; i++ ) { %>
-                                                <option value="<%= categories[i].id_category %>">
-                                                    <%= categories[i].name %>
-                                                </option>
-                                                <% } %>
-                                        </select>
-                                    </div>
+                        </select>
+                    </div>
                                     <!-- <div class="categoria" required>
                             <input type="checkbox" name="categoria" value="Tendencias"> Tendencia
                             <input type="checkbox" name="categoria" value="Mas vendidos"> Más vendidos
                             <input type="checkbox" name="categoria" value="Ofertas"> Ofertas
                         </div>  -->
-                                    <% if (locals.error && error.categoria) { %>
-                                        <p class="text-danger">
-                                            <%= error.categoria.msg %>
-                                        </p>
-                                        <% } %>
+                    <% if (locals.error && error.categoria) { %>
+                        <p class="text-danger">
+                            <%= error.categoria.msg %>
+                        </p>
+                    <% } %>
 
-                                            <div class="etiquetaGenero">
-                                                <label>Género</label>
-                                            </div>
-                                            <div class="genero">
-                                                <input type="radio" class="m-1" name="genero" value="H" <%=locals.old &&
-                                                    old.genero=='H' ? 'checked' : '' %>> Hombre
-                                                <input type="radio" class="m-1" name="genero" value="M" <%=locals.old &&
-                                                    old.genero=='M' ? 'checked' : '' %>> Mujer
-                                                <input type="radio" class="m-1" name="genero" value="U"> Unisex
-                                            </div>
-                                            <% if (locals.error && error.genero) { %>
-                                                <p class="text-danger">
-                                                    <%= error.genero.msg %>
-                                                </p>
-                                                <% } %>
+                    <div class="etiquetaGenero">
+                        <label>Género</label>
+                    </div>
+                    <div class="genero">
+                        <input type="radio" class="m-1" name="genero" value="H" <%=locals.old &&
+                            old.genero=='H' ? 'checked' : '' %>> Hombre
+                        <input type="radio" class="m-1" name="genero" value="M" <%=locals.old &&
+                            old.genero=='M' ? 'checked' : '' %>> Mujer
+                        <input type="radio" class="m-1" name="genero" value="U"> Unisex
+                    </div>
+                    <% if (locals.error && error.genero) { %>
+                        <p class="text-danger">
+                            <%= error.genero.msg %>
+                        </p>
+                    <% } %>
 
-                                                    <div class="etiquetaDisponibilidad">
-                                                        <label>¿Producto disponible?</label>
-                                                    </div>
-                                                    <div class="disponibilidad">
-                                                        <input type="radio" name="disponible" value="1" <%=locals.old &&
-                                                            old.disponible==true || locals.old && old.disponible=='true'
-                                                            ? 'checked' : '' %>> Sí
-                                                        <input type="radio" name="disponible" value="0" <%=locals.old &&
-                                                            old.disponible==false || locals.old &&
-                                                            old.disponible=='true' ? 'checked' : '' %>> No
-                                                    </div>
-                                                    <% if (locals.error && error.disponible) { %>
-                                                        <p class="text-danger">
-                                                            <%= error.disponible.msg %>
-                                                        </p>
-                                                        <% } %>
+                    <div class="etiquetaDisponibilidad">
+                        <label>¿Producto disponible?</label>
+                    </div>
+                    <div class="disponibilidad">
+                        <input type="radio" name="disponible" value="1" <%=locals.old &&
+                            old.disponible==true || locals.old && old.disponible=='true'
+                            ? 'checked' : '' %>> Sí
+                        <input type="radio" name="disponible" value="0" <%=locals.old &&
+                            old.disponible==false || locals.old &&
+                            old.disponible=='true' ? 'checked' : '' %>> No
+                    </div>
+                    <% if (locals.error && error.disponible) { %>
+                        <p class="text-danger">
+                            <%= error.disponible.msg %>
+                        </p>
+                    <% } %>
 
-                                                            <div class="etiquetaColor">
-                                                                <label>Color</label>
-                                                            </div>
-                                                            <div class="categoria">
-                                                                <select name="color" id="" class="mb-3">
-                                                                    <option value="" selected disabled>Selecciona color
-                                                                    </option>
-                                                                    <% for( let i=0; i < colors.length; i++ ) { %>
-                                                                        <option value="<%= colors[i].id_color %> ">
-                                                                            <%= colors[i].name %>
-                                                                        </option>
-                                                                        <% } %>
-                                                                </select>
-                                                                <!-- <input type="checkbox" name="color" value="Rosa"> Rosa
-                                                                <input type="checkbox" name="color" value="Negro"> Negro
-                                                                <input type="checkbox" name="color" value="Azul"> Azul
-                                                                <input type="checkbox" name="color" value="Verde"> Verde
-                                                                <input type="checkbox" name="color" value="Morado">
-                                                                Morado
-                                                                <input type="checkbox" name="color" value="Fucsia">
-                                                                Fucsia
-                                                                <input type="checkbox" name="color" value="Gris"> Gris
-                                                                <input type="checkbox" name="color" value="Amarillo">
-                                                                Amarillo
-                                                                <input type="checkbox" name="color" value="Blanco">
-                                                                Blanco
-                                                                <input type="checkbox" name="color" value="Dorado">
-                                                                Dorado
-                                                                <input type="checkbox" name="color" value="Anaranjado">
-                                                                Anaranjado
-                                                                <input type="checkbox" name="color" value="Rojo"> Rojo -->
-                                                            </div>
-                                                            <% if (locals.error && error.color) { %>
-                                                                <p class="text-danger">
-                                                                    <%= error.color.msg %>
-                                                                </p>
-                                                                <% } %>
+                    <div class="etiquetaColor">
+                        <label>Color</label>
+                    </div>
+                    <div class="categoria">
+                        <select name="color" id="" class="mb-3">
+                            <option value="" selected disabled>Selecciona color
+                            </option>
+                            <% for( let i=0; i < colors.length; i++ ) { %>
+                                <option value="<%= colors[i].id_color %> ">
+                                    <%= colors[i].name %>
+                                </option>
+                                <% } %>
+                        </select>
+                        <!-- <input type="checkbox" name="color" value="Rosa"> Rosa
+                        <input type="checkbox" name="color" value="Negro"> Negro
+                        <input type="checkbox" name="color" value="Azul"> Azul
+                        <input type="checkbox" name="color" value="Verde"> Verde
+                        <input type="checkbox" name="color" value="Morado">
+                        Morado
+                        <input type="checkbox" name="color" value="Fucsia">
+                        Fucsia
+                        <input type="checkbox" name="color" value="Gris"> Gris
+                        <input type="checkbox" name="color" value="Amarillo">
+                        Amarillo
+                        <input type="checkbox" name="color" value="Blanco">
+                        Blanco
+                        <input type="checkbox" name="color" value="Dorado">
+                        Dorado
+                        <input type="checkbox" name="color" value="Anaranjado">
+                        Anaranjado
+                        <input type="checkbox" name="color" value="Rojo"> Rojo -->
+                    </div>
+                    <% if (locals.error && error.color) { %>
+                        <p class="text-danger">
+                            <%= error.color.msg %>
+                        </p>
+                    <% } %>
 
-                                                                    <div class="etiquetaTalla">
-                                                                        <label>Talla</label>
-                                                                    </div>
-                                                                    <div class="categoria">
-                                                                        <select name="talla" id="" class="mb-3">
-                                                                            <option value="" selected disabled>
-                                                                                Selecciona
-                                                                                talla
-                                                                            </option>
-                                                                            <% for( let i=0; i < sizes.length; i++ ) {
-                                                                                %>
-                                                                                <option value="<%= sizes[i].id_size %>">
-                                                                                    <%= sizes[i].name %>
-                                                                                </option>
-                                                                                <% } %>
-                                                                        </select>
-                                                                    </div>
+                    <div class="etiquetaTalla">
+                        <label>Talla</label>
+                    </div>
+
+                    <div class="categoria">
+                        <select name="talla" id="" class="mb-3">
+                            <option value="" selected disabled>
+                                Selecciona
+                                talla
+                            </option>
+                            <% for( let i=0; i < sizes.length; i++ ) {
+                                %>
+                                <option value="<%= sizes[i].id_size %>">
+                                    <%= sizes[i].name %>
+                                </option>
+                            <% } %>
+                        </select>
+                    </div>
                                                                     <!-- <div class="talla">
                                                                         <input type="checkbox" name="talla" value="22">
                                                                         22
@@ -195,76 +197,74 @@
                                                                         <input type="checkbox" name="talla"
                                                                             value="29.5"> 29.5
                                                                     </div> -->
-                                                                    <% if (locals.error && error.talla) { %>
-                                                                        <p class="text-danger">
-                                                                            <%= error.talla.msg %>
-                                                                        </p>
-                                                                        <% } %>
+                    <% if (locals.error && error.talla) { %>
+                        <p class="text-danger">
+                            <%= error.talla.msg %>
+                        </p>
+                    <% } %>
 
-                                                                            <div class="etiquetaModelo">
-                                                                                <label>Modelo</label>
-                                                                            </div>
-                                                                            <div class="modelo">
-                                                                                <input type="text" placeholder=""
-                                                                                    name="modelo"
-                                                                                    value="<%= locals.old && old.modelo ? old.modelo : '' %>">
-                                                                            </div>
+<!--
 
-                                                                            <div class="etiquetaPrecio">
-                                                                                <label>Precio del producto</label>
-                                                                            </div>
-                                                                            <div class="precio">
-                                                                                <input type="number" placeholder=""
-                                                                                    name="precio"
-                                                                                    class="<%= locals.error && error.precio ? 'border border-danger' : '' %> <%= locals.old && old.precio ? 'border border-success': '' %>  "
-                                                                                    value="<%= locals.old && old.precio ? old.precio : '' %>">
-                                                                            </div>
-                                                                            <% if (locals.error && error.precio) { %>
-                                                                                <p class="text-danger">
-                                                                                    <%= error.precio.msg %>
-                                                                                </p>
-                                                                                <% } %>
 
-                                                                                    <div class="etiquetaDescuento">
-                                                                                        <label>Descuento</label>
-                                                                                    </div>
-                                                                                    <div class="descuento">
-                                                                                        <input type="number"
-                                                                                            placeholder=""
-                                                                                            name="descuento"
-                                                                                            value="<%= locals.old && old.descuento ? old.descuento : '' %>">
-                                                                                    </div>
-                                                                                    <% if (locals.error &&
-                                                                                        error.descuento) { %>
-                                                                                        <p class="text-danger">
-                                                                                            <%= error.descuento.msg %>
-                                                                                        </p>
-                                                                                        <% } %>
+                <div class="etiquetaModelo">
+                    <label>Modelo</label>
+                </div>
+                <div class="modelo">
+                    <input type="text" placeholder=""
+                        name="modelo"
+                        value="<%= locals.old && old.modelo ? old.modelo : '' %>">
+                </div>
+-->
 
-                                                                                            <div
-                                                                                                class="etiquetaCantidad">
-                                                                                                <label>Cantidad</label>
-                                                                                            </div>
-                                                                                            <div class="cantidad">
-                                                                                                <input type="number"
-                                                                                                    placeholder=""
-                                                                                                    name="cantidad"
-                                                                                                    class="<%= locals.error && error.cantidad ? 'border border-danger' : '' %> <%= locals.old && old.cantidad ? 'border border-success': '' %>"
-                                                                                                    value="<%= locals.old && old.cantidad ? old.cantidad : '' %>">
-                                                                                            </div>
-                                                                                            <% if (locals.error &&
-                                                                                                error.cantidad) { %>
-                                                                                                <p class="text-danger">
-                                                                                                    <%= error.cantidad.msg
-                                                                                                        %>
-                                                                                                </p>
-                                                                                                <% } %>
-
-                                                                                                    <div class="boton">
-                                                                                                        <button
-                                                                                                            class="Enviar"
-                                                                                                            type="submit">AGREGAR</button>
-                                                                                                    </div>
+                    <div class="etiquetaPrecio">
+                        <label>Precio del producto</label>
+                    </div>
+                    <div class="precio">
+                        <input type="number" placeholder=""
+                            name="precio"
+                            class="<%= locals.error && error.precio ? 'border border-danger' : '' %> <%= locals.old && old.precio ? 'border border-success': '' %>  "
+                            value="<%= locals.old && old.precio ? old.precio : '' %>">
+                    </div>
+                    <% if (locals.error && error.precio) { %>
+                        <p class="text-danger">
+                            <%= error.precio.msg %>
+                        </p>
+                    <% } %>
+    
+                    <div class="etiquetaDescuento">
+                        <label>Descuento</label>
+                    </div>
+                    <div class="descuento">
+                        <input type="number"
+                                placeholder=""
+                                name="descuento"
+                                value="<%= locals.old && old.descuento ? old.descuento : '' %>">
+                    </div>
+                    <% if (locals.error && error.descuento) { %>
+                        <p class="text-danger">
+                            <%= error.descuento.msg %>
+                        </p>
+                    <% } %>
+    
+                    <div class="etiquetaCantidad">
+                        <label>Cantidad</label>
+                    </div>
+                    <div class="cantidad">
+                        <input type="number"
+                                placeholder=""
+                                name="cantidad"
+                                class="<%= locals.error && error.cantidad ? 'border border-danger' : '' %> <%= locals.old && old.cantidad ? 'border border-success': '' %>"
+                                value="<%= locals.old && old.cantidad ? old.cantidad : '' %>">
+                    </div>
+                    <% if (locals.error && error.cantidad) { %>
+                        <p class="text-danger">
+                            <%= error.cantidad.msg %>
+                        </p>
+                    <% } %>
+    
+                    <div class="boton">
+                        <button class="Enviar" type="submit">AGREGAR</button>
+                    </div>
 
                 </form>
 

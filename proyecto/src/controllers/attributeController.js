@@ -15,7 +15,7 @@ const attributeController = {
     // listado de todos los productos
     index: function (req, res) {
         let id = req.params.id;
-        console.log('id ' + id);
+        //console.log('id ' + id);
 
         Promise.all([   db.Product.findByPk(id), 
                         db.Attribute.findAll({ where: { product_id: id } }),
@@ -38,23 +38,131 @@ const attributeController = {
 
     // página de creación de un producto
     add: function (req, res) {
-        console.log("estoy en add");
+        //console.log("estoy en add");
         let id = req.params.id;
-        res.render('admin/add-attribute', {id:id});
+
+        Promise.all([   db.Product.findByPk(id), 
+            db.Attribute.findAll({ where: { product_id: id } }),
+            db.Color.findAll(), 
+            db.Size.findAll(),
+            db.Category.findAll()])
+
+            .then(function ([resPro, resAttr, resColor, resSize, resCatego]) {
+                res.render('admin/add-attribute', {productos: resAttr, 
+                                                            name: resPro.name,
+                                                            id: resPro.id_product,
+                                                            colors: resColor, 
+                                                            sizes: resSize,
+                                                            categories:resCatego })
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
+    },
+
+    store: (req, res) => {
+        let errors = validationResult(req);
+        //console.log("estoy en store");
+        console.log(req.body);
+
+        let id = req.params.id;
+        let img = "default-image.png";
+        if (req.file != undefined) {
+            img = req.body.imagen;
+        };
+
+        if (errors.isEmpty()) { // si no hay errores, se prueba que colores y size sean únicos
+            Promise.all([
+                db.Attribute.findOne({ where: { product_id: id,
+                                                color_id: req.body.color,
+                                                size_id: req.body.talla } }),
+                db.Color.findAll(), 
+                db.Size.findAll()])
+            .then(function ([ resAttr, resColor, resSize]) {
+
+                    if(resAttr != null){
+                        res.send('La combinación de color y talla ya existe ' + resAttr.color_id + ' ' + resAttr.size_id );
+                        throw new Error('La combinación de color y talla ya existe');
+
+                    } else {
+                        //res.send('no hay error');
+
+                        console.log(img);
+/*
+                        db.Attribute.create( {
+                            available: req.body.disponible,
+                            image: img,
+                            price: req.body.precio,
+                            discount: req.body.descuento,
+                            quantity: req.body.cantidad,
+                            gender: req.body.genero,
+                            size_id: req.body.talla,
+                            color_id: req.body.color,
+                            category_id: req.body.categoria
+                        })
+                        .then(function (resp) {
+                            console.log("no hubo errores")
+                            res.redirect('/attribute/:id');
+                        })
+                        .catch(function (err) {
+                            console.log(err);
+                        })
+                        */
+                     }         
+
+                    
+    /*
+                res.render('adminProduct/admin-attribute', {productos: resAttr, 
+                    name: resPro.name,
+                    id: resPro.id_product,
+                    colors: resColor, 
+                    sizes: resSize })
+    */
+            })
+            .catch(function (err) {
+                console.log(err);
+                })    
+        } else { // si existe algún error, se renderiza de nuevo el formulario
+            console.log(req.body);
+            console.log("si hubo errores");
+
+            Promise.all([   db.Product.findByPk(id), 
+                db.Attribute.findAll({ where: { product_id: id } }),
+                db.Color.findAll(), 
+                db.Size.findAll(),
+                db.Category.findAll()])
+    
+                .then(function ([resPro, resAttr, resColor, resSize, resCatego]) {
+                    res.render('admin/add-attribute', { error: errors.mapped(), old: req.body,
+                                                        productos: resAttr, 
+                                                        name: resPro.name,
+                                                        id: resPro.id_product,
+                                                        colors: resColor, 
+                                                        sizes: resSize,
+                                                        categories:resCatego })
+                })
+                .catch(function (err) {
+                    console.log(err);
+                })
+
+            //res.render('admin/add-attribute', { error: errors.mapped(), old: req.body, id: id });
+        }
     },
 
     // método que contiene la lógica cuando se guarda un producto
-    store: (req, res) => {
+    store_otro: (req, res) => {
         let errors = validationResult(req);
         console.log(req.body);
         //console.log(req.file);
+
         if (errors.isEmpty()) { // si no hay errores, se guarda el producto
-            /*
+            
             let img = "default-image.png";
             if (req.file != undefined) {
                 img = req.body.imagen;
             }
-            */
+            // todavía hay que verificar si el color y la talla en los datos ingresados, ya existen
+            // para ese producto. Si sí, es error.
 
             db.Product.create({
                 name: req.body.nombre,

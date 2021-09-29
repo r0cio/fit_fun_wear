@@ -1,18 +1,28 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const path = require("path");
 const { check } = require('express-validator');
 
 // Controlador de productos
 const adminAttributeController = require('../controllers/attributeController');
 
+// Multer para aceptar imagenes en los formulario
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb (null, '../public/img/products');
+    },
+    filename: (req, file, cb) => {
+        const newFileName = 'product' + Date.now() + path.extname(file.originalname);
+        cb (null, newFileName);
+    },
+});
+
+const upload = multer({ storage });
+
 // Validación para el formulario de creación de un producto
 const validaciones = [
-    check('nombre').notEmpty().withMessage('Debes escribir un nombre para el producto'),
-    check('descripcion').notEmpty().withMessage('Debes escribir una descripción para el producto'),
-    check('modelo').notEmpty().withMessage('Debes escribir un modelo para el producto'),
-    
     check('categoria').notEmpty().withMessage('Debes elegir al menos 1 categoria'),
-
     check('genero').notEmpty().withMessage('Elige un genero'),
     check('disponible').notEmpty().withMessage('Debes especificar si el producto estará disponible o no'),
     check('color').notEmpty().withMessage('Debes elegir al menos 1 color'),
@@ -34,8 +44,8 @@ router.get('/:id', adminAttributeController.index);
 // obtener el formulario de creación de productos
 router.get('/create/:id', adminAttributeController.add);
 
-// acción de creación, donde se envía el formulario de creación de productos
-router.post('/', validaciones, adminAttributeController.store);
+// acción de creación, donde se envía el formulario de creación de atributos
+router.post('/create/:id', upload.single('imagen'), validaciones, adminAttributeController.store);
 
 // detalle de un producto
 //router.get('/product-detail/:id', adminProductController.detalle);
