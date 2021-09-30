@@ -39,7 +39,8 @@ module.exports = (sequelize, DataTypes) => {
         },
         product_id: {
             type: DataTypes.INTEGER,
-            onDelete: 'cascade'
+            onDelete: 'cascade',
+            autoIncrement: false
         }
 
     }

@@ -60,6 +60,7 @@ const attributeController = {
             })
     },
 
+    // método que contiene la lógica cuando se guarda un producto
     store: (req, res) => {
         let errors = validationResult(req);
         //console.log("estoy en store");
@@ -80,44 +81,45 @@ const attributeController = {
                 db.Size.findAll()])
             .then(function ([ resAttr, resColor, resSize]) {
 
-                    if(resAttr != null){
-                        res.send('La combinación de color y talla ya existe ' + resAttr.color_id + ' ' + resAttr.size_id );
-                        throw new Error('La combinación de color y talla ya existe');
+                if(resAttr != null){
+                    // aquí habría que llamar a alguna sección de la vista para que presente ese error. Por ahora lo dejo así.
+                    res.send('La combinación de color y talla ya existe ' + resAttr.color_id + ' ' + resAttr.size_id );
+                    throw new Error('La combinación de color y talla ya existe');
 
-                    } else {
-                        //res.send('no hay error');
+                } else {
+                    //res.send('no hay error');
+// por el momento no tengo imagen
+                    //console.log(img);
 
-                        console.log(img);
-/*
-                        db.Attribute.create( {
-                            available: req.body.disponible,
-                            image: img,
-                            price: req.body.precio,
-                            discount: req.body.descuento,
-                            quantity: req.body.cantidad,
-                            gender: req.body.genero,
-                            size_id: req.body.talla,
-                            color_id: req.body.color,
-                            category_id: req.body.categoria
-                        })
-                        .then(function (resp) {
-                            console.log("no hubo errores")
-                            res.redirect('/attribute/:id');
-                        })
-                        .catch(function (err) {
-                            console.log(err);
-                        })
-                        */
-                     }         
+                    // aquí finalmente se crea el atributo nuevo asociado a ese producto
 
-                    
-    /*
-                res.render('adminProduct/admin-attribute', {productos: resAttr, 
-                    name: resPro.name,
-                    id: resPro.id_product,
-                    colors: resColor, 
-                    sizes: resSize })
-    */
+                    const resPro = db.Product.findOne({
+                        where: {
+                            id_product: id
+                        }
+                    });
+
+                    Promise
+                    .all([resPro])
+                    .then( response => {
+                        console.log(response[0].id_product);
+                        return db.Attribute
+                            .create ({
+                                available: req.body.disponible,
+                                image: "default-image.png",
+                                price: req.body.precio,
+                                discount: req.body.descuento,
+                                quantity: req.body.cantidad,
+                                gender: req.body.genero,
+                                size_id: req.body.talla,
+                                color_id: req.body.color,
+                                category_id: req.body.categoria,
+                                product_id: response[0].id_product,
+                            })
+                            .then(atributo => res.status(200).redirect('/attribute/'+ atributo.product_id))
+                            .catch(error => res.status(400).send(error));
+                    })
+                }         
             })
             .catch(function (err) {
                 console.log(err);
@@ -146,77 +148,6 @@ const attributeController = {
                 })
 
             //res.render('admin/add-attribute', { error: errors.mapped(), old: req.body, id: id });
-        }
-    },
-
-    // método que contiene la lógica cuando se guarda un producto
-    store_otro: (req, res) => {
-        let errors = validationResult(req);
-        console.log(req.body);
-        //console.log(req.file);
-
-        if (errors.isEmpty()) { // si no hay errores, se guarda el producto
-            
-            let img = "default-image.png";
-            if (req.file != undefined) {
-                img = req.body.imagen;
-            }
-            // todavía hay que verificar si el color y la talla en los datos ingresados, ya existen
-            // para ese producto. Si sí, es error.
-
-            db.Product.create({
-                name: req.body.nombre,
-                description: req.body.descripcion,
-                model: req.body.modelo,
-                created_at: Date.now(),
-                /*
-                products_attributes: [{
-                    available: req.body.disponible,
-                    image: img,
-                    price: req.body.precio,
-                    discount: req.body.descuento,
-                    quantity: req.body.cantidad,
-                    gender: req.body.genero,
-                    size_id: req.body.talla,
-                    color_id: req.body.color,
-                    category_id: req.body.categoria
-                },
-            ] }*/
-            /*
-            ,
-             {
-                include: [{ model: db.Attribute, as: 'products_attributes' }]*/
-            })
-                .then(function (resp) {
-                    console.log("no hubo errores")
-                    res.redirect('/admin/');
-                })
-                .catch(function (err) {
-                    console.log(err);
-                })
-
-        } else { // si existe algún error, se renderiza de nuevo el formulario
-            console.log(req.body);
-            console.log("si hubo errores");
-            //console.log(req.file);
-            /*
-            let promCategory = db.Category.findAll()
-            let promColor = db.Color.findAll()
-            let promSize = db.Size.findAll()
-
-            */
-/*
-            Promise.all([promCategory, promColor, promSize])
-                .then(function ([resCategory, resColor, resSize]) {
-                    //console.log(resCategory, resColor, resSize);
-                    res.render('admin/add-product', { categories: resCategory, colors: resColor, sizes: resSize, error: errors.mapped(), old: req.body });
-                })
-                .catch(function (err) {
-                    console.log(err);
-                })
-
-                */
-            res.render('admin/add-product', { error: errors.mapped(), old: req.body });
         }
     },
 
