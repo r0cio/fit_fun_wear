@@ -65,11 +65,13 @@ const attributeController = {
         let errors = validationResult(req);
         //console.log("estoy en store");
         console.log(req.body);
+        /* console.log("filename", req.file.filename);
+        console.log("path", req.file.path); */
 
         let id = req.params.id;
         let img = "default-image.png";
         if (req.file != undefined) {
-            img = req.body.imagen;
+            img = req.file.filename;
         };
 
         if (errors.isEmpty()) { // si no hay errores, se prueba que colores y size sean únicos
@@ -106,7 +108,7 @@ const attributeController = {
                         return db.Attribute
                             .create ({
                                 available: req.body.disponible,
-                                image: "default-image.png",
+                                image: img,
                                 price: req.body.precio,
                                 discount: req.body.descuento,
                                 quantity: req.body.cantidad,

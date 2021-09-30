@@ -5,6 +5,8 @@ const { check } = require('express-validator');
 // Controlador de productos
 const adminProductController = require('../controllers/adminProductController');
 
+const loggedAdminMiddleware = require('../middlewares/loggedAdminMiddleware');
+
 // Validación para el formulario de creación de un producto
 const validaciones = [
     check('nombre').notEmpty().withMessage('Debes escribir un nombre para el producto'),
@@ -26,27 +28,27 @@ const validaciones = [
 /* Rutas */
 
 // listado de todos los productos
-router.get('/', adminProductController.index);
+router.get('/', loggedAdminMiddleware ,adminProductController.index);
 
 // página de administrador
 //router.get('/products-admin', adminProductController.admin);
 
 // obtener el formulario de creación de productos
-router.get('/create', adminProductController.add);
+router.get('/create', loggedAdminMiddleware, adminProductController.add);
 
 // acción de creación, donde se envía el formulario de creación de productos
-router.post('/', validaciones, adminProductController.store);
+router.post('/', loggedAdminMiddleware, validaciones, adminProductController.store);
 
 // detalle de un producto
 //router.get('/product-detail/:id', adminProductController.detalle);
 
 // formulario de edición de productos
-router.get('/edit/:id', adminProductController.edit);
+router.get('/edit/:id', loggedAdminMiddleware, adminProductController.edit);
 
 // acción de edición, donde se envía el formulario de edición de productos
 router.put('/:id', adminProductController.update);
 
 // acción de borrado de un producto
-router.delete('/delete/:id', adminProductController.delete);
+router.delete('/delete/:id', loggedAdminMiddleware, adminProductController.delete);
 
 module.exports = router;
