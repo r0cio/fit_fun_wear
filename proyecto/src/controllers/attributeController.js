@@ -367,21 +367,28 @@ const attributeController = {
     // acción de borrado de un producto
     delete: (req, res) => {
         let id = req.params.id;
-        newProducts = products.filter((product) => {
-            return product.id != id ? product : undefined;
-        });
-        /* let newProducts = [];
-        for (let i = 0; i < products.length; i++) {
-            if (products[i].id != id) {
-                newProducts.push(products[i]);
-            }
-        } */
+        console.log(id);
+        let idP = -1;
+        
+        db.Attribute.findByPk(id)
+        .then( p => {
+            console.log(p);
+            idP = p.product_id ;
+        })
+        .catch(function (err) {
+            console.log(err);
+        })
+        // falta poner un warning de si sí quiere borrar el elemento
+        // cómo se borra el archivo de la imagen? o ese nunca se borra?
+        db.Attribute.destroy({where: { id_attribute: id}}) 
+         .then( p => {
+             console.log(p);
+             res.redirect('/attribute/'+ idP);
+         })
+         .catch(function (err) {
+             console.log(err);
+         })
 
-        productsJSON = JSON.stringify(newProducts);
-        fs.writeFileSync(productsFilePath, productsJSON);
-
-        //alert("Se ha eliminado el producto");
-        res.redirect('/products');
     }
 
 };
