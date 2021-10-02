@@ -1,5 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+//const { Op } = require('sequelize/types');
+const { Sequelize } = require('../database/models');
+const Op = Sequelize.Op;
 
 const productsFilePath = path.join(__dirname, '../data/products.json');
 let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -23,10 +26,13 @@ const mainController = {
             let productosOferta = [];            
             let productosTendencia = [];
             products.forEach(product => {
-                if (product.products_attributes[0].category_id == 1) {
-                    productosOferta.push(product);
-                } else {
-                    productosTendencia.push(product);
+                //console.log("catId", product.products_attributes[0].category_id);
+                if (product.products_attributes[0].category_id) {
+                    if (product.products_attributes[0].category_id == 1) {
+                        productosOferta.push(product);
+                    } else {
+                        productosTendencia.push(product);
+                    }
                 }
             });
             res.render("main/index", { productosOferta, productosTendencia });            
@@ -73,6 +79,28 @@ const mainController = {
 
     contact: function (req, res) {
         res.render('main/contacto');
+    },
+
+    search: function(req, res) {
+        let query = req.body.search;
+        //res.send(query);
+        db.Product.findAll({
+            include : [ { model: db.Attribute,
+                        as: "products_attributes" }],  
+            where: {
+                [Op.or]: [{name: { [Op.like]: `%${query}%` }}, {description: { [Op.like]: `%${query}%` }}]
+            }                      
+            /* where: {
+                name: { [Op.like]: `%${query}%` }                
+            } */
+        })
+            .then(function (productos) {
+                //res.send(productos);
+                res.render('main/search', { query: query, productos: productos});
+            })
+            .catch(function (err){
+                console.log(err);
+            })
     }
 
 };

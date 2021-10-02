@@ -11,5 +11,6 @@ router.get('/terminos', mainController.terminos);
 router.get('/faq', mainController.faq);
 router.get('/about', mainController.about);
 router.get('/contacto', mainController.contact);
+router.post('/search', mainController.search);
 
 module.exports = router;

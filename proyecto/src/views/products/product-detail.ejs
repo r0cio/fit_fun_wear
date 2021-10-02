@@ -74,7 +74,7 @@
                                         <!--aqui debefria obtener el valor que escogio el usuario de color-->
                                         <% if(productos[i].color == colores[0].id_color) {%>
                                             <%const sizo = tamanos.find(element => element.id_size === productos[i].talla )%>
-                                            <option value="<%= sizo.id_size %>">
+                                            <option value="<%= sizo?.id_size %>">
                                                 <%= sizo.name %>
                                             </option>
                                         <%}%>

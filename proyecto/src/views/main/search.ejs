@@ -1,0 +1,56 @@
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/styles-index.css">
+    <title>FitFunWear</title>
+    </head>
+
+    <body>
+        <%- include('../partials/header') %>
+        <main>
+            <section class="trending mb-3">
+                <!-- Show the "tendencia" products. Se agrega el for -->                
+                <% if (productos.length == 0) { %>
+                <div style="height: 40vh">
+                    <h2 class="text-center mt-5 mb-5">No se encontró ninguna coincidencia con tu búsqueda: <%= query %> :(</h2>
+                    <div class="spinner-border text-info mx-auto d-block" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <p class="text-center mt-2 mb-5">Intenta nuevamente con otras palabras o puedes ir al <a href="/products"><u>listado de productos</u></a></p>
+                </div>
+                <% } else { %>
+                
+                <h2 class="title-section">Productos encontrados con: <%= query %> </h2>
+                    
+                <div class="spinner-border text-info mx-auto d-block" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="trending-articles">
+                    <% for (let producto of productos) { %>
+                        
+                        <article class="section-item pointer">
+                            <a href="/products/product-detail/<%= producto.id_product %>">
+                                <img src="/img/products/<%= producto.products_attributes[0].image %>"
+                                class="img-item" alt="Artículo">
+                                <p class="item-name"><%= producto.name %>
+                                </p>
+                                <p class="item-price">
+                                        <b>$<%= producto.products_attributes[0].price %></b>
+                                </p>
+                            </a>
+                        </article>
+                    <% } %>
+                </div>
+                <% } %> 
+            </section>
+        </main>
+
+        <%- include('../partials/footer') %>
+    </body>
+    <script>
+        let spinner = document.querySelector('.spinner-border');
+        setTimeout(function () {
+            spinner.classList.remove('d-block');
+            spinner.classList.add('d-none');
+        }, 500);
+    </script>
+
+    </html>
