@@ -286,7 +286,7 @@ const attributeController = {
     // metodo que devuelve el formulario de edición de un atributo
     edit: function (req, res) {
         let id = req.params.id;
-        console.log('id attribute ' + id);
+        //console.log('id attribute ' + id);
 
         let atrCategory = db.Category.findAll();
         let atributo = db.Attribute.findByPk(id);
@@ -316,60 +316,56 @@ const attributeController = {
     // acción que actualiza el atributo
     update: function (req, res) {
         let id = req.params.id;
+        //console.log("Estoy en update");
+        //console.log('id_attribute ' + id);
+        //console.log(req.body);
 
-        // Se obtiene el producto actual por si no se modifican algunos datos como la imágen
-        let productoActual;
-        for (producto of products) {
-            if (producto.id == id) productoActual = producto;
-        }
+        let valores = {};
 
-        // Si no se actualiza la imagen        
-        if (req.file == undefined) {
-            var product = {
-                "id": productoActual.id,
-                "nombre": req.body.nombre,
-                "descripcion": req.body.descripcion,
-                "imagen": productoActual.imagen,
-                "categoria": req.body.categoria,
-                "genero": req.body.genero,
-                "disponible": req.body.disponible,
-                "color": req.body.color,
-                "talla": req.body.talla,
-                "modelo": req.body.modelo,
-                "precio": req.body.precio,
-                "descuento": req.body.descuento,
-                "enCarrito": false,
-                "cantidad": req.body.cantidad
+        if( req.file == undefined){
+            valores = {
+                gender : req.body.genero,
+                available : req.body.disponible,
+                price : req.body.precio,
+                discount : req.body.descuento,
+                category_id : req.body.categoria,
+                quantity : req.body.cantidad,
             };
-        } else { // Si se actualiza la imagen            
-            var product = {
-                "id": productoActual.id,
-                "nombre": req.body.nombre,
-                "descripcion": req.body.descripcion,
-                "imagen": req.file.filename,
-                "categoria": req.body.categoria,
-                "genero": req.body.genero,
-                "disponible": req.body.disponible,
-                "color": req.body.color,
-                "talla": req.body.talla,
-                "modelo": req.body.modelo,
-                "precio": req.body.precio,
-                "descuento": req.body.descuento,
-                "enCarrito": false,
-                "cantidad": req.body.cantidad
-            };
-        }
-
-        for (let i = 0; i < products.length; i++) {
-            if (products[i].id == id) {
-                products[i] = product;
+        } else {
+            valores = {
+                image : req.file.filename,
+                gender : req.body.genero,
+                available : req.body.disponible,
+                price : req.body.precio,
+                discount : req.body.descuento,
+                category_id : req.body.categoria,
+                quantity : req.body.cantidad,
             }
         }
 
-        productsJSON = JSON.stringify(products);
-        fs.writeFileSync(productsFilePath, productsJSON);
+        db.Attribute.update(
+            valores,
+            {
+                where : { id_attribute : id }
+            }
+        )
+        .then( function() {
+            console.log("tengo id " + id);
+            db.Attribute.findByPk(id)
+            .then(function(response){
+                //console.log(response);
+                res.redirect('/attribute/' + response.product_id);
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
+        }   
 
-        res.redirect('/products/product-detail/' + id);
+        )
+        .catch(function (err) {
+            console.log(err);
+        })
+
     },
 
     // acción de borrado de un atributo

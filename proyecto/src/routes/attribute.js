@@ -56,7 +56,7 @@ router.post('/create/:id', upload.single('imagen'), validaciones, loggedAdminMid
 router.get('/edit/:id', loggedAdminMiddleware, adminAttributeController.edit);
 
 // acción de edición, donde se envía el formulario de edición de atributos
-router.put('/update/:id', loggedAdminMiddleware, adminAttributeController.update);
+router.put('/edit/:id', upload.single('imagen'), validaciones, adminAttributeController.update);
 
 // acción de borrado de un atributos
 router.delete('/delete/:id', loggedAdminMiddleware, adminAttributeController.delete);
