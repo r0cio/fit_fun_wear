@@ -35,8 +35,17 @@ const mainController = {
                 let productosOferta = [];
                 let productosTendencia = [];
 
-                let producto = [];
-                products.forEach(product => {
+                //let producto = [];
+                for (let i = 0; i < products.length; i++) {
+                    if (i % 2 == 0) {
+                        productosOferta.push(products[i]);
+                    } else {
+                        productosTendencia.push(products[i]);
+                    }
+                    
+                }
+
+                /* products.forEach(product => {
                     let este = product.dataValues.products_attributes;
                     let tempPro = {};
 
@@ -56,7 +65,7 @@ const mainController = {
                         productosOferta.push(product);
                     } else {
                         productosTendencia.push(product);
-                    }
+                    } */
 
                     //console.log("catId", product.products_attributes[0].category_id);
                     /* if (product.dataValues.products_attributes[0].category_id) {
@@ -66,8 +75,8 @@ const mainController = {
                             productosTendencia.push(product);
                         }
                     } */
-                });
-                res.render("main/index", { productosOferta, productosTendencia });
+               // });
+                res.render("main/index", { productosOferta: productosOferta, productosTendencia: productosTendencia });
             })
             .catch(function (err) {
                 console.log(err);
