@@ -9,6 +9,10 @@ body {
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
+.fas:hover {
+    color: #29adb8;
+}
+
 /* Este estilo es para que la sección main tenga un color diferente al header y footer */
 main {
     background-color: #f8f7f7;

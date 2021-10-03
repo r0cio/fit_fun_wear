@@ -13,33 +13,66 @@ const db = require('../database/models');
 const mainController = {
 
     index: function (req, res) {
+        /* Promise.all([db.Product.findAll({ order: [['id_product', 'DESC']] }), db.Attribute.findAll()])
+            .then(function ([resProducts, resAttributes]) {
+                console.log(resProducts, resAttributes);
+            }) */
+
+
+
         db.Product.findAll({
-            include : [ { model: db.Attribute,
-                            as: "products_attributes" }],
-                            order: [
-                                ['id_product', 'DESC']
-                            ]
+            include: [{
+                model: db.Attribute,
+                as: "products_attributes"
+            }],
+            order: [
+                ['id_product', 'DESC']
+            ]
         })
-        .then( products => {
-            //let query = products[0].products_attributes[0].category_id;            
-            //return res.send(products[0]);
-            let productosOferta = [];            
-            let productosTendencia = [];
-            products.forEach(product => {
-                //console.log("catId", product.products_attributes[0].category_id);
-                if (product.products_attributes[0].category_id) {
-                    if (product.products_attributes[0].category_id == 1) {
+            .then(products => {
+                //let query = products[0].products_attributes[0].category_id;            
+                //return res.send(products[0]);
+                let productosOferta = [];
+                let productosTendencia = [];
+
+                let producto = [];
+                products.forEach(product => {
+                    let este = product.dataValues.products_attributes;
+                    let tempPro = {};
+
+                    if (este.length > 0) {
+                        tempPro = {
+                            id_product: product.dataValues.id_product,
+                            name: product.dataValues.name,
+                            price: este[0].dataValues.price,
+                            image: este[0].dataValues.image,
+                            category_id: este[0].category_id
+                        }
+                        producto.push(tempPro);
+                        //res.send(tempPro);
+                    }
+
+                    if (tempPro.category_id == 1) {
                         productosOferta.push(product);
                     } else {
                         productosTendencia.push(product);
                     }
-                }
-            });
-            res.render("main/index", { productosOferta, productosTendencia });            
-        }) 
-        .catch(function (err) {
-            console.log(err);
-        })
+
+                    //console.log("catId", product.products_attributes[0].category_id);
+                    /* if (product.dataValues.products_attributes[0].category_id) {
+                        if (product.products_attributes[0].category_id == 1) {
+                            productosOferta.push(product);
+                        } else {
+                            productosTendencia.push(product);
+                        }
+                    } */
+                });
+                res.render("main/index", { productosOferta, productosTendencia });
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
+
         /* // se leen los productos del archivo json
         products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
@@ -81,24 +114,26 @@ const mainController = {
         res.render('main/contacto');
     },
 
-    search: function(req, res) {
+    search: function (req, res) {
         let query = req.body.search;
         //res.send(query);
         db.Product.findAll({
-            include : [ { model: db.Attribute,
-                        as: "products_attributes" }],  
+            include: [{
+                model: db.Attribute,
+                as: "products_attributes"
+            }],
             where: {
-                [Op.or]: [{name: { [Op.like]: `%${query}%` }}, {description: { [Op.like]: `%${query}%` }}]
-            }                      
+                [Op.or]: [{ name: { [Op.like]: `%${query}%` } }, { description: { [Op.like]: `%${query}%` } }]
+            }
             /* where: {
                 name: { [Op.like]: `%${query}%` }                
             } */
         })
             .then(function (productos) {
                 //res.send(productos);
-                res.render('main/search', { query: query, productos: productos});
+                res.render('main/search', { query: query, productos: productos });
             })
-            .catch(function (err){
+            .catch(function (err) {
                 console.log(err);
             })
     }
