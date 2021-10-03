@@ -4,7 +4,7 @@ const multer = require('multer');
 const path = require("path");
 const { check } = require('express-validator');
 
-// Controlador de productos
+// Controlador de atributos
 const adminAttributeController = require('../controllers/attributeController');
 
 const loggedAdminMiddleware = require('../middlewares/loggedAdminMiddleware');
@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// Validación para el formulario de creación de un producto
+// Validación para el formulario de creación de un atributo
 const validaciones = [
     check('categoria').notEmpty().withMessage('Debes elegir al menos 1 categoria'),
     check('genero').notEmpty().withMessage('Elige un genero'),
@@ -37,13 +37,13 @@ const validaciones = [
 
 /* Rutas */
 
-// listado de todos los productos
+// listado de todos los atributos
 router.get('/:id', loggedAdminMiddleware, adminAttributeController.index);
 
 // página de administrador
 //router.get('/products-admin', adminProductController.admin);
 
-// obtener el formulario de creación de productos
+// obtener el formulario de creación de atributos
 router.get('/create/:id', loggedAdminMiddleware, adminAttributeController.add);
 
 // acción de creación, donde se envía el formulario de creación de atributos
@@ -52,13 +52,13 @@ router.post('/create/:id', upload.single('imagen'), validaciones, loggedAdminMid
 // detalle de un producto
 //router.get('/product-detail/:id', adminProductController.detalle);
 
-// formulario de edición de productos
+// formulario de edición de atributos
 router.get('/edit/:id', loggedAdminMiddleware, adminAttributeController.edit);
 
-// acción de edición, donde se envía el formulario de edición de productos
-router.put('/:id', loggedAdminMiddleware, adminAttributeController.update);
+// acción de edición, donde se envía el formulario de edición de atributos
+router.put('/update/:id', loggedAdminMiddleware, adminAttributeController.update);
 
-// acción de borrado de un producto
+// acción de borrado de un atributos
 router.delete('/delete/:id', loggedAdminMiddleware, adminAttributeController.delete);
 
 module.exports = router;

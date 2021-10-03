@@ -8,11 +8,12 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const date = Date.now();
 const db = require('../database/models');
+const { resolveSoa } = require('dns');
 
 
 const attributeController = {
 
-    // listado de todos los productos
+    // listado de todos los atributos de un producto
     index: function (req, res) {
         let id = req.params.id;
         //console.log('id ' + id);
@@ -36,7 +37,7 @@ const attributeController = {
         })
     },
 
-    // página de creación de un producto
+    // página de creación de un atributo
     add: function (req, res) {
         //console.log("estoy en add");
         let id = req.params.id;
@@ -60,7 +61,7 @@ const attributeController = {
             })
     },
 
-    // método que contiene la lógica cuando se guarda un producto
+    // método que contiene la lógica cuando se guarda un atributo
     store: (req, res) => {
         let errors = validationResult(req);
         //console.log("estoy en store");
@@ -153,7 +154,7 @@ const attributeController = {
         }
     },
 
-    // página de detalle de un producto
+    // página de detalle de un atributo
     detalle: function (req, res) {
         const colores = [];
         const tamanos = [];
@@ -282,32 +283,37 @@ const attributeController = {
 
     },
 
-    // metodo que devuelve el formulario de edición de un producto
+    // metodo que devuelve el formulario de edición de un atributo
     edit: function (req, res) {
         let id = req.params.id;
-        console.log('id attribute' + id);
-        db.Attribute.findByPk(id)
-        .then( pro => {
-            console.log(pro);
-            //res.render('admin/edit-product', { producto: productoActual });
-            res.render('admin/edit-attribute', { producto: pro });
+        console.log('id attribute ' + id);
+
+        let atrCategory = db.Category.findAll();
+        let atributo = db.Attribute.findByPk(id);
+
+        Promise.all([atrCategory, atributo])
+        .then(function ([resCategory, resAtributo]) {
+            //console.log(resCategory, resColor, resSize);
+            let atrObject = {
+                id: resAtributo.id_attribute,
+                imagen: resAtributo.image,
+                genero: resAtributo.gender,
+                disponible: resAtributo.available,
+                precio: resAtributo.price,
+                descuento: resAtributo.discount,
+                category_id: resAtributo.category_id,
+                cantidad: resAtributo.quantity
+            }
+            //console.log(atrObject, resCategory);
+            res.render('admin/edit-attribute', { categories: resCategory, producto: atrObject });
         })
         .catch(function (err) {
             console.log(err);
         })
 
-        /*
-        let id = req.params.id;
-        let productoActual;
-        for (producto of products) {
-            if (producto.id == id) productoActual = producto;
-        }
-        */
-
-
     },
 
-    // acción que actualiza el producto
+    // acción que actualiza el atributo
     update: function (req, res) {
         let id = req.params.id;
 
@@ -366,7 +372,7 @@ const attributeController = {
         res.redirect('/products/product-detail/' + id);
     },
 
-    // acción de borrado de un producto
+    // acción de borrado de un atributo
     delete: (req, res) => {
         let id = req.params.id;
         console.log(id);

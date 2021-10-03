@@ -348,5 +348,15 @@
   "terminos": "on",
   "category": "user",
   "imagen": "user1627867344731.png"
+ },
+ {
+  "id": 37,
+  "nombre": "Leticia",
+  "apellido": "Luna",
+  "email": "lety@prueba.com",
+  "password": "$2a$10$UG9kPKKl9CSTli62y7ulpOcuZG5l44gqJ71fXg6aGTVbxFbMHmZdq",
+  "terminos": "on",
+  "category": "user",
+  "imagen": "user1633265619798.png"
  }
 ]
