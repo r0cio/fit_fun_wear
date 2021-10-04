@@ -1,0 +1,109 @@
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/styles-register.css">
+    <title>FitFunWear</title>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+    <main>
+        <div class = "seccion">
+            <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
+        </div>
+        <div class = "bienvenida">
+            <h1> EDITAR PERFIL DE: </h1><i>
+                <%= user.name %>
+            </i>
+        </div>
+
+        <form action = "/user/edit/<%=user.id_user%>?_method=PUT" method = "POST" enctype="multipart/form-data"> <!-- enctype para usar multer -->
+
+            <div class = "etiquetaNombre">
+                <label>Editar nombre</label>
+            </div>
+            <div class = "nombre">
+                <input type="text" placeholder =" Inserte su nombre" name="nombre" 
+                class = "form-input <%= locals.errors && errors.nombre ? 'border border-danger' : '' %> <%= locals.oldData && oldData.nombre ? 'border border-success' : '' %>"
+                value ="<%= user.name %>"
+                >
+                <% if(locals.errors && errors.nombre) { %>
+                    <div class="text-danger">
+                        <%= errors.nombre.msg %>
+                    </div>
+                <% } %>	
+            </div>
+            
+            <div class = "etiquetaApellido">
+                <label>Editar apellido</label>
+            </div>
+            <div class = "apellido">
+                <!--
+                    <input type="text" placeholder =" Inserte su apellido" name="apellido" pattern = "[a-zA-Z]">
+                -->
+                <input type="text" placeholder =" Inserte su apellido" name="apellido" 
+                class = "form-input <%= locals.errors && errors.apellido ? 'border border-danger' : '' %> <%= locals.oldData && oldData.apellido ? 'border border-success' : '' %>"
+                value ="<%= user.last_name %>"
+                >
+                <% if(locals.errors && errors.apellido) { %>
+                    <div class="text-danger">
+                        <%= errors.apellido.msg %>
+                    </div>
+                <% } %>	
+            </div>
+
+            <div class = "etiquetaCorreo">
+                <label>Editar correo electrónico</label>
+            </div>
+            <div class = "correo">
+                <input type="email" placeholder =" Inserte su correo electrónico" name="email" minlength="@" 
+                class = "form-input <%= locals.errors && errors.email ? 'border border-danger' : '' %> <%= locals.oldData && oldData.email ? 'border border-success' : '' %>"
+                value ="<%= user.email %>"
+                >
+                <% if(locals.errors && errors.email) { %>
+                    <div class="text-danger">
+                        <%= errors.email.msg %>
+                    </div>
+                <% } %>	
+            </div>
+             
+
+            <div class = "etiquetaContraseña">
+                <label>Editar contraseña</label>
+            </div>
+            <div class = "Contraseña" >
+                <input type="password" placeholder =" Cree una contraseña" name="password" minlength="8" 
+                class = "form-input <%= locals.errors && errors.password ? 'border border-danger' : '' %> <%= locals.oldData && oldData.password ? 'border border-success' : '' %>"
+                value = ""
+                >
+                <% if(locals.errors && errors.password) { %>
+                    <div class="text-danger">
+                        <%= errors.password.msg %>
+                    </div>
+                <% } %>	
+        
+            </div>
+            <div class="etiquetaImage">
+                <label>Editar imagen de perfil</label>
+            </div>
+            <div class="imagenPerfil">
+                <input type="file" placeholder="" id="imagen" name="imagen" accept="image/*">
+                <p>
+                    <label class="img-actual">Imagen de perfil actual</span> <img src="/img/users/<%= user.image %>"
+                            alt="Imagen actual"></label>
+                </p>
+            </div>
+            <% if(locals.errors && errors.imagen) { %>
+                <div class="text-danger">
+                    <%= errors.imagen.msg %>
+                </div>
+            <% } %>	
+            <div class ="boton">
+                <button class="Enviar" type = "submit">GUARDAR</button>
+            </div>
+        
+        </form>
+
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+
+</html>

@@ -46,4 +46,16 @@ router.get('/logout', userController.logout);
 // ************ Perfil de usuario ************
 router.get('/profile', loggedMiddleware, userController.profile);
 
+// Creación
+
+//router.get("/crear", userController.crear)
+
+//Editar (update)
+
+router.get('/edit/:id', userController.edit);
+
+//Actualizar 
+router.put('/edit/:id', upload.single('imagen'), userController.update);
+
+
 module.exports = router;
