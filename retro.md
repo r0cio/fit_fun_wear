@@ -77,3 +77,35 @@
 
 ## Dejar de hacer
 ### Dejar de posponer los daily sprints.
+
+# Conclusiones Sprint 6
+## Empezar a hacer
+### Regresar a nuestra velocidad inicial para la realización del proyecto, ya que este fue uno de los sprints más complicados que hemos tenido como equipo.
+
+## Hacer más
+### Comunicarnos más y con mayor frecuencia para apoyarnos en la realización de las tareas y cumplir en tiempo y forma la entrega de nuestros sprints.
+
+## Continuar haciendo
+### Continuar cumpliendo con los objetivos de los sprints, haciendo uso de Trello para mantener nuestra organización y buen ritmo de trabajo.
+
+## Hacer menos
+### Dejar de posponer las reuniones para tocar temas o problemas que presentamos de manera individual, ya que al reunirnos con nuestro equipo podemos fortalecernos y mejorar nuestro trabajo tanto personal como grupal.
+
+## Dejar de hacer
+### Una cosa que queremos es dejar de prolongar los tiempos entre cada reunión y los daily sprints ya que por los tiempos de cada integrantes no hemos podido implementarlos como quisieramos.
+
+# Conclusiones Sprint 7
+## Empezar a hacer
+### Ofrecerle al usuario una mejor experiencia, haciendo la interfaz más amigable y dinámica.
+
+## Hacer más
+### Ser más autodidactas para incorporar nuevas herramientas a nuestro proyecto integrador.
+
+## Continuar haciendo
+### Cumplir con los objetivos de los sprints en tiempo y forma, continuar con el buen ambiente que tenemos como equipo y seguir con la comunicación y apoyo con el que hemos trabajado desde el inicio del proyecto integrador.
+
+## Hacer menos
+### Dejar tareas para el último momento ya que en el sprint anterior presentamos algunos problemas al tratarse de un tema como base de datos, por ello se nos fue acumulando el trabajo y en este sprint tuvimos menos tiempo para cumplir con los objetivos ya que desarrollamos tareas de ambos sprints.
+
+## Dejar de hacer
+### Dejar de trabajar en 2 sprints al mismo tiempo ya que nos sobrecargamos de trabajo y por ello podríamos no llegar a cumplir con los tiempos marcados en nuestro tablero, así mismo queremos dejar de posponer nuestras reuniones grupales.
