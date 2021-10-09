@@ -1,5 +1,6 @@
 <%- include('../partials/head') %>
     <link rel="stylesheet" href="/css/styles-register.css">
+    <script src="/js/validatorAddEditAttributes.js"></script>
     <title>FitFunWear</title>
     </head>
 
@@ -24,13 +25,13 @@
                     <div class="imagenProducto">
                         <input type="file" placeholder="" name="imagen" accept="image/*">
                         <p>
-                            <label class="img-actual">Imagen actual</span> <img src="/img/products/<%= producto.imagen %>"
+                            <label class="img-actual">Imagen actual</span> <img style="max-width: 530px;" src="/img/products/<%= producto.imagen %>"
                                     alt="Imagen actual"></label>
                         </p>
                     </div>
 
                     <div class="categoria">
-                        <select name="categoria" class="categoria mb-3" id="">
+                        <select name="categoria" class="categoria mb-3 add-attribute-categoria" id="">
                             <option value="" selected disabled>Selecciona categoria</option>
                             <% for( let i=0; i < categories.length; i++ ) { %>
                                 <%if(producto.category_id == categories[i].id_category) {%>
@@ -43,48 +44,52 @@
                                 </option>
                                 <% } %>
                         </select>
+                        <p class="add-attribute-error-categoria text-danger d-none"></p>
                     </div>
 
                     <div class="etiquetaGenero">
                         <label>Género</label>
                     </div>
                     <div class="genero">
-                        <input type="radio" class="m-1" name="genero" value="H" <%=producto &&
+                        <input type="radio" class="m-1 add-attribute-genero-h" name="genero" value="H" <%=producto &&
                             producto.genero=='H' ? 'checked' : '' %>> Hombre
-                        <input type="radio" class="m-1" name="genero" value="M" <%=producto &&
+                        <input type="radio" class="m-1 add-attribute-genero-m" name="genero" value="M" <%=producto &&
                             producto.genero=='M' ? 'checked' : '' %>> Mujer
-                        <input type="radio" class="m-1" name="genero" value="U" <%=producto &&
+                        <input type="radio" class="m-1 add-attribute-genero-u" name="genero" value="U" <%=producto &&
                         producto.genero=='U' ? 'checked' : '' %>> Unisex
                     </div>
+                    <p class="add-attribute-error-genero text-danger d-none"></p>
                     <div class="etiquetaDisponibilidad">
                         <label>¿Producto disponible?</label>
                     </div>
 
                     <div class="disponibilidad">
-                        <input type="radio" name="disponible" value="1" <%=producto.disponible == true ? 'checked' : '' %> > Sí
-                        <input type="radio" name="disponible" value="0" <%=producto.disponible == false ? 'checked' : '' %> > No
+                        <input type="radio" class="add-attribute-disponible-si" name="disponible" value="1" <%=producto.disponible == true ? 'checked' : '' %> > Sí
+                        <input type="radio" class="add-attribute-disponible-no" name="disponible" value="0" <%=producto.disponible == false ? 'checked' : '' %> > No
                     </div>
 
                     <div class="etiquetaPrecio">
                         <label>Precio del producto</label>
                     </div>
                     <div class="precio">
-                        <input type="text" placeholder="" name="precio" value="<%= producto.precio%>">
+                        <input class="add-attribute-precio" type="number" placeholder="" name="precio" value="<%= producto.precio%>">
                     </div>
+                    <p class="add-attribute-error-precio text-danger d-none"></p>
 
                     <div class="etiquetaDescuento">
                         <label>Descuento</label>
                     </div>
                     <div class="descuento">
-                        <input type="text" placeholder="" name="descuento" value="<%= producto.descuento %>">
+                        <input type="number" placeholder="" name="descuento" value="<%= producto.descuento %>">
                     </div>
 
                     <div class="etiquetaCantidad">
                         <label>Cantidad</label>
                     </div>
                     <div class="cantidad">
-                        <input type="text" placeholder="" name="cantidad" value="<%= producto.cantidad %>">
+                        <input class="add-attribute-cantidad" type="number" placeholder="" name="cantidad" value="<%= producto.cantidad %>">
                     </div>
+                    <p class="add-attribute-error-cantidad text-danger d-none"></p>
 
                     <div class="boton">
                         <button class="Enviar" type="submit">EDITAR</button>

@@ -14,6 +14,7 @@
                       <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
+                      <% console.log(productosTendencia) %> 
                       <div class="carousel-item active">
                         <a href="/products/product-detail/<%= productosTendencia[productosTendencia.length-1].id_product %>" class="text-white"><img src="/img/products/<%= productosTendencia[productosTendencia.length-1].products_attributes[0].image %> " class="d-block w-100 img-carr" alt="Imagen de producto"></a>
                         <div class="carousel-caption d-none d-md-block mb-3">

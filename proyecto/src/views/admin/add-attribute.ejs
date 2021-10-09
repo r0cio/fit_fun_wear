@@ -1,5 +1,6 @@
 <%- include('../partials/head') %>
     <link rel="stylesheet" href="/css/styles-register.css">
+    <script src="/js/validatorAddEditAttributes.js"></script>
     <title>FitFunWear</title>
     </head>
 
@@ -47,14 +48,14 @@
                         <label>Agrega una imagen</label>
                     </div>
                     <div class="imagenProducto">
-                        <input type="file" id="imagen" name="imagen" accept="image/*">
+                        <input class="add-attribute-img" type="file" id="imagen" name="imagen" accept="image/*">
                     </div>
 
                     <div class="etiquetaCategoria">
                         <label>Selecciona su categoría</label>
                     </div>
                     <div class="categoria">
-                        <select name="categoria" class="categoria mb-3" id="">
+                        <select name="categoria" class="categoria mb-3 add-attribute-categoria" id="">
                             <option value="" selected disabled>Selecciona categoria</option>
                             <% for( let i=0; i < categories.length; i++ ) { %>
                                 <option value="<%= categories[i].id_category %>">
@@ -62,6 +63,7 @@
                                 </option>
                                 <% } %>
                         </select>
+                        <p class="add-attribute-error-categoria text-danger d-none"></p>
                     </div>
                                     <!-- <div class="categoria" required>
                             <input type="checkbox" name="categoria" value="Tendencias"> Tendencia
@@ -78,12 +80,13 @@
                         <label>Género</label>
                     </div>
                     <div class="genero">
-                        <input type="radio" class="m-1" name="genero" value="H" <%=locals.old &&
+                        <input type="radio" class="m-1 add-attribute-genero-h" name="genero" value="H" <%=locals.old &&
                             old.genero=='H' ? 'checked' : '' %>> Hombre
-                        <input type="radio" class="m-1" name="genero" value="M" <%=locals.old &&
+                        <input type="radio" class="m-1 add-attribute-genero-m" name="genero" value="M" <%=locals.old &&
                             old.genero=='M' ? 'checked' : '' %>> Mujer
-                        <input type="radio" class="m-1" name="genero" value="U"> Unisex
+                        <input type="radio" class="m-1 add-attribute-genero-u" name="genero" value="U"> Unisex
                     </div>
+                    <p class="add-attribute-error-genero text-danger d-none"></p>
                     <% if (locals.error && error.genero) { %>
                         <p class="text-danger">
                             <%= error.genero.msg %>
@@ -94,13 +97,14 @@
                         <label>¿Producto disponible?</label>
                     </div>
                     <div class="disponibilidad">
-                        <input type="radio" name="disponible" value="1" <%=locals.old &&
+                        <input type="radio" class="add-attribute-disponible-si" name="disponible" value="1" <%=locals.old &&
                             old.disponible==true || locals.old && old.disponible=='true'
                             ? 'checked' : '' %>> Sí
-                        <input type="radio" name="disponible" value="0" <%=locals.old &&
+                        <input type="radio" class="add-attribute-disponible-no" name="disponible" value="0" <%=locals.old &&
                             old.disponible==false || locals.old &&
                             old.disponible=='true' ? 'checked' : '' %>> No
                     </div>
+                    <p class="add-attribute-error-disponible text-danger d-none"></p>
                     <% if (locals.error && error.disponible) { %>
                         <p class="text-danger">
                             <%= error.disponible.msg %>
@@ -111,7 +115,7 @@
                         <label>Color</label>
                     </div>
                     <div class="categoria">
-                        <select name="color" id="" class="mb-3">
+                        <select name="color" id="" class="mb-3 add-attribute-color">
                             <option value="" selected disabled>Selecciona color
                             </option>
                             <% for( let i=0; i < colors.length; i++ ) { %>
@@ -120,6 +124,7 @@
                                 </option>
                                 <% } %>
                         </select>
+                        <p class="add-attribute-error-color text-danger d-none"></p>
                         <!-- <input type="checkbox" name="color" value="Rosa"> Rosa
                         <input type="checkbox" name="color" value="Negro"> Negro
                         <input type="checkbox" name="color" value="Azul"> Azul
@@ -150,7 +155,7 @@
                     </div>
 
                     <div class="categoria">
-                        <select name="talla" id="" class="mb-3">
+                        <select name="talla" id="" class="mb-3 add-attribute-talla">
                             <option value="" selected disabled>
                                 Selecciona
                                 talla
@@ -163,6 +168,7 @@
                             <% } %>
                         </select>
                     </div>
+                    <p class="add-attribute-error-talla text-danger d-none"></p>
                                                                     <!-- <div class="talla">
                                                                         <input type="checkbox" name="talla" value="22">
                                                                         22
@@ -222,9 +228,10 @@
                     <div class="precio">
                         <input type="number" placeholder=""
                             name="precio"
-                            class="<%= locals.error && error.precio ? 'border border-danger' : '' %> <%= locals.old && old.precio ? 'border border-success': '' %>  "
+                            class="add-attribute-precio <%= locals.error && error.precio ? 'border border-danger' : '' %> <%= locals.old && old.precio ? 'border border-success': '' %>  "
                             value="<%= locals.old && old.precio ? old.precio : '' %>">
                     </div>
+                    <p class="add-attribute-error-precio text-danger d-none"></p>
                     <% if (locals.error && error.precio) { %>
                         <p class="text-danger">
                             <%= error.precio.msg %>
@@ -253,9 +260,10 @@
                         <input type="number"
                                 placeholder=""
                                 name="cantidad"
-                                class="<%= locals.error && error.cantidad ? 'border border-danger' : '' %> <%= locals.old && old.cantidad ? 'border border-success': '' %>"
+                                class="add-attribute-cantidad <%= locals.error && error.cantidad ? 'border border-danger' : '' %> <%= locals.old && old.cantidad ? 'border border-success': '' %>"
                                 value="<%= locals.old && old.cantidad ? old.cantidad : '' %>">
                     </div>
+                    <p class="add-attribute-error-cantidad text-danger d-none"></p>
                     <% if (locals.error && error.cantidad) { %>
                         <p class="text-danger">
                             <%= error.cantidad.msg %>
