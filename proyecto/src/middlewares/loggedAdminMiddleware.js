@@ -1,5 +1,5 @@
 function loggedAdminMiddleware(req, res, next) {
-    if (!req.session.userLogged) {
+    if (!req.session.userLog) {
         return res.redirect('/user/login');
     }
     next();

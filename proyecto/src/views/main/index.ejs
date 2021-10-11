@@ -1,98 +1,121 @@
 <%- include('../partials/head') %>
-    <link rel="stylesheet" href="/css/styles-index.css">
-    <title>FitFunWear</title>
-    </head>
+  <link rel="stylesheet" href="/css/styles-index.css">
+  <title>FitFunWear</title>
+  </head>
 
-    <body>
-        <%- include('../partials/header') %>
-            <main>                                                                           
-                <section class="carrusel">
-                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                      <% console.log(productosTendencia) %> 
-                      <div class="carousel-item active">
-                        <a href="/products/product-detail/<%= productosTendencia[productosTendencia.length-1].id_product %>" class="text-white"><img src="/img/products/<%= productosTendencia[productosTendencia.length-1].products_attributes[0].image %> " class="d-block w-100 img-carr" alt="Imagen de producto"></a>
-                        <div class="carousel-caption d-none d-md-block mb-3">
-                         <a href="/products/product-detail/<%= productosTendencia[productosTendencia.length-1].id_product %>" class="text-white">
-                            <h5 class="font-weight-bold label-product-carusel"> <%= productosTendencia[productosTendencia.length-1].name %> </h5>
-                          <p class="font-weight-bold label-product-carusel"><%= productosTendencia[productosTendencia.length-1].description %></p>                        
-                        </a>
-                        </div>
-                      </div>
-                      <div class="carousel-item">
-                        <a href="/products/product-detail/<%= productosOferta[productosOferta.length-1].id_product %>" class="text-white"><img src="/img/products/<%= productosOferta[productosOferta.length-1].products_attributes[0].image %> " class="d-block w-100 img-carr" alt="Imagen de producto"></a>
-                        <div class="carousel-caption d-none d-md-block mb-3">
-                         <a href="/products/product-detail/<%= productosOferta[productosOferta.length-1].id_product %>" class="text-white">
-                            <h5 class="font-weight-bold label-product-carusel"> <%= productosOferta[productosOferta.length-1].name %> </h5>
-                          <p class="font-weight-bold label-product-carusel"><%= productosTendencia[productosOferta.length-1].description %></p>                        
-                        </a>
-                        </div>
-                      </div>
-                      <div class="carousel-item">
-                        <a href="/products/product-detail/<%= productosTendencia[productosTendencia.length-2].id_product %>" class="text-white"><img src="/img/products/<%= productosTendencia[productosTendencia.length-2].products_attributes[0].image %> " class="d-block w-100 img-carr" alt="Imagen de producto"></a>
-                        <div class="carousel-caption d-none d-md-block mb-3">
-                         <a href="/products/product-detail/<%= productosTendencia[productosTendencia.length-2].id_product %>" class="text-white">
-                            <h5 class="font-weight-bold label-product-carusel"> <%= productosTendencia[productosTendencia.length-2].name %> </h5>
-                          <p class="font-weight-bold label-product-carusel"><%= productosTendencia[productosTendencia.length-2].description %></p>                        
-                        </a>
-                        </div>
-                      </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </div>
-                </section>
-                <section class="trending">
-                    <h2 class="title-section">Tendencias</h2>
-                    <!-- Show the "tendencia" products. Se agrega el for -->
-                    <div class="trending-articles">
-                        <% for (let producto of productosTendencia) { %>
-                          <% console.log(producto.products_attributes[0].image) %> 
-                            <article class="section-item pointer">
-                                <a href="/products/product-detail/<%= producto.id_product %>"> <img
-                                        src="/img/products/<%=producto.products_attributes[0].image%>" class="img-item" alt="Artículo">
-                                    <p class="item-name">
-                                        <%= producto.name %>
-                                    </p>
-                                    <p class="item-price"><b>$<%= producto.products_attributes[0].price %></b></p>
-                                </a>
-                            </article>
-                            <% } %>
-                    </div>
-                </section>
-                <section class="best-seller">
-                    <h2 class="title-section" id="ofertas">Ofertas</h2>
-                    <!-- Show the "tendencia" products. Se agrega el for -->
-                    <div class="best-seller-articles">
-                        <% for (let producto of productosOferta) { %>
-                            <article class="section-item pointer">
-                                <a href="/products/product-detail/<%= producto.id_product %>"> <img
-                                        src="/img/products/<%=producto.products_attributes[0].image%>" class="img-item" alt="Artículo">
-                                    <p class="item-name">
-                                        <%= producto.name %>
-                                    </p>
-                                    <p class="item-price"><b>$<%= producto.products_attributes[0].price %></b></p>
-                                </a>
-                            </article>
-                            <% } %>
-                    </div>
-                </section>
-                <div class="text-center">
-                  <button class="border border-light"><a class="btn btn-info text-white" href="/products">Ver todos los productos</a></button>
+  <body>
+    <%- include('../partials/header') %>
+      <main>
+        <section class="carrusel">
+          <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <a href="/products/product-detail/<%= productosTendencia[productosTendencia.length-1].id_product %>"
+                  class="text-white"><img
+                    src="/img/products/<%= productosTendencia[productosTendencia.length-1].products_attributes[0].image %> "
+                    class="d-block w-100 img-carr" alt="Imagen de producto"></a>
+                <div class="carousel-caption d-none d-md-block mb-3">
+                  <a href="/products/product-detail/<%= productosTendencia[productosTendencia.length-1].id_product %>"
+                    class="text-white">
+                    <h5 class="font-weight-bold label-product-carusel">
+                      <%= productosTendencia[productosTendencia.length-1].name %>
+                    </h5>
+                    <p class="font-weight-bold label-product-carusel">
+                      <%= productosTendencia[productosTendencia.length-1].description %>
+                    </p>
+                  </a>
                 </div>
-            </main>
-            <%- include('../partials/footer') %>
-    </body>
+              </div>
+              <div class="carousel-item">
+                <a href="/products/product-detail/<%= productosOferta[productosOferta.length-1].id_product %>"
+                  class="text-white"><img
+                    src="/img/products/<%= productosOferta[productosOferta.length-1].products_attributes[0].image %> "
+                    class="d-block w-100 img-carr" alt="Imagen de producto"></a>
+                <div class="carousel-caption d-none d-md-block mb-3">
+                  <a href="/products/product-detail/<%= productosOferta[productosOferta.length-1].id_product %>"
+                    class="text-white">
+                    <h5 class="font-weight-bold label-product-carusel">
+                      <%= productosOferta[productosOferta.length-1].name %>
+                    </h5>
+                    <p class="font-weight-bold label-product-carusel">
+                      <%= productosOferta[productosOferta.length-1].description %>
+                    </p>
+                  </a>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <a href="/products/product-detail/<%= productosTendencia[productosTendencia.length-2].id_product %>"
+                  class="text-white"><img
+                    src="/img/products/<%= productosTendencia[productosTendencia.length-2].products_attributes[0].image %> "
+                    class="d-block w-100 img-carr" alt="Imagen de producto"></a>
+                <div class="carousel-caption d-none d-md-block mb-3">
+                  <a href="/products/product-detail/<%= productosTendencia[productosTendencia.length-2].id_product %>"
+                    class="text-white">
+                    <h5 class="font-weight-bold label-product-carusel">
+                      <%= productosTendencia[productosTendencia.length-2].name %>
+                    </h5>
+                    <p class="font-weight-bold label-product-carusel">
+                      <%= productosTendencia[productosTendencia.length-2].description %>
+                    </p>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </section>
+        <section class="trending">
+          <h2 class="title-section">Tendencias</h2>
+          <!-- Show the "tendencia" products. Se agrega el for -->
+          <div class="trending-articles">
+            <% for (let producto of productosTendencia) { %>
+              <article class="section-item pointer">
+                <a href="/products/product-detail/<%= producto.id_product %>"> <img
+                    src="/img/products/<%=producto.products_attributes[0].image%>" class="img-item" alt="Artículo">
+                  <p class="item-name">
+                    <%= producto.name %>
+                  </p>
+                  <p class="item-price"><b>$<%= producto.products_attributes[0].price %></b></p>
+                </a>
+              </article>
+              <% } %>
+          </div>
+        </section>
+        <section class="best-seller">
+          <h2 class="title-section" id="ofertas">Ofertas</h2>
+          <!-- Show the "tendencia" products. Se agrega el for -->
+          <div class="best-seller-articles">
+            <% for (let producto of productosOferta) { %>
+              <article class="section-item pointer">
+                <a href="/products/product-detail/<%= producto.id_product %>"> <img
+                    src="/img/products/<%=producto.products_attributes[0].image%>" class="img-item" alt="Artículo">
+                  <p class="item-name">
+                    <%= producto.name %>
+                  </p>
+                  <p class="item-price"><b>$<%= producto.products_attributes[0].price %></b></p>
+                </a>
+              </article>
+              <% } %>
+          </div>
+        </section>
+        <div class="text-center">
+          <button class="border border-light"><a class="btn btn-info text-white" href="/products">Ver todos los
+              productos</a></button>
+        </div>
+      </main>
+      <%- include('../partials/footer') %>
+  </body>
 
-    </html>
+  </html>

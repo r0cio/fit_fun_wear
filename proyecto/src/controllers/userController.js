@@ -19,31 +19,120 @@ const userController = {
         res.render('user/login');
     },
 
+    loginProcess: (req, res) => {
+        // Verifica si hay errores
+        const resultValidation = validationResult(req);
+        if (resultValidation.errors.length > 0) {
+            return res.render('user/login', {
+                errors: resultValidation.mapped(),
+                oldData: req.body,
+            });
+        }
 
-    // vista para la creación 
+        // Si no hay errores
+        db.User.findAll({
+            where: {
+                email: req.body.email
+            }
+        })
+            .then(user => {
+                if (user.length != 0) {
+                    //res.send(user[0].password);
+                    let correctPassword = bycrypt.compareSync(req.body.password, user[0].password);
+                    if (correctPassword) {
+                        delete user[0].password;
+                        //console.log(user[0]);
+                        //return res.send(user[0]);
+                        let user2 = user[0];
+                        //req.session.userLogged = user2;
+                        req.session.userLog = user2;
+                        //console.log("sess", req.session);
+                        //return res.send(user2);
+                        if (req.body.recordarme) {
+                            res.cookie("userEmail", req.body.email, { maxAge: (1000 * 60) * 5 });
+                        }
+                        return res.render('user/profile', { user: user[0] });
+                    }
+                    return res.render('user/login', {
+                        errors: {
+                            email: {
+                                msg: 'Los datos no son correctos'
+                            },
+                            password: {
+                                msg: 'Los datos no son correctos'
+                            }
+                        }
+                    });
+                } else {
+                    return res.render('user/login', {
+                        errors: {
+                            email: {
+                                msg: 'No se encuentra este email en nuestra base de datos'
+                            }
+                        },
+                        oldData: req.body,
+                    });
+                }
+            })
+            .catch(err => console.log(err))
 
+        /* const resultValidation = validationResult(req);
+        // Verifica si hay errores
+        if (resultValidation.errors.length > 0) {
+            return res.render('user/login', {
+                errors: resultValidation.mapped(),
+                oldData: req.body,
+            });
+        }
+        // No hay errores
+        //let userToLogin =
+        db.User.findAll()
+            .then(users => res.send(users))
+            .catch(err => console.log(err)) */
+
+
+        /* let userToLogin = User.findByField('email', req.body.email);
+        if (userToLogin) {
+            let correctPassword = bycrypt.compareSync(req.body.password, userToLogin.password);
+            if (correctPassword) {
+                delete userToLogin.password;
+                req.session.userLogged = userToLogin;
+                if (req.body.recordarme) {
+                    res.cookie("userEmail", req.body.email, { maxAge: 1000 * 60 });
+                }
+                return res.redirect('/user/profile');
+            }
+            return res.render('user/login', {
+                errors: {
+                    email: {
+                        msg: 'Los datos no son correctos'
+                    },
+                    password: {
+                        msg: 'Los datos no son correctos'
+                    }
+                }
+            });
+        }
+        return res.render('user/login', {
+            errors: {
+                email: {
+                    msg: 'No se encuentra este email en nuestra base de datos'
+                }
+            },
+            oldData: req.body,
+        }); */
+
+    },
+
+    // vista para la creación de usuarios
     register: function (req, res) {
         res.render('user/register');
     },
 
     // guardado en bd (creación)
     store: function (req, res) {
-        db.User.create({
-            name: req.body.nombre, 
-            last_name: req.body.apellido,
-            email: req.body.email,
-            password: bycrypt.hashSync(req.body.password, 10),
-            image: req.file.filename,
-            created_at: Date.now(),
-            role_id: 2
 
-        });
-
-       // res.render('user/login', { msgSuccess: 'Te has registrado con éxito' });
-
-        
         // Se obtienen las validaciones de los campos del formulario
-
         const resultValidation = validationResult(req);
         // Verifica si hay errores
         if (resultValidation.errors.length > 0) {
@@ -51,17 +140,34 @@ const userController = {
                 errors: resultValidation.mapped(),
                 oldData: req.body,
             });
-            
         }
-/*
-        db.User.findOne({
-            where: {email: req.body.email}
-    }) .then(function(email){
-        console.log(email);
-        //return res.render('user/register', { msg: 'Este usuario ya está registrado' });
-    }).catch(function (err) {
-        console.log(err);
-    })*/
+
+        let imagen = 'default-image.png';
+        if (req.file) {
+            imagen = req.file.filename;
+        }
+
+        db.User.create({
+            name: req.body.nombre,
+            last_name: req.body.apellido,
+            email: req.body.email,
+            password: bycrypt.hashSync(req.body.password, 10),
+            image: imagen,
+            created_at: Date.now(),
+            role_id: 2
+        });
+        // res.render('user/login', { msgSuccess: 'Te has registrado con éxito' });
+
+
+        /*
+                db.User.findOne({
+                    where: {email: req.body.email}
+            }) .then(function(email){
+                console.log(email);
+                //return res.render('user/register', { msg: 'Este usuario ya está registrado' });
+            }).catch(function (err) {
+                console.log(err);
+            })*/
 
         return res.render('user/login', { msgSuccess: 'Te has registrado con éxito' });
     },
@@ -70,20 +176,20 @@ const userController = {
     edit: function (req, res) {
         let id = req.params.id;
         db.User.findByPk(id)
-        .then( user => {
-            console.log(user)
-            res.render('user/edit-profile', { user: user });
-        })
-        .catch(function (err) {
-            console.log(err);
-        })
+            .then(user => {
+                console.log(user)
+                res.render('user/edit-profile', { user: user });
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
     },
 
     // actualizar
     update: function (req, res) {
         let id = req.params.id;
         let user = {
-            "name": req.body.nombre, 
+            "name": req.body.nombre,
             "last_name": req.body.apellido,
             "email": req.body.email,
             "password": bycrypt.hashSync(req.body.password, 10),
@@ -92,13 +198,13 @@ const userController = {
             "role_id": 2
         };
         console.log('user');
-        db.User.update(user,{ where: { id_user: id } })
-        .then( user => {
-            console.log(user);
-        })
-        .catch(function (err) {
-            console.log(err);
-        })
+        db.User.update(user, { where: { id_user: id } })
+            .then(user => {
+                console.log(user);
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
 
         let userToCreate = {}
         if (req.file == undefined) { // Sino se agrega una imagen de perfil se agrega una por default.
@@ -120,8 +226,21 @@ const userController = {
 
         let userCreated = User.create(userToCreate);
         res.redirect('/user/edit/' + id);
-    
-    }
+
+    },
+
+    profile: (req, res) => {
+        return res.render('user/profile', {
+            user: req.session.userLog
+        });
+    },
+
+    logout: function (req, res) {
+        res.clearCookie('userEmail');
+        req.session.destroy();
+        return res.redirect('/');
+    },
+
 };
 
 module.exports = userController;

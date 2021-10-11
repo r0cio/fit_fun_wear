@@ -13,13 +13,6 @@ const db = require('../database/models');
 const mainController = {
 
     index: function (req, res) {
-        /* Promise.all([db.Product.findAll({ order: [['id_product', 'DESC']] }), db.Attribute.findAll()])
-            .then(function ([resProducts, resAttributes]) {
-                console.log(resProducts, resAttributes);
-            }) */
-
-
-
         db.Product.findAll({
             include: [{
                 model: db.Attribute,
@@ -31,7 +24,7 @@ const mainController = {
         })
             .then(products => {
                 //let query = products[0].products_attributes[0].category_id;            
-                //return res.send(products[0]);
+                //return res.send(products);
                 let productosOferta = [];
                 let productosTendencia = [];
 
@@ -42,40 +35,8 @@ const mainController = {
                     } else {
                         productosTendencia.push(products[i]);
                     }
-                    
                 }
-
-                /* products.forEach(product => {
-                    let este = product.dataValues.products_attributes;
-                    let tempPro = {};
-
-                    if (este.length > 0) {
-                        tempPro = {
-                            id_product: product.dataValues.id_product,
-                            name: product.dataValues.name,
-                            price: este[0].dataValues.price,
-                            image: este[0].dataValues.image,
-                            category_id: este[0].category_id
-                        }
-                        producto.push(tempPro);
-                        //res.send(tempPro);
-                    }
-
-                    if (tempPro.category_id == 1) {
-                        productosOferta.push(product);
-                    } else {
-                        productosTendencia.push(product);
-                    } */
-
-                    //console.log("catId", product.products_attributes[0].category_id);
-                    /* if (product.dataValues.products_attributes[0].category_id) {
-                        if (product.products_attributes[0].category_id == 1) {
-                            productosOferta.push(product);
-                        } else {
-                            productosTendencia.push(product);
-                        }
-                    } */
-               // });
+                //console.log(req.session);
                 res.render("main/index", { productosOferta: productosOferta, productosTendencia: productosTendencia });
             })
             .catch(function (err) {

@@ -30,7 +30,7 @@ const mainController = require('../controllers/mainController');
 router.get('/login', guestMiddleware, userController.login);
 
 // ************ Se procesa el formulario de login ************
-//router.post('/login', validationsLogin, userController.loginProcess);
+router.post('/login', validationsLogin, userController.loginProcess);
 
 //************ Se muestra el formulario del registro ************
 router.get('/register', guestMiddleware, userController.register);
@@ -41,10 +41,10 @@ router.post('/register', upload.single('imagen'), validations, userController.st
 //router.get('/reset-password', userController.resetPassword);
 
 // ************ Cierra sesión ************
-//router.get('/logout', userController.logout);
+router.get('/logout', userController.logout);
 
 // ************ Perfil de usuario ************
-//router.get('/profile', loggedMiddleware, userController.profile);
+router.get('/profile', loggedMiddleware, userController.profile);
 
 // Creación
 
