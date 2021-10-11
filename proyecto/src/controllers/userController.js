@@ -76,52 +76,6 @@ const userController = {
             })
             .catch(err => console.log(err))
 
-        /* const resultValidation = validationResult(req);
-        // Verifica si hay errores
-        if (resultValidation.errors.length > 0) {
-            return res.render('user/login', {
-                errors: resultValidation.mapped(),
-                oldData: req.body,
-            });
-        }
-        // No hay errores
-        //let userToLogin =
-        db.User.findAll()
-            .then(users => res.send(users))
-            .catch(err => console.log(err)) */
-
-
-        /* let userToLogin = User.findByField('email', req.body.email);
-        if (userToLogin) {
-            let correctPassword = bycrypt.compareSync(req.body.password, userToLogin.password);
-            if (correctPassword) {
-                delete userToLogin.password;
-                req.session.userLogged = userToLogin;
-                if (req.body.recordarme) {
-                    res.cookie("userEmail", req.body.email, { maxAge: 1000 * 60 });
-                }
-                return res.redirect('/user/profile');
-            }
-            return res.render('user/login', {
-                errors: {
-                    email: {
-                        msg: 'Los datos no son correctos'
-                    },
-                    password: {
-                        msg: 'Los datos no son correctos'
-                    }
-                }
-            });
-        }
-        return res.render('user/login', {
-            errors: {
-                email: {
-                    msg: 'No se encuentra este email en nuestra base de datos'
-                }
-            },
-            oldData: req.body,
-        }); */
-
     },
 
     // vista para la creación de usuarios
@@ -156,10 +110,8 @@ const userController = {
             created_at: Date.now(),
             role_id: 2
         });
-        // res.render('user/login', { msgSuccess: 'Te has registrado con éxito' });
 
-
-        /*
+        /* Aquí va la validación de si ya está un email registrado
                 db.User.findOne({
                     where: {email: req.body.email}
             }) .then(function(email){
@@ -205,7 +157,7 @@ const userController = {
             .catch(function (err) {
                 console.log(err);
             })
-
+        /*
         let userToCreate = {}
         if (req.file == undefined) { // Sino se agrega una imagen de perfil se agrega una por default.
             userToCreate = {
@@ -224,7 +176,7 @@ const userController = {
 
         }
 
-        let userCreated = User.create(userToCreate);
+        let userCreated = User.create(userToCreate);*/
         res.redirect('/user/edit/' + id);
 
     },

@@ -1,5 +1,5 @@
 <%- include('../partials/head') %>
-    <link rel="stylesheet" href="/css/styles-register.css">
+    <link rel="stylesheet" href="/css/styles-profile.css">
     <title>FitFunWear</title>
     </head>
 
@@ -23,12 +23,12 @@
                                 <img src="/img/users/<%= user.image %>">
                                 <br>
                                 <br>
-                                <div class="alert alert-success">
+                                <div class="alert alert-success" role="alert">
                                     <%= user.email %>
                                 </div>
                                 <div class="boton">
                                     <button type="button" class="btn btn-info mr-1"> <a
-                                            href="/user/edit<%=user.id_user%>">
+                                            href="/user/edit/<%=user.id_user%>">
                                             Editar</a></button>
                                 </div>
                         </div>

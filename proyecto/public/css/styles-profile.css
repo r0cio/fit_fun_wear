@@ -1,0 +1,153 @@
+/* Main */
+main{
+    background-color: #ffffff;
+    display: flexbox;
+    margin: 25px 30px;
+    padding: 15px 30px;
+    display: flexbox;
+    border: double 2px #ed5556; 
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgb(41, 173, 184);
+
+}
+
+.logo{
+    width: 90px;
+    height: 90px;
+    display: block;
+    margin: auto;
+    transition: transform 450ms linear;
+}
+.logo:hover{
+    filter: saturate(180%);
+    border-radius:50%;
+    -webkit-border-radius:50%;
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+}
+
+form {
+    display: flexbox;
+}
+
+h1{
+    margin: 0px;
+    margin-top: 17px;
+    text-align: center;
+    font-size: 15px;
+    color: #2c2d37;
+    font-style: oblique;
+}
+
+p.comunidad, p.terminos{
+    margin: 10px 0px;
+    font-size: 11px;
+    text-align: center;
+    color: #2c2d37;
+}
+
+div.etiquetaNombre{
+    padding-top: 10px;
+    border-top: solid 1px #2c2d37;
+    
+}
+
+label{
+    font-size: 14px;
+}
+
+a.box:link{
+    font-size: 11px;
+    color: #757575;
+}
+
+a.link-copy:link, a.iniciarSesion{
+    font-size: 12px;
+    color: #757575;
+}
+
+p.iniciaSesion{
+    font-size: 12px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+textarea.form-input{
+    display: flexbox;
+    width: 100%;
+    height: 100px;
+}
+
+div{
+    display: flexbox;
+    margin: 11px;
+}
+
+input[type="email"],[type="password"],[type="text"] {
+    width: 100%;
+    height: 25px;
+}
+
+div.boton{
+    text-align: center;
+}
+
+button.Enviar{
+    background-color: rgba(237, 85, 86, 0.8);
+    border-radius: 3px;
+    height: 25px;
+    width: 100px;
+    color: #000000;
+    text-align: center;
+    border-color: #ed5556;
+    
+}
+
+.precio input, .descuento input, .cantidad input{
+    width: 100%;
+}
+
+/* Para los diferentes dispositivos - Media queries */
+/* Móvil */
+@media (min-width: 576px) {
+
+   
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+     /* Main */
+     main{
+        margin: 50px 190px;
+    }
+}
+
+
+/* Desktop */
+@media (min-width: 992px) {
+
+    .Enviar:hover{
+        transition: 0.5ms;
+        opacity: 0.8;
+        background-color: #efb85a
+    }
+
+    /* Main */
+    main{
+        margin: 50px 260px;
+    }
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+    /* Main */
+    main{
+        margin: 50px 390px;
+        padding: 15px 60px;
+    
+    }
+
+}
+
