@@ -64,21 +64,6 @@
                     </div>
                 <% } %>	
             </div>
-             
-
-            <div class = "etiquetaContraseña">
-                <label>Editar contraseña</label>
-            </div>
-            <div class = "Contraseña" >
-                <input type="password" placeholder =" Cree una contraseña" name="password" minlength="8" 
-                class = "form-input <%= locals.errors && errors.password ? 'border border-danger' : '' %> <%= locals.oldData && oldData.password ? 'border border-success' : '' %>"
-                value = ""
-                >
-                <% if(locals.errors && errors.password) { %>
-                    <div class="text-danger">
-                        <%= errors.password.msg %>
-                    </div>
-                <% } %>	
         
             </div>
             <div class="etiquetaImage">
@@ -96,6 +81,20 @@
                     <%= errors.imagen.msg %>
                 </div>
             <% } %>	
+
+            <div class = "etiquetaContraseña">
+                <label>Edita o introduce tu contraseña actual para continuar</label>
+            </div>
+            <div class = "Contraseña" >
+                <input type="password" placeholder =" Contraseña" name="password" minlength="8" 
+                class = "form-input <%= locals.errors && errors.password ? 'border border-danger' : '' %> <%= locals.oldData && oldData.password ? 'border border-success' : '' %>"
+                >
+                <% if(locals.errors && errors.password) { %>
+                    <div class="text-danger">
+                        <%= errors.password.msg %>
+                    </div>
+                <% } %>	
+
             <div class ="boton">
                 <button class="Enviar" type = "submit">GUARDAR</button>
             </div>

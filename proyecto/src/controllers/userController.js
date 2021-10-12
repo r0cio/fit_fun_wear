@@ -96,10 +96,21 @@ const userController = {
             });
         }
 
-        let imagen = 'default-image.png';
+        let imagen = 'default-image.png'; // Sino agrega una imagen se pone una por default
         if (req.file) {
             imagen = req.file.filename;
         }
+
+        // Aquí va la validación de si ya está un email registrado
+        db.User.findOne({
+            where: {email: req.body.email}
+        }) .then(function(email){
+            //console.log(email);
+            return res.render('user/register', { msg: 'Este usuario ya está registrado' });
+        }).catch(function (err) {
+            console.log(err);
+        })
+
 
         db.User.create({
             name: req.body.nombre,
@@ -111,16 +122,7 @@ const userController = {
             role_id: 2
         });
 
-        /* Aquí va la validación de si ya está un email registrado
-                db.User.findOne({
-                    where: {email: req.body.email}
-            }) .then(function(email){
-                console.log(email);
-                //return res.render('user/register', { msg: 'Este usuario ya está registrado' });
-            }).catch(function (err) {
-                console.log(err);
-            })*/
-
+         
         return res.render('user/login', { msgSuccess: 'Te has registrado con éxito' });
     },
 
@@ -140,43 +142,52 @@ const userController = {
     // actualizar
     update: function (req, res) {
         let id = req.params.id;
-        let user = {
-            "name": req.body.nombre,
-            "last_name": req.body.apellido,
-            "email": req.body.email,
-            "password": bycrypt.hashSync(req.body.password, 10),
-            "image": req.file.filename,
-            "updated_at": Date.now(),
-            "role_id": 2
-        };
-        console.log('user');
-        db.User.update(user, { where: { id_user: id } })
-            .then(user => {
-                console.log(user);
+        let users = {};
+
+        if( req.file == undefined){ // sino edita la imagen del perfil se mantiene la anterior
+            users = {
+                name: req.body.nombre,
+                last_name: req.body.apellido,
+                email: req.body.email,
+                password: bycrypt.hashSync(req.body.password, 10),
+                //image: imagen,
+                created_at: Date.now(),
+                role_id: 2,
+                updated_at: Date.now()
+            };
+        } else {  // si edita la imagen 
+            users = {
+                name: req.body.nombre,
+                last_name: req.body.apellido,
+                email: req.body.email,
+                password: bycrypt.hashSync(req.body.password, 10),
+                image: req.file.filename,
+                created_at: Date.now(),
+                role_id: 2,
+                updated_at: Date.now()
+            }
+        }
+
+        db.User.update(
+            users,
+            {
+                where : { id_user : id }
+            }
+        )
+        .then( function() {
+           // console.log("tengo id " + id);
+            db.User.findByPk(id)
+            .then(function(response){
+                console.log(response);
+                //res.redirect('/attribute/' + response.product_id);
             })
             .catch(function (err) {
                 console.log(err);
             })
-        /*
-        let userToCreate = {}
-        if (req.file == undefined) { // Sino se agrega una imagen de perfil se agrega una por default.
-            userToCreate = {
-                ...req.body,
-                //password: bycrypt.hashSync(req.body.password, 10),
-                //category: 'user',
-                imagen: 'default-image.png',
-            };
-        } else {  // En caso contrario se agrega la imagen que sube el usuario.
-            userToCreate = {
-                ...req.body,
-                //password: bycrypt.hashSync(req.body.password, 10),
-                //category: 'user',
-                imagen: req.file.filename,
-            };
+        }   
 
-        }
+        )
 
-        let userCreated = User.create(userToCreate);*/
         res.redirect('/user/edit/' + id);
 
     },
