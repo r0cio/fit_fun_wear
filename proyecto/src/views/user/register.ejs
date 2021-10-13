@@ -1,117 +1,123 @@
 <%- include('../partials/head') %>
     <link rel="stylesheet" href="/css/styles-register.css">
     <title>FitFunWear</title>
-</head>
+    </head>
 
-<body>
-    <%- include('../partials/header') %>
-    <main>
-        <div class = "seccion">
-            <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
-        </div>
-        <div class = "bienvenida">
-            <h1> BIENVENIDO A LA COMUNIDAD FIT FUN WEAR</h1> 
-            <p class = "comunidad"> Crea tu perfil y descubre una increíble experiencia, tendrás acceso a beneficios exclusivos y a los mejores productos deportivos. </p>
-        </div>
+    <body>
+        <%- include('../partials/header') %>
+            <main>
+                <div class="seccion">
+                    <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
+                </div>
+                <div class="bienvenida">
+                    <h1> BIENVENIDO A LA COMUNIDAD FIT FUN WEAR</h1>
+                    <p class="comunidad"> Crea tu perfil y descubre una increíble experiencia, tendrás acceso a
+                        beneficios exclusivos y a los mejores productos deportivos. </p>
+                </div>
 
-        <form action = "/user/register" method = "POST" enctype="multipart/form-data"> <!-- enctype para usar multer -->
+                <form action="/user/register" method="POST" enctype="multipart/form-data">
+                    <!-- enctype para usar multer -->
+                    <% if (locals && locals.msg) { %>
+                        <p class="text-danger text-center">
+                            <%= msg %>
+                        </p>
+                        <% } %>
+                            <div class="etiquetaNombre">
+                                <label>Nombre*</label>
+                            </div>
+                            <div class="nombre">
+                                <input type="text" placeholder=" Inserte su nombre" name="nombre"
+                                    class="form-input <%= locals.errors && errors.nombre ? 'border border-danger' : '' %> <%= locals.oldData && oldData.nombre ? 'border border-success' : '' %>"
+                                    value="<%= locals.oldData && oldData.nombre ? oldData.nombre : null %>">
+                                <% if(locals.errors && errors.nombre) { %>
+                                    <div class="text-danger">
+                                        <%= errors.nombre.msg %>
+                                    </div>
+                                    <% } %>
+                            </div>
 
-            <div class = "etiquetaNombre">
-                <label>Nombre*</label>
-            </div>
-            <div class = "nombre">
-                <input type="text" placeholder =" Inserte su nombre" name="nombre" 
-                class = "form-input <%= locals.errors && errors.nombre ? 'border border-danger' : '' %> <%= locals.oldData && oldData.nombre ? 'border border-success' : '' %>"
-                value ="<%= locals.oldData && oldData.nombre ? oldData.nombre : null %>"
-                >
-                <% if(locals.errors && errors.nombre) { %>
-                    <div class="text-danger">
-                        <%= errors.nombre.msg %>
-                    </div>
-                <% } %>	
-            </div>
-            
-            <div class = "etiquetaApellido">
-                <label>Apellido*</label>
-            </div>
-            <div class = "apellido">
-                <!--
+                            <div class="etiquetaApellido">
+                                <label>Apellido*</label>
+                            </div>
+                            <div class="apellido">
+                                <!--
                     <input type="text" placeholder =" Inserte su apellido" name="apellido" pattern = "[a-zA-Z]">
                 -->
-                <input type="text" placeholder =" Inserte su apellido" name="apellido" 
-                class = "form-input <%= locals.errors && errors.apellido ? 'border border-danger' : '' %> <%= locals.oldData && oldData.apellido ? 'border border-success' : '' %>"
-                value ="<%= locals.oldData && oldData.apellido ? oldData.apellido : null %>"
-                >
-                <% if(locals.errors && errors.apellido) { %>
-                    <div class="text-danger">
-                        <%= errors.apellido.msg %>
-                    </div>
-                <% } %>	
-            </div>
+                                <input type="text" placeholder=" Inserte su apellido" name="apellido"
+                                    class="form-input <%= locals.errors && errors.apellido ? 'border border-danger' : '' %> <%= locals.oldData && oldData.apellido ? 'border border-success' : '' %>"
+                                    value="<%= locals.oldData && oldData.apellido ? oldData.apellido : null %>">
+                                <% if(locals.errors && errors.apellido) { %>
+                                    <div class="text-danger">
+                                        <%= errors.apellido.msg %>
+                                    </div>
+                                    <% } %>
+                            </div>
 
-            <div class = "etiquetaCorreo">
-                <label>Correo electrónico*</label>
-            </div>
-            <div class = "correo">
-                <input type="email" placeholder =" Inserte su correo electrónico" name="email" minlength="@" 
-                class = "form-input <%= locals.errors && errors.email ? 'border border-danger' : '' %> <%= locals.oldData && oldData.email ? 'border border-success' : '' %>"
-                value ="<%= locals.oldData && oldData.email ? oldData.email : null %>"
-                >
-                <% if(locals.errors && errors.email) { %>
-                    <div class="text-danger">
-                        <%= errors.email.msg %>
-                    </div>
-                <% } %>	
-            </div>
+                            <div class="etiquetaCorreo">
+                                <label>Correo electrónico*</label>
+                            </div>
+                            <div class="correo">
+                                <input type="email" placeholder=" Inserte su correo electrónico" name="email"
+                                    minlength="@"
+                                    class="form-input <%= locals.errors && errors.email ? 'border border-danger' : '' %> <%= locals.oldData && oldData.email ? 'border border-success' : '' %>"
+                                    value="<%= locals.oldData && oldData.email ? oldData.email : null %>">
+                                <% if(locals.errors && errors.email) { %>
+                                    <div class="text-danger">
+                                        <%= errors.email.msg %>
+                                    </div>
+                                    <% } %>
+                            </div>
 
-            <div class = "etiquetaContraseña">
-                <label>Contraseña*</label>
-            </div>
-            <div class = "Contraseña" >
-                <input type="password" placeholder =" Cree una contraseña" name="password" minlength="8" 
-                class = "form-input <%= locals.errors && errors.password ? 'border border-danger' : '' %> <%= locals.oldData && oldData.password ? 'border border-success' : '' %>"
-                >
-                <% if(locals.errors && errors.password) { %>
-                    <div class="text-danger">
-                        <%= errors.password.msg %>
-                    </div>
-                <% } %>	
-            </div>
-            <div class="etiquetaImage">
-                <label>Agrega una imagen de perfil</label>
-            </div>
-            <div class="imagenPerfil">
-                <input type="file" id="imagen" name="imagen" accept="image/*">
-            </div>
-            <% if(locals.errors && errors.imagen) { %>
-                <div class="text-danger">
-                    <%= errors.imagen.msg %>
-                </div>
-            <% } %>	
-            <div>
-                <!-- <p class = "terminos"> Al crear una cuenta aceptas la <a class = "box" href="/privacidad">Política de privacidad</a> y los <a class = "box" href="/terminos">Términos de uso </a>de Fit Fun Wear</p> -->
-                <br><input type="checkbox" name="terminos" id="terminos"> Al crear una cuenta aceptas la <a href="/privacidad"><u>Política de privacidad</u></a> y los <a href="/terminos"><u>Términos de uso</u></a> de Fit Fun Wear
-            
-            </div>
+                            <div class="etiquetaContraseña">
+                                <label>Contraseña*</label>
+                            </div>
+                            <div class="Contraseña">
+                                <input type="password" placeholder=" Cree una contraseña" name="password" minlength="8"
+                                    class="form-input <%= locals.errors && errors.password ? 'border border-danger' : '' %> <%= locals.oldData && oldData.password ? 'border border-success' : '' %>">
+                                <% if(locals.errors && errors.password) { %>
+                                    <div class="text-danger">
+                                        <%= errors.password.msg %>
+                                    </div>
+                                    <% } %>
+                            </div>
+                            <div class="etiquetaImage">
+                                <label>Agrega una imagen de perfil</label>
+                            </div>
+                            <div class="imagenPerfil">
+                                <input type="file" id="imagen" name="imagen" accept="image/*">
+                            </div>
+                            <% if(locals.errors && errors.imagen) { %>
+                                <div class="text-danger">
+                                    <%= errors.imagen.msg %>
+                                </div>
+                                <% } %>
+                                    <div>
+                                        <!-- <p class = "terminos"> Al crear una cuenta aceptas la <a class = "box" href="/privacidad">Política de privacidad</a> y los <a class = "box" href="/terminos">Términos de uso </a>de Fit Fun Wear</p> -->
+                                        <br><input type="checkbox" name="terminos" id="terminos"> Al crear una cuenta
+                                        aceptas la <a href="/privacidad"><u>Política de privacidad</u></a> y los <a
+                                            href="/terminos"><u>Términos de uso</u></a> de Fit Fun Wear
 
-            <% if(locals.errors && errors.terminos) { %>
-                <div class="text-danger">
-                    <%= errors.terminos.msg %>
-                </div>
-            <% } %>
+                                    </div>
 
-            <div class ="boton">
-                <button class="Enviar" type = "submit">ÚNETE</button>
-            </div>
-                
-            <div>
-                <p class = "iniciaSesion"> ¿Ya eres parte de la comunidad? <a class = "iniciarSesion" href="/user/login">Inicia sesión</a> </p>
-            </div>
-        
-        </form>
+                                    <% if(locals.errors && errors.terminos) { %>
+                                        <div class="text-danger">
+                                            <%= errors.terminos.msg %>
+                                        </div>
+                                        <% } %>
 
-    </main>
-    <%- include('../partials/footer') %>
-</body>
+                                            <div class="boton">
+                                                <button class="Enviar" type="submit">ÚNETE</button>
+                                            </div>
 
-</html>
+                                            <div>
+                                                <p class="iniciaSesion"> ¿Ya eres parte de la comunidad? <a
+                                                        class="iniciarSesion" href="/user/login">Inicia sesión</a> </p>
+                                            </div>
+
+                </form>
+
+            </main>
+            <%- include('../partials/footer') %>
+    </body>
+
+    </html>

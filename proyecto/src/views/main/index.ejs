@@ -83,16 +83,19 @@
           <!-- Show the "tendencia" products. Se agrega el for -->
           <div class="trending-articles">
             <% for (let producto of productosTendencia) { %>
-              <article class="section-item pointer">
-                <a href="/products/product-detail/<%= producto.id_product %>"> <img
-                    src="/img/products/<%=producto.products_attributes[0].image%>" class="img-item" alt="Artículo">
-                  <p class="item-name">
-                    <%= producto.name %>
-                  </p>
-                  <p class="item-price"><b>$<%= producto.products_attributes[0].price %></b></p>
-                </a>
-              </article>
-              <% } %>
+              <% if (!producto.products_attributes[0].image) { %>
+
+                <article class="section-item pointer">
+                  <a href="/products/product-detail/<%= producto.id_product %>"> <img
+                      src="/img/products/<%=producto.products_attributes[0].image%>" class="img-item" alt="Artículo">
+                    <p class="item-name">
+                      <%= producto.name %>
+                    </p>
+                    <p class="item-price"><b>$<%= producto.products_attributes[0].price %></b></p>
+                  </a>
+                </article>
+                <% } %>
+                  <% } %>
           </div>
         </section>
         <section class="best-seller">

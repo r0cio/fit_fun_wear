@@ -96,22 +96,33 @@ const userController = {
             });
         }
 
-        let imagen = 'default-image.png'; // Sino agrega una imagen se pone una por default
+        // Si no se sube una imagen se deja la imagen por defecto
+        let imagen = 'default-image.png';
         if (req.file) {
             imagen = req.file.filename;
         }
 
-        // Aquí va la validación de si ya está un email registrado
-        db.User.findOne({
-            where: {email: req.body.email}
-        }) .then(function(email){
-            //console.log(email);
-            return res.render('user/register', { msg: 'Este usuario ya está registrado' });
+        // Se comprueba si se quiere registrar un correo existente
+        db.User.findAll({
+            where: { email: req.body.email }
+        }).then(function (email) {
+            console.log("email: ", email);
+            if (email.length != 0) {
+                return res.render('user/register', { msg: 'Ya existe un usuario con ese email', oldData: req.body });
+            }
         }).catch(function (err) {
             console.log(err);
         })
 
+        // Aunque el correo sea válido se tienen que validar los campos de nuevo antes de crear el usuario
+        if (resultValidation.errors.length > 0) {
+            return res.render('user/register', {
+                errors: resultValidation.mapped(),
+                oldData: req.body,
+            });
+        }
 
+        // Si se registra un nuevo correo, se crea el usuario
         db.User.create({
             name: req.body.nombre,
             last_name: req.body.apellido,
@@ -120,10 +131,11 @@ const userController = {
             image: imagen,
             created_at: Date.now(),
             role_id: 2
-        });
+        })
+            .then(user => {
+                return res.render('user/login', { msgSuccess: 'Te has registrado con éxito' });
+            })
 
-         
-        return res.render('user/login', { msgSuccess: 'Te has registrado con éxito' });
     },
 
     // Editar - Vista (Update)
@@ -144,7 +156,7 @@ const userController = {
         let id = req.params.id;
         let users = {};
 
-        if( req.file == undefined){ // sino edita la imagen del perfil se mantiene la anterior
+        if (req.file == undefined) { // sino edita la imagen del perfil se mantiene la anterior
             users = {
                 name: req.body.nombre,
                 last_name: req.body.apellido,
@@ -171,22 +183,22 @@ const userController = {
         db.User.update(
             users,
             {
-                where : { id_user : id }
+                where: { id_user: id }
             }
         )
-        .then( function() {
-           // console.log("tengo id " + id);
-            db.User.findByPk(id)
-            .then(function(response){
-                console.log(response);
-                //res.redirect('/attribute/' + response.product_id);
-            })
-            .catch(function (err) {
-                console.log(err);
-            })
-        }   
+            .then(function () {
+                // console.log("tengo id " + id);
+                db.User.findByPk(id)
+                    .then(function (response) {
+                        console.log(response);
+                        //res.redirect('/attribute/' + response.product_id);
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                    })
+            }
 
-        )
+            )
 
         res.redirect('/user/edit/' + id);
 
