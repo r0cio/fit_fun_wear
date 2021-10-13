@@ -107,6 +107,11 @@ button.Enviar{
     width: 100%;
 }
 
+.img-profile {
+    max-width: 500px;
+    max-height: 300px;
+}
+
 /* Para los diferentes dispositivos - Media queries */
 /* Móvil */
 @media (min-width: 576px) {

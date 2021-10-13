@@ -150,32 +150,17 @@ const userController = {
     update: function (req, res) {
         let id = req.params.id;
         let users = {};
+        let correctPassword = false;        
 
-        let correctPassword = false;
-        let currentEmail = '';
+        // se busca al usuario y se le pide que ingrese su contraseña actual
         db.User.findByPk(id)
-            .then(function (user) {
-                currentEmail = user.email;
+            .then(function (user) { 
+                myUser = user;                               
                 correctPassword = bycrypt.compareSync(req.body.password, user.password);
                 if (!correctPassword) {
                     res.render('user/edit-profile', { user: user, msg: "Tienes que escribir tu contraseña actual" });
                 } 
             }) 
-
-        // trabajando en el email 🤭 ...
-        /* db.User.findAll()
-        .then(function (users) {
-            res.send(users)
-            for (let i = 0; i < users.length; i++) {
-                console.log("user "+ i + " ", users[i].name);
-                
-            }
-            if (email.length != 0) {
-                return res.render('user/edit-profile', { msg: 'Ya existe un usuario con ese email', user: email[0] });
-            }
-        }).catch(function (err) {
-            console.log(err);
-        }) */
 
         if (req.file == undefined) { // sino edita la imagen del perfil se mantiene la anterior
             users = {
@@ -197,28 +182,26 @@ const userController = {
             }
         }
 
+        // se actualiza el usuario
         db.User.update(
-            users,
-            {
+            users
+            , {
                 where: { id_user: id }
             }
         )
             .then(function (user) {
-                res.redirect('/user/profile');
-                // console.log("tengo id " + id);
-                /* db.User.findByPk(id)
-                    .then(function (response) {
-                        console.log(response);
-                        //res.redirect('/attribute/' + response.product_id);
-                    })
-                    .catch(function (err) {
+                // se obtiene el usuario actualizado para guardar en session y se redirecciona a su perfil
+                db.User.findByPk(id)
+                    .then(function (user) { 
+                        req.session.userLog = user;
+                        res.redirect('/user/profile');
+                    }).catch(function (err){
                         console.log(err);
-                    })  */
-                //res.render('user/edit-profile', { user: user });
+                    })
             }
-            ) 
-
-        //res.redirect('/user/edit/' + id);
+                ).catch(function (err) {
+                    console.log(err);
+                }) 
 
     },
 
