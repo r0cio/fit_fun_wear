@@ -80,8 +80,8 @@ VALUES
 (6,1,'tenis-lila.jpeg', 2555.00, 0, 'M',10, 6, 6,4,1),
 (7,1,'leggings-gris.jpeg', 550.00, 0, 'M',3, 1, 2,4,2),
 (8,1,'leggings-gris.jpeg', 550.00, 10, 'M',10, 3, 2,1,2),
-(9,1,'dusan-jovic-uTlMDzkAz-M-unsplash.jpg', 550.00, 0, 'M',3, 2, 5,4,2),
-(10,1,'dusan-jovic-uTlMDzkAz-M-unsplash.jpg', 550.00, 10, 'M',10, 3, 5,4,2),
+(9,1,'leggings-gris.jpeg', 550.00, 0, 'M',3, 2, 5,4,2),
+(10,1,'leggings-gris.jpeg', 550.00, 10, 'M',10, 3, 5,4,2),
 (11,1,'leggings-pink.jpeg', 550.00, 0, 'M',4, 3, 7,3,2),
 (12,1,'conjuntoFila.jpg', 1750.00, 0, 'H',7, 3, 3,4,3),
 (13,1,'conjuntoFila.jpg', 1750.00, 0, 'H',7, 2, 3,4,3),
@@ -91,7 +91,9 @@ VALUES
 (17,1,'conjunto-short-playera-gris.jpeg', 1750.00, 0, 'H',3, 1, 2,4,3),
 (18,1,'conjunto-short-playera-verde.jpeg', 1750.00, 0, 'H',4, 3, 4,4,3),
 (19,1,'conjunto-short-playera-verde.jpeg', 1750.00, 0, 'H',4, 2, 4,4,3),
-(20,1,'conjunto-short-playera-verde.jpeg', 1750.00, 0, 'H',4, 1, 4,4,3);
+(20,1,'conjunto-short-playera-verde.jpeg', 1750.00, 0, 'H',4, 1, 4,4,3),
+(21,1,'haryo-setyadi-acn5ERAeSb4-unsplash.jpg', 1250.00, 0, 'H',4, 1, 1,4,4),
+(22,1,'julia-rekamie-Z72YujnOrlY-unsplash.jpg', 1050.00, 0, 'M',4, 1, 9,4,5);
 
 -- Insertando datos en tabla carts
 INSERT INTO `fitFunWear`.`carts`
