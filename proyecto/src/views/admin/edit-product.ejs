@@ -1,5 +1,6 @@
 <%- include('../partials/head') %>
     <link rel="stylesheet" href="/css/styles-register.css">
+    <script src="/js/validatorAddEditProduct.js"></script>
     <title>FitFunWear</title>
     </head>
 
@@ -24,6 +25,7 @@
                     <div class="nombreProducto">
                         <input type="text" placeholder="" name="nombre" value="<%= producto.name %>" required>
                     </div>
+                    <p class="add-product-error-nombre text-danger d-none"></p>
 
                     <div class="etiquetaDescripcion">
                         <label>Descripción del producto</label>
@@ -31,12 +33,15 @@
                     <div class="descripcionProducto">
                         <input type="text" placeholder="" name="descripcion" value="<%= producto.description %>">
                     </div>
+                    <p class="add-product-error-descripcion text-danger d-none"></p>
+
                     <div class="etiquetaModelo">
                         <label>Modelo</label>
                     </div>
                     <div class="modelo">
                         <input type="text" placeholder="" name="modelo" value="<%= producto.model %>">
                     </div>
+                    <p class="add-product-error-modelo text-danger d-none"></p>
 
                     <div class="boton">
                         <button class="Enviar" type="submit">EDITAR</button>

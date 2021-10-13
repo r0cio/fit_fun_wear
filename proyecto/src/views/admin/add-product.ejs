@@ -1,5 +1,6 @@
 <%- include('../partials/head') %>
     <link rel="stylesheet" href="/css/styles-register.css">
+    <script src="/js/validatorAddEditProduct.js"></script>
     <title>FitFunWear</title>
     </head>
 
@@ -20,9 +21,10 @@
                     </div>
                     <div class="nombreProducto">
                         <input type="text" placeholder="" name="nombre"
-                            class="<%= locals.error && error.nombre ? 'border border-danger' : '' %> <%= locals.old && old.nombre ? 'border border-success': '' %>"
+                            class="add-product-nombre <%= locals.error && error.nombre ? 'border border-danger' : '' %> <%= locals.old && old.nombre ? 'border border-success': '' %>"
                             value="<%= locals.old && old.nombre ? old.nombre : '' %>">
                     </div>
+                    <p class="add-product-error-nombre text-danger d-none"></p>
                     <% if (locals.error && error.nombre) { %>
                         <p class="text-danger">
                             <%= error.nombre.msg %>
@@ -34,8 +36,9 @@
                     </div>
                     <div class="descripcionProducto">
                         <textarea name="descripcion" id="descripcion"
-                            class="form-input <%= locals.error && error.descripcion ? 'border border-danger' : '' %> <%= locals.old && old.descripcion ? 'border border-success': '' %>"><%= locals.old && old.descripcion ? old.descripcion : '' %></textarea>
+                            class="add-product-descripcion  form-input <%= locals.error && error.descripcion ? 'border border-danger' : '' %> <%= locals.old && old.descripcion ? 'border border-success': '' %>"><%= locals.old && old.descripcion ? old.descripcion : '' %></textarea>
                     </div>
+                    <p class="add-product-error-descripcion text-danger d-none"></p>
                     <% if (locals.error && error.descripcion) { %>
                         <p class="text-danger">
                             <%= error.descripcion.msg %>
@@ -46,10 +49,16 @@
                         <label>Modelo</label>
                     </div>
                     <div class="modelo">
-                        <input type="text" placeholder=""
-                            name="modelo"
+                        <input type="text" placeholder="" name="modelo"
+                            class = "add-product-modelo <%= locals.error && error.modelo ? 'border border-danger' : '' %> <%= locals.old && old.modelo ? 'border border-success': '' %>"
                             value="<%= locals.old && old.modelo ? old.modelo : '' %>">
                     </div>
+                    <p class="add-product-error-modelo text-danger d-none"></p>
+                    <% if (locals.error && error.modelo) { %>
+                        <p class="text-danger">
+                            <%= error.modelo.msg %>
+                        </p>
+                    <% } %>
 
                     <div class="boton">
                         <button
