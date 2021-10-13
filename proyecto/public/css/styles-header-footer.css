@@ -243,8 +243,8 @@ footer section.credit-cards div.credit-card-container {
     }
 
     header nav.main-top-nav div.main-list-nav {
-        align-items: center;
         display: flex;
+        align-items: flex-end;
         margin-right: 34%;
     }
 

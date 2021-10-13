@@ -52,7 +52,7 @@ router.get('/profile', loggedMiddleware, userController.profile);
 
 //Editar (update)
 
-router.get('/edit/:id', userController.edit);
+router.get('/edit/:id', loggedMiddleware, userController.edit);
 
 //Actualizar 
 router.put('/edit/:id', upload.single('imagen'), userController.update);

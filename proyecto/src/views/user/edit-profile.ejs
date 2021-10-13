@@ -14,7 +14,9 @@
                 <%= user.name %>
             </i>
         </div>
-
+        <% if (locals && locals.msg) { %>
+            <p class="text-danger text-center"><%= msg %> </p>
+        <% } %>
         <form action = "/user/edit/<%=user.id_user%>?_method=PUT" method = "POST" enctype="multipart/form-data"> <!-- enctype para usar multer -->
 
             <div class = "etiquetaNombre">
@@ -83,10 +85,10 @@
             <% } %>	
 
             <div class = "etiquetaContraseña">
-                <label>Edita o introduce tu contraseña actual para continuar</label>
+                <label>Introduce tu contraseña actual para continuar</label>
             </div>
             <div class = "Contraseña" >
-                <input type="password" placeholder =" Contraseña" name="password" minlength="8" 
+                <input type="password" placeholder =" Contraseña" name="password" minlength="8" required
                 class = "form-input <%= locals.errors && errors.password ? 'border border-danger' : '' %> <%= locals.oldData && oldData.password ? 'border border-success' : '' %>"
                 >
                 <% if(locals.errors && errors.password) { %>

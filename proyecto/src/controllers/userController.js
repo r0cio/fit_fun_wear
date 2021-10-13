@@ -40,14 +40,9 @@ const userController = {
                     //res.send(user[0].password);
                     let correctPassword = bycrypt.compareSync(req.body.password, user[0].password);
                     if (correctPassword) {
-                        delete user[0].password;
-                        //console.log(user[0]);
-                        //return res.send(user[0]);
-                        let user2 = user[0];
-                        //req.session.userLogged = user2;
-                        req.session.userLog = user2;
-                        //console.log("sess", req.session);
-                        //return res.send(user2);
+                        delete user[0].password;                        
+                        let user2 = user[0];                        
+                        req.session.userLog = user2;                        
                         if (req.body.recordarme) {
                             res.cookie("userEmail", req.body.email, { maxAge: (1000 * 60) * 5 });
                         }
@@ -156,25 +151,47 @@ const userController = {
         let id = req.params.id;
         let users = {};
 
+        let correctPassword = false;
+        let currentEmail = '';
+        db.User.findByPk(id)
+            .then(function (user) {
+                currentEmail = user.email;
+                correctPassword = bycrypt.compareSync(req.body.password, user.password);
+                if (!correctPassword) {
+                    res.render('user/edit-profile', { user: user, msg: "Tienes que escribir tu contraseña actual" });
+                } 
+            }) 
+
+        // trabajando en el email 🤭 ...
+        /* db.User.findAll()
+        .then(function (users) {
+            res.send(users)
+            for (let i = 0; i < users.length; i++) {
+                console.log("user "+ i + " ", users[i].name);
+                
+            }
+            if (email.length != 0) {
+                return res.render('user/edit-profile', { msg: 'Ya existe un usuario con ese email', user: email[0] });
+            }
+        }).catch(function (err) {
+            console.log(err);
+        }) */
+
         if (req.file == undefined) { // sino edita la imagen del perfil se mantiene la anterior
             users = {
                 name: req.body.nombre,
-                last_name: req.body.apellido,
-                email: req.body.email,
-                password: bycrypt.hashSync(req.body.password, 10),
-                //image: imagen,
-                created_at: Date.now(),
+                last_name: req.body.apellido,                
+                //password: bycrypt.hashSync(req.body.password, 10),
+                //image: imagen,                
                 role_id: 2,
                 updated_at: Date.now()
             };
         } else {  // si edita la imagen 
             users = {
                 name: req.body.nombre,
-                last_name: req.body.apellido,
-                email: req.body.email,
-                password: bycrypt.hashSync(req.body.password, 10),
-                image: req.file.filename,
-                created_at: Date.now(),
+                last_name: req.body.apellido,                
+                //password: bycrypt.hashSync(req.body.password, 10),
+                image: req.file.filename,                
                 role_id: 2,
                 updated_at: Date.now()
             }
@@ -186,21 +203,22 @@ const userController = {
                 where: { id_user: id }
             }
         )
-            .then(function () {
+            .then(function (user) {
+                res.redirect('/user/profile');
                 // console.log("tengo id " + id);
-                db.User.findByPk(id)
+                /* db.User.findByPk(id)
                     .then(function (response) {
                         console.log(response);
                         //res.redirect('/attribute/' + response.product_id);
                     })
                     .catch(function (err) {
                         console.log(err);
-                    })
+                    })  */
+                //res.render('user/edit-profile', { user: user });
             }
+            ) 
 
-            )
-
-        res.redirect('/user/edit/' + id);
+        //res.redirect('/user/edit/' + id);
 
     },
 
