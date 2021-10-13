@@ -80,8 +80,9 @@
                         <label>Descuento</label>
                     </div>
                     <div class="descuento">
-                        <input type="number" placeholder="" name="descuento" value="<%= producto.descuento %>">
+                        <input type="tel" maxlength="2" class="add-attribute-descuento" placeholder="" name="descuento" value="<%= producto.descuento %>">
                     </div>
+                    <p class="add-attribute-error-descuento text-danger d-none"></p>
 
                     <div class="etiquetaCantidad">
                         <label>Cantidad</label>

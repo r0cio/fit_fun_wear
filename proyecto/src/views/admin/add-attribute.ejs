@@ -242,11 +242,13 @@
                         <label>Descuento</label>
                     </div>
                     <div class="descuento">
-                        <input type="number"
+                        <input type="tel" maxlength="2"
                                 placeholder=""
+                                class="add-attribute-descuento"
                                 name="descuento"
                                 value="<%= locals.old && old.descuento ? old.descuento : '' %>">
                     </div>
+                    <p class="add-attribute-error-descuento text-danger d-none"></p>
                     <% if (locals.error && error.descuento) { %>
                         <p class="text-danger">
                             <%= error.descuento.msg %>
