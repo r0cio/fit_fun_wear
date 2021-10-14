@@ -83,6 +83,86 @@ window.addEventListener('load', function () {
        
     })
 
+    //Campo Nombre
+    let campoName = document.querySelector(".name");
+    let errorName = document.querySelector("p.name-error");
+
+    campoName.addEventListener('click', function () {
+        if (campoName.value == '') {
+            campoName.classList.add('border-danger');
+            errorName.innerHTML = "Rellena el campo de nombre";
+            errorName.classList.remove('d-none');
+            errorName.classList.add('d-block');
+        } else {
+            campoName.classList.remove('border-danger');
+        }
+    })
+
+    campoName.addEventListener('input', function () {
+
+        if (campoName.value == '') {
+            campoName.classList.add('border-danger');
+            errorName.innerHTML = "Escribe tu nombre";
+            errorName.classList.remove('d-none');
+            errorName.classList.add('d-block');
+        } else if (campoName.value.length > 3) {
+            campoName.classList.remove('border-danger')
+            campoName.classList.add('border-success')
+            errorName.classList.add('d-none');
+            errorName.classList.remove('d-block')
+            /**/
+           //alert("ok")
+          } else {
+           campoName.classList.add('border-danger')
+           errorName.innerHTML = "Tu nombre debe contener más de 3 caracteres";
+           errorName.classList.remove('d-none');
+           errorName.classList.add('d-block');
+           //alert("mal")
+                
+          }
+       
+    })
+
+    //Campo Apellido
+    let campoLastName = document.querySelector(".last_name");
+    let errorLastName = document.querySelector("p.last_name-error");
+
+    campoLastName.addEventListener('click', function () {
+        if (campoLastName.value == '') {
+            campoLastName.classList.add('border-danger');
+            errorLastName.innerHTML = "Rellena el campo de apellido";
+            errorLastName.classList.remove('d-none');
+            errorLastName.classList.add('d-block');
+        } else {
+            campoLastName.classList.remove('border-danger');
+        }
+    })
+
+    campoLastName.addEventListener('input', function () {
+
+        if (campoLastName.value == '') {
+            campoLastName.classList.add('border-danger');
+            errorLastName.innerHTML = "Escribe tu apellido";
+            errorLastName.classList.remove('d-none');
+            errorLastName.classList.add('d-block');
+        } else if (campoLastName.value.length > 3) {
+            campoLastName.classList.remove('border-danger')
+            campoLastName.classList.add('border-success')
+            errorLastName.classList.add('d-none');
+            errorLastName.classList.remove('d-block')
+            /**/
+           //alert("ok")
+          } else {
+           campoLastName.classList.add('border-danger')
+           errorLastName.innerHTML = "Tu apellido debe contener más de 3 caracteres";
+           errorLastName.classList.remove('d-none');
+           errorLastName.classList.add('d-block');
+           //alert("mal")
+                
+          }
+       
+    })
+
     /* let formulario = this.document.querySelector("form.reservation");
  
     formulario.addEventListener("submit", function(e){
