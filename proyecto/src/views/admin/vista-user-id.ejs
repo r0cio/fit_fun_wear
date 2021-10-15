@@ -1,0 +1,46 @@
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/styles-profile.css">
+    <title>FitFunWear</title>
+    </head>
+
+    <body>
+        <%- include('../partials/header') %>
+            <main>
+                <div class="seccion">
+                    <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
+                </div>
+
+                <div class="container" style="margin-top: 40px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                                <h2 class="text-muted">
+                                    <% if (user.role_id == 1) { %>
+                                        Admin: 
+                                    <% } else {%>
+                                    Usuario: 
+                                    <% } %> <hr/>
+                                    <%= user.name %>
+                                    <%= user.last_name %>
+                                </h2>
+                                <img class="img-profile mx-auto d-block" src="/img/users/<%= user.image %>">
+                                <br>
+                                <br>
+                                <div class="alert alert-success text-center" role="alert">
+                                    <%= user.email %>
+                                </div>
+                                <div class="boton">
+                                    <button type="button" class="btn btn-info mr-1"> <a class="text-white"
+                                            href="/admin/edit/user/<%=user.id_user%>">
+                                            Editar</a></button>
+                                            <form class="mt-2" action="/admin/user/delete/<%=user.id_user%>?_method=DELETE" method="POST">
+                                                <button class="btn btn-danger">Eliminar usuario</button>
+                                            </form>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <%- include('../partials/footer') %>
+    </body>
+
+    </html>

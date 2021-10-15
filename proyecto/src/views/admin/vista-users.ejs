@@ -1,0 +1,40 @@
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/styles-index.css">
+    <title>FitFunWear</title>
+    </head>
+
+    <body>
+        <%- include('../partials/header') %>
+        <main>
+            <section class="trending">
+                
+                <div class="trending-articles">
+                    <% for (let user of users) { %>   
+                        <article class="section-item pointer">
+                                <a href="/admin/users/<%= user.id_user %>">
+                                <img src="/img/users/<%= user.image %>"
+                                class="img-item" alt="Artículo">
+
+                                <p class="item-name"><%= user.name %> <%= user.last_name %> 
+                                </p>
+
+                                <p class="item-name alert alert-success"><%= user.email %>
+                                </p>
+                                
+                                <p class="item-name text-info">
+                                    <% if (user.role_id == 1) { %>
+                                        Administrador 
+                                    <% } else { %>
+                                        Usuario
+                                    <% } %> 
+                                </p>
+                            </a>
+                        </article>
+                    <% } %>
+                </div>
+            </section>
+        </main>
+        <%- include('../partials/footer') %>
+    </body>
+
+    </html>

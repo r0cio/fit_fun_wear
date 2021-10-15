@@ -10,16 +10,19 @@
                     <img class="logo" src="/img/icono-logo.ico" alt="Logo FitFunWear">
                 </div>
                 <div class="bienvenida">
-                    <h1> ¡ HOLA ADMINISTRADOR ! </h1>
+                    <h1> ¡ HOLA ADMIN ! </h1>
+                    <% if (locals && locals.userLog) { %>
+                        <p class="text-center"><%= userLog.name %> </p>
+                    <% } %>
                     <p class="comunidad"> ¿Qué deseas hacer hoy? </p>
                 </div>
 
                 <form action="/" method="GET">
 
                     <div class="admin">
-                        <a href="/products/create" title="Agregar producto"><i class="fas fa-plus-circle"></i></a>
-                        Agregar producto
-                        <a href="/products/" title="Editar producto"><i class="fas fa-edit"></i></a> Editar producto
+                        <a href="/admin/products" class="m-3" title="Administra, edita y elimina productos"><i class="fas fa-clipboard-list"></i> Administrar productos</a>
+                        
+                        <a href="/admin/users" class="m-3" title="Administra y ve los usuarios del sitio"><i class="fas fa-users"></i> Administrar usuarios</a> 
                     </div>
 
                 </form>

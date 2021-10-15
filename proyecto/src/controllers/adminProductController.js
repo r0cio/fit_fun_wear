@@ -13,8 +13,12 @@ const Attribute = require('../database/models/Attribute');
 
 const adminProductController = {
 
-    // listado de todos los productos
     index: function (req, res) {
+        res.render('admin/vista-admin')
+    },
+
+    // listado de todos los productos
+    products: function (req, res) {
         db.Product.findAll({
             include : [ { model: db.Attribute,
                             as: "products_attributes" }]
@@ -59,6 +63,111 @@ const adminProductController = {
         .catch(function (err) {
             console.log(err);
         })
+    },
+
+    // listado de usuarios
+    users: function (req, res) {
+        db.User.findAll()
+            .then(function (users) {                
+                res.render('admin/vista-users', { users: users })
+            })
+            .catch(function (err){
+                console.log(err);
+            })
+    },
+
+    // detalle de usuarios
+    usersDetail: function (req, res) {
+        let id = req.params.id;
+        db.User.findByPk(id)
+            .then(function (user) {                
+                res.render('admin/vista-user-id', { user: user })
+            })
+            .catch(function (err){
+                console.log(err);
+            })
+    },
+
+    // Editar - Vista (Update)
+    editUser: function (req, res) {
+        let id = req.params.id;
+        db.User.findByPk(id)
+            .then(user => {                
+                res.render('admin/edit-user', { user: user });
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
+    },
+
+    // actualizar usuario desde admin
+    updateUser: function (req, res) {
+        let id = req.params.id;
+        let users = {};
+        
+        let isAdmin = 2;
+        if (req.body.admin == 'on') {
+            isAdmin = 1;
+        }
+
+        if (req.file == undefined) { // sino edita la imagen del perfil se mantiene la anterior
+            users = {
+                name: req.body.nombre,
+                last_name: req.body.apellido,                
+                //password: bycrypt.hashSync(req.body.password, 10),
+                //image: imagen,     
+                role_id: isAdmin,                           
+                updated_at: Date.now()
+            };
+        } else {  // si edita la imagen 
+            users = {
+                name: req.body.nombre,
+                last_name: req.body.apellido,                
+                //password: bycrypt.hashSync(req.body.password, 10),
+                image: req.file.filename, 
+                role_id: isAdmin,                               
+                updated_at: Date.now()
+            }
+        }
+
+        // se actualiza el usuario
+        db.User.update(
+            users
+            , {
+                where: { id_user: id }
+            }
+        )
+            .then(function (user) {
+                // se obtiene el usuario actualizado
+                //res.redirect('/admin/users');
+                db.User.findByPk(id)
+                    .then(function (user) { 
+                        //req.session.userLog = user;
+                        res.redirect('/admin/users');
+                    }).catch(function (err){
+                        console.log(err);
+                    })
+            }
+                ).catch(function (err) {
+                    console.log(err);
+                }) 
+
+    },
+
+    // eliminar usuario de la base de datos
+    deleteUser: function (req, res) {
+        let id = req.params.id;
+        db.User.destroy({
+            where: {
+                id_user : id
+            }
+        })
+            .then( function (){
+                res.redirect('/admin/users');
+            })
+            .catch( function (err){
+                console.log(err);
+            })
     },
 
     // página de creación de un producto
