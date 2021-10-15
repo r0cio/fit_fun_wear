@@ -39,9 +39,16 @@ h1{
     font-style: oblique;
 }
 
-p.comunidad, p.terminos{
+p.terminos{
     margin: 10px 0px;
     font-size: 11px;
+    text-align: center;
+    color: #2c2d37;
+}
+
+p.comunidad {
+    margin: 10px 0px;
+    font-size: 13px;
     text-align: center;
     color: #2c2d37;
 }
@@ -62,12 +69,12 @@ a.box:link{
 }
 
 a.link-copy:link, a.iniciarSesion{
-    font-size: 12px;
+    font-size: 13px;
     color: #757575;
 }
 
 p.iniciaSesion{
-    font-size: 12px;
+    font-size: 13px;
     text-align: center;
     padding-top: 10px;
 }
