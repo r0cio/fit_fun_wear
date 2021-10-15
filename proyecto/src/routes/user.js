@@ -32,6 +32,8 @@ router.get('/login', guestMiddleware, userController.login);
 // ************ Se procesa el formulario de login ************
 router.post('/login', validationsLogin, userController.loginProcess);
 
+
+// Creación
 //************ Se muestra el formulario del registro ************
 router.get('/register', guestMiddleware, userController.register);
 
@@ -43,12 +45,12 @@ router.post('/register', upload.single('imagen'), validations, userController.st
 // ************ Cierra sesión ************
 router.get('/logout', userController.logout);
 
+
+//Detalle 
+
 // ************ Perfil de usuario ************
 router.get('/profile', loggedMiddleware, userController.profile);
 
-// Creación
-
-//router.get("/crear", userController.crear)
 
 //Editar (update)
 
@@ -56,6 +58,7 @@ router.get('/edit/:id', loggedMiddleware, userController.edit);
 
 //Actualizar 
 router.put('/edit/:id', upload.single('imagen'), userController.update);
+
 
 
 module.exports = router;
