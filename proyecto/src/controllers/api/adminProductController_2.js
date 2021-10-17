@@ -65,7 +65,7 @@ const adminProductController_2 = {
                         model: element.dataValues.model,
                         image: 'http://localhost:3000/img/products/' + este[0].dataValues.image,
                         attribute: este,
-                        detail: 'http://localhost:3000/api/products/' + element.dataValues.id_product,
+                        //detail: 'http://localhost:3000/api/products/' + element.dataValues.id_product,
                         attribute_url: 'http://localhost:3000/api/attributes/' + element.dataValues.id_product
                     }
                     //console.log(element.dataValues.products_attributes[0].dataValues)
@@ -79,7 +79,7 @@ const adminProductController_2 = {
                         description: element.dataValues.description,
                         image: 'http://localhost:3000/img/products/' + 'default-image.png',
                         attribute: este,
-                        detail: 'http://localhost:3000/api/products/' + element.dataValues.id_product,
+                        //detail: 'http://localhost:3000/api/products/' + element.dataValues.id_product,
                         attribute_url: 'http://localhost:3000/api/attributes/' + element.dataValues.id_product
                     }
                     //console.log(element.dataValues.products_attributes[0].dataValues)
