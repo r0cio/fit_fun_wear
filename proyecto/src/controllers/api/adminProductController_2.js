@@ -63,10 +63,10 @@ const adminProductController_2 = {
                         name: element.dataValues.name,
                         description: element.dataValues.description,
                         model: element.dataValues.model,
-                        image: este[0].dataValues.image,
+                        image: 'http://localhost:3000/img/products/' + este[0].dataValues.image,
                         attribute: este,
-                        detail: 'api/products/' + element.dataValues.id_product,
-                        attribute_url: 'api/attribute/' + element.dataValues.id_product
+                        detail: 'http://localhost:3000/api/products/' + element.dataValues.id_product,
+                        attribute_url: 'http://localhost:3000/api/attributes/' + element.dataValues.id_product
                     }
                     //console.log(element.dataValues.products_attributes[0].dataValues)
                     //return res.send(producto);
@@ -77,10 +77,10 @@ const adminProductController_2 = {
                         id_product: element.dataValues.id_product,
                         name: element.dataValues.name,
                         description: element.dataValues.description,
-                        image: 'default-image.png',
+                        image: 'http://localhost:3000/img/products/' + 'default-image.png',
                         attribute: este,
-                        detail: 'api/products/' + element.dataValues.id_product,
-                        attribute_url: 'api/attribute/' + element.dataValues.id_product
+                        detail: 'http://localhost:3000/api/products/' + element.dataValues.id_product,
+                        attribute_url: 'http://localhost:3000/api/attributes/' + element.dataValues.id_product
                     }
                     //console.log(element.dataValues.products_attributes[0].dataValues)
                     //return res.send(producto);

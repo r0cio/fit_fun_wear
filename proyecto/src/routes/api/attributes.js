@@ -20,7 +20,7 @@ router.get('/:id',  adminAttributeController.index);
 
 // formulario de edición de atributos con id_attribute = id
 //router.get('/detalle/:id', loggedAdminMiddleware, adminAttributeController.detail);
-//router.get('/edit/:id',  adminAttributeController.edit);
+router.get('/detail/:id',  adminAttributeController.detalle);
 
 
 
