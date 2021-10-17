@@ -13,6 +13,10 @@ const rutasCart = require('./routes/cart');
 const rutasAdmin = require('./routes/admin');
 const rutasAttribute = require('./routes/attribute');
 const usersApi = require('./routes/api/admin');
+const productsApi = require('./routes/api/products');
+const attributesApi = require('./routes/api/attributes');
+
+
 
 const userController = require('./controllers/userController');
 
@@ -44,6 +48,9 @@ app.use('/cart', rutasCart);
 app.use('/admin', rutasAdmin);
 app.use('/attribute', rutasAttribute);
 app.use('/api/users', usersApi)
+
+app.use('/api/products', productsApi);
+app.use('/api/attributes', attributesApi);
 
 // Ruta para el error 404
 app.use(function (req, res, next) {
