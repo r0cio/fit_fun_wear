@@ -20,9 +20,12 @@ const adminProductController = {
                 return res.status(200).json({
                     meta: {
                         status: 200,
-                        url: "/api/users",
+                        url: "http://localhost:3000/api/users",
                         count: users.length,
-                        users: users
+                        users: users,
+                        // colocar adentro de cada usuario */
+                        //url_user: "http://localhost:3000/api/users/" + users.id_user
+                        
                     }
                 })
             })
@@ -38,13 +41,12 @@ const adminProductController = {
                     name: user.name,
                     last_name: user.last_name,
                     email: user.email,
-                    url_image: user.image,
-                    url: "/api/users/" + req.params.id,
+                    url_image: "http://localhost:3000/img/users/" + user.image,
+                    url_user: "http://localhost:3000/api/users/" + req.params.id,
                     status: 200
                 })
             })
     }
-
 };
 
 module.exports = adminProductController;

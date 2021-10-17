@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Controlador de productos
-const adminProductController = require('../../controllers/api/adminProductController');
+const adminProductController = require('../../controllers/api/adminUserController');
 
 const loggedAdminMiddleware = require('../../middlewares/loggedAdminMiddleware');
 
