@@ -109,3 +109,20 @@
 
 ## Dejar de hacer
 ### Dejar de trabajar en 2 sprints al mismo tiempo ya que nos sobrecargamos de trabajo y por ello podríamos no llegar a cumplir con los tiempos marcados en nuestro tablero, así mismo queremos dejar de posponer nuestras reuniones grupales.
+
+
+# Conclusiones Sprint 8
+## Empezar a hacer
+### Definir tareas para el termino del proyecto en tiempo y forma, cumpliendo con las especificaciones de los sprints.
+
+## Hacer más
+### Ajustar detalles del proyecto, vistas, funcionalidades, etc., para darle una mejor experiencia al usuario.
+
+## Continuar haciendo
+### Seguir con el buen ambiente que tenemos como equipo, seguir con la comunicación y apoyo con el que hemos trabajado desde el inicio del proyecto para terminarlo de buena forma, cumpliendo con los requisitos necesarios.
+
+## Hacer menos
+### Dejar de posponer las reuniones, ya que al estar en la recta final, es mejor apoyarnos y aclarar dudas con el fin de fijar tiempos límite de cada tarea y del proyecto en general.
+
+## Dejar de hacer
+### Olvidar el tablero en Trello, ya que es una herramienta que nos ayuda como equipo para mantener un buen ritmo de trabajo.

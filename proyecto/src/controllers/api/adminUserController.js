@@ -16,17 +16,28 @@ const adminProductController = {
     // listado de usuarios
     users: function (req, res) {
         db.User.findAll()
-            .then(function (users) {                
+            .then(function (users) {
+                let usuarios = [];
+                if(users.length > 0){
+                    users.forEach(user => {
+                        let array = {
+                            id: user.id_user,
+                            name: user.name,
+                            last_name: user.last_name,
+                            email: user.email,
+                            detail: 'http://localhost:3000/api/users/' + user.id_user
+                        };
+                        usuarios.push(array);
+                    });
+                }
+
                 return res.status(200).json({
                     meta: {
                         status: 200,
                         url: "http://localhost:3000/api/users",
                         count: users.length,
-                        users: users,
-                        // colocar adentro de cada usuario */
-                        //url_user: "http://localhost:3000/api/users/" + users.id_user
-                        
-                    }
+                        users: usuarios,
+                    },
                 })
             })
     },
@@ -46,7 +57,7 @@ const adminProductController = {
                     status: 200
                 })
             })
-    }
+        }
 };
 
 module.exports = adminProductController;
