@@ -1,11 +1,23 @@
-# Sprint 1 Wireframe + Boceto - Proyecto Integrador 
-# Equipo fit fun wear
+# Proyecto Integrador - Programación Web Fullstack Node
+# Equipo 4 - fit fun wear
 
 ## Temática del e-commerce
 ### Nuestro sitio estará enfocado a la venta de ropa deportiva, dirigido especialmente a un público de entre 18-35 años, por lo que nuestro objetivo es que la población joven tenga un estilo de vida saludable gracias a la realización de ejercicio físico, manteniendo siempre la comodidad y estando a la moda al usar ropa ofrecida en nuestro sitio web.
 
 ## Enlace a tablero en Trello
 * <https://trello.com/grupo4fitfunwear>
+
+## Ejecutar proyecto
+### Run node app
+#### cd proyecto
+#### npm install
+#### cd src
+#### run: node app.js o nodemon app.js
+### Run react dashboard
+#### cd proyecto
+#### cd dashboard
+#### npm install
+#### run: npm start
 
 ## Referencias
 ### 1.- Referencias Leticia

@@ -1,3 +1,25 @@
+# dependencies
 /node_modules
-
 proyecto/node_modules
+proyecto/dashboard/node_modules
+/.pnp
+.pnp.js
+
+#react
+
+# testing
+proyecto/dashboard/coverage
+
+# production
+proyecto/dashboard/build
+
+# misc
+proyecto/dashboard/.DS_Store
+proyecto/dashboard/.env.local
+proyecto/dashboard/.env.development.local
+proyecto/dashboard/.env.test.local
+proyecto/dashboard/.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
