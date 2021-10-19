@@ -1,24 +1,28 @@
 import React from 'react';
-import image from '../assets/images/logo-DH.png';
-import ContentWrapper from './ContentWrapper';
-import GenresInDb from './GenresInDb';
-import LastMovieInDb from './LastMovieInDb';
-import ContentRowMovies from './ContentRowMovies';
+import image from '../assets/images/Logo.png';
+import MainContent from './MainContent';
+import CantidadTotales from './CantidadTotales';
 import NotFound from './NotFound';
 import {Link, Route, Switch} from 'react-router-dom';
 //import SearchMovies from './SearchMovies';
 import SearchMovies2 from './SearchMovies copy';
+import UltimosCreados from './UltimosCreados';
+import Categorias from './Categorias';
+import ContentProducts from './ContentProducts';
+import ContentUser from './ContentUser';
+import ProductDetail from './ProductDetail';
+import UserDetail from './UserDetail';
 
 function SideBar(){
     return(
         <React.Fragment>
-            {/*<!-- Sidebar -->*/}
-            <ul className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
+            {/*<!-- Sidebar -->*/}            
+            <ul className="navbar-nav fixed-top navbar-light sidebar sidebar-dark accordion" style={{backgroundColor: "#29adb8"}} id="accordionSidebar">
 
                 {/*<!-- Sidebar - Brand -->*/}
                 <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                     <div className="sidebar-brand-icon">
-                        <img className="w-100" src={image} alt="Digital House"/>
+                        <img className="w-100" style={{height:"60px", borderRadius:"5px"}} src={image} alt="Logo FitFunWear"/>
                     </div>
                 </a>
 
@@ -29,7 +33,7 @@ function SideBar(){
                 <li className="nav-item active">
                     <Link className="nav-link" to="/">
                         <i className="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard - DH movies</span></Link>
+                        <span>FitFunWear Dashboard</span></Link>
                 </li>
 
                 {/*<!-- Divider -->*/}
@@ -40,69 +44,76 @@ function SideBar(){
 
                 {/*<!-- Nav Item - Pages -->*/}
                 <li className="nav-item">
-                <Link className="nav-link" to="/GenresInDb">
+                <Link className="nav-link" to="/cantidad-totales">
                         <i className="fas fa-fw fa-folder"></i>
-                        <span>Pages</span>
+                        <span className="text-white font-weight-bold">Totales</span>
                     </Link>
                 </li>
 
-                {/*<!-- Nav Item - Charts -->*/}
+                {/*<!-- Nav Item - Pages -->*/}
                 <li className="nav-item">
-                    <Link className="nav-link" to="/LastMovieInDb">
-                        <i className="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span></Link>
+                <Link className="nav-link" to="/ultimos-creados">
+                        <i className="fas fa-fast-backward"></i>
+                        <span className="text-white font-weight-bold">Últimos creados</span>
+                    </Link>
                 </li>
 
-                {/*<!-- Nav Item - Tables -->*/}
-                <li className="nav-item nav-link">
-                <Link className="nav-link" to="/ContentRowMovies">
-                        <i className="fas fa-fw fa-table"></i>
-                        <span>Tables</span></Link>
+                {/*<!-- Nav Item - Pages -->*/}
+                <li className="nav-item">
+                <Link className="nav-link" to="/categorias">
+                        <i className="fas fa-align-center"></i>
+                        <span className="text-white font-weight-bold">Categorias</span>
+                    </Link>
                 </li>
 
-                {/*<!-- Nav Item - Search -->*/}
-                <li className="nav-item nav-link">
-                <Link className="nav-link" to="/search">
-                        <i className="fas fa-fw fa-table"></i>
-                        <span>Search</span></Link>
+                {/*<!-- Nav Item - Pages -->*/}
+                <li className="nav-item">
+                <Link className="nav-link" to="/productos">
+                        <i className="fas fa-book-open"></i>
+                        <span className="text-white font-weight-bold">Todos los productos</span>
+                    </Link>
+                </li>
+
+                {/*<!-- Nav Item - Pages -->*/}
+                <li className="nav-item">
+                <Link className="nav-link" to="/usuarios">
+                        <i className="fas fa-address-card"></i>
+                        <span className="text-white font-weight-bold">Todos los usuarios</span>
+                    </Link>
                 </li>
 
                 {/*<!-- Divider -->*/}
                 <hr className="sidebar-divider d-none d-md-block"/>
-            </ul>
+            </ul>            
             {/*<!-- End of Sidebar -->*/}
 
-            {/*<!-- Microdesafio 1 -->*/}
-            {/*<!--<Route exact path="/">
-                <ContentWrapper />
-            </Route>
-            <Route path="/GenresInDb">
-                <GenresInDb />
-            </Route>
-            <Route path="/LastMovieInDb">
-                <LastMovieInDb />
-            </Route>
-            <Route path="/ContentRowMovies">
-                <ContentRowMovies />
-            </Route>*/}
-            {/*<!-- End Microdesafio 1 -->*/}
-
-            {/*<!-- End Microdesafio 2 -->*/}
             <Switch>
                 <Route exact path="/">
-                    <ContentWrapper />
+                    <MainContent />
+                </Route>                
+                <Route path="/productos">
+                    <ContentProducts tama={"container-fluid mt-5"} />
                 </Route>
-                <Route path="/GenresInDb">
-                    <GenresInDb />
+                <Route path="/usuarios">
+                    <ContentUser tama={"container-fluid mt-5"} />
                 </Route>
-                <Route path="/LastMovieInDb">
-                    <LastMovieInDb />
+                <Route path="/cantidad-totales">
+                    <CantidadTotales tama={"container-fluid mt-5"} />
                 </Route>
-                <Route path="/ContentRowMovies">
-                    <ContentRowMovies />
+                <Route path="/ultimos-creados">
+                    <UltimosCreados tama={"container-fluid mt-5"} />
+                </Route>
+                <Route path="/categorias">
+                    <Categorias tama={"container-fluid mt-5"} />
                 </Route>
                 <Route path="/search">
                     <SearchMovies2 />
+                </Route>
+                <Route path="/detalle-producto/:id">
+                    <ProductDetail tama={"container-fluid mt-5"} />
+                </Route>
+                <Route path="/detalle-usuario/:id">
+                    <UserDetail tama={"container-fluid mt-5"} />
                 </Route>
                 <Route component={NotFound} />
             </Switch>

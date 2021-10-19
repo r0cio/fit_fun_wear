@@ -1,20 +1,20 @@
 import React from 'react';
-import TopBar from './TopBar';
-import ContentRowTop from './ContentRowTop';
+import MainTop from './MainTop';
+import TotalesMain from './TotalesMain';
 import Footer from './Footer';
-function ContentWrapper(){
+function MainContent(){
     return (
         <React.Fragment>
             {/*<!-- Content Wrapper -->*/}
             <div id="content-wrapper" className="d-flex flex-column">
                 {/*<!-- Main Content -->*/}
                 <div id="content">
-                    <TopBar />
-                    <ContentRowTop />
+                    <MainTop />
+                    <TotalesMain />
                     <Footer />
                 </div>
             </div>    
         </React.Fragment>
     )
 }
-export default ContentWrapper;
+export default MainContent;

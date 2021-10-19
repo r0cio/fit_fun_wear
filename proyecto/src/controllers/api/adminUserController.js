@@ -25,6 +25,7 @@ const adminProductController = {
                             name: user.name,
                             last_name: user.last_name,
                             email: user.email,
+                            image: "http://localhost:3000/img/users/" + user.image,
                             detail: 'http://localhost:3000/api/users/' + user.id_user
                         };
                         usuarios.push(array);

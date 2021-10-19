@@ -4,7 +4,7 @@ import SideBar from './SideBar';
 function App() {
   return (
     <React.Fragment>
-      	<div id="wrapper">
+      	<div id="wrapper" style={{marginLeft: "224px"}}>
           <SideBar />
         </div>
     </React.Fragment>
