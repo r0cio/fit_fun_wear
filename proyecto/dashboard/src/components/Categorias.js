@@ -29,7 +29,7 @@ function Categorias(props){
             .catch( err => console.log(err))
     }, [])
 
-    let cartPropsCategories = [categoriesHombre, categoriesMasVendidos, categoriesMujeres, categoriesNormales, categoriesOfertas, categoriesTendencias, categoriesUnisex];
+    let cartPropsCategories = [categoriesHombre, categoriesMujeres, categoriesUnisex, categoriesNormales, categoriesMasVendidos, categoriesOfertas, categoriesTendencias];
 
     return (
         <div className={props.tama}>
