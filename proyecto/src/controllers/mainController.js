@@ -37,6 +37,7 @@ const mainController = {
                     }
                 }
                 //console.log(req.session);
+                console.log("prodTenden", productosTendencia);
                 res.render("main/index", { productosOferta: productosOferta, productosTendencia: productosTendencia });
             })
             .catch(function (err) {

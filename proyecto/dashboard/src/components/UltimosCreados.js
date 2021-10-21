@@ -1,37 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SmallCard from './SmallCard';
 
-/*  Cada set de datos es un objeto literal */
-
-/* <!-- Movies in DB --> */
-
-let moviesInDB = {
-    title: 'Movies in Data Base',
-    color: 'primary', 
-    cuantity: 21,
-    icon: 'fa-clipboard-list'
-}
-
-/* <!-- Total awards --> */
-
-let totalAwards = {
-    title:' Total awards', 
-    color:'success', 
-    cuantity: '79',
-    icon:'fa-award'
-}
-
-/* <!-- Actors quantity --> */
-
-let actorsQuantity = {
-    title:'Actors quantity' ,
-    color:'warning',
-    cuantity:'49',
-    icon:'fa-user-check'
-}
-
-let cartProps = [moviesInDB, totalAwards, actorsQuantity];
-
 function UltimosCreados(props){
 
     const [ products, setProducts ] = useState({title: '', product: [], icon: ''});
@@ -72,12 +41,7 @@ function UltimosCreados(props){
             <h2 className="mt-3 h3 mb-0 text-gray-800 text-center">ÚLTIMOS CREADOS</h2>
 			<hr/>
             <div className="row mb-5">
-                
-                {/* {cartProps.map( (movie, i) => {
 
-                    return <SmallCard {...movie} key={i}/>
-                
-                })} */}
                 {cartPropsUltimos.map( (elem, i) => {
 
                     return <SmallCard {...elem} key={i} tama={"col-md-6"}/>

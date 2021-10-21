@@ -72,7 +72,7 @@
                                 <% if (tamanos) { %>
                                     <% for(let i=0; i < productos.length; i++) { %>
                                         <!--aqui debefria obtener el valor que escogio el usuario de color-->
-                                        <% if(productos[i].color == colores[0].id_color) {%>
+                                        <% if(productos[i]?.color == colores[0]?.id_color) {%>
                                             <%const sizo = tamanos.find(element => element.id_size === productos[i].talla )%>
                                             <option value="<%= sizo?.id_size %>">
                                                 <%= sizo.name %>
@@ -89,7 +89,7 @@
                                 <% if (tamanos) { %>
                                     <% for(let i=0; i < productos.length; i++) { %>
                                         <!--aqui deberia obtener el valor del color que escogio el usuario en el menu vertical-->
-                                        <% if(productos[i].color == colores[0].id_color) {%>
+                                        <% if(productos[i]?.color == colores[0]?.id_color) {%>
                                             <%const sizo = tamanos.find(element => element.id_size === productos[i].talla )%>
 
                                             <!--Aquí sólo debería tomar el  valor de la talla que aparece en el menu vertical-->
