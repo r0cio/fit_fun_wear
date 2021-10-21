@@ -47,7 +47,8 @@ const cartController = {
     // Agrega item al carrito
     agregarItem: function (req, res) {
         let id = req.params.id;
-
+        console.log(id);
+        
         for (let i = 0; i < products.length; i++) {
             if (products[i].id == id) {
                 products[i].enCarrito = true;

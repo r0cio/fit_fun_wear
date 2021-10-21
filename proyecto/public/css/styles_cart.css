@@ -246,20 +246,26 @@ main.cart div.a-pagar {
     flex-wrap: wrap;
     flex-direction: column;
 }
-
+/*
 section.subtotal-final{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     margin:40px 10px 20px 10px;
 }
-
-section.subtotal-final div.row-total {
+*/
+section.subtotal-final  {
     margin:0 10px;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     padding:3px 0;
-    justify-content: space-between;
+
+    color: #222222;
+    line-height: 15px;
+    font-size: 12px;
+    font-weight: 600;
+   /* justify-content:flex-end;*/
 }
 
 div.row-total p{
@@ -267,6 +273,9 @@ div.row-total p{
     line-height: 15px;
     font-size: 12px;
     font-weight: 600;
+    display: flex;
+    justify-content:right;
+    padding-right: 10px;
 }
 
 section.subtotal-final div.row-total:last-child{

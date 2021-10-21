@@ -39,23 +39,20 @@
                                 </div>
                         </div>
                         <div class="desc-article">
-                                <h5> <%= article[i].desc %> </h5>
+                                <h5> <%= article[i].nombre %> </h5>
                                 <label >COLOR<p class="color"> <%= article[i].color %> </p></label>
                                 <label>TALLA<p class="size"> <%= article[i].talla %> </p></label>
                                 <label>MODELO<p class="modelo"> <%= article[i].modelo %> </p></label>
                                 <div class="cantidad-total">
+
                                     <label>Cantidad
                                         <select>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
+                                            <% for(let j=1; j <=article[i].cantidad; j++) { %>
+                                                <option value="<%= j %>">
+                                                    <%= j %>
+                                                </option>
+                                            <% } %>
+
                                         </select></label>
                                     <label class="subtotal"> $<%= article[i].precio %> </label>
                                 </div>
@@ -76,19 +73,24 @@
             </section>
             <div class="a-pagar">
                 <section class="subtotal-final">
+                    <p>SUBTOTAL</p>
                     <div class="row-total">
-                        <p>SUBTOTAL</p>
-                        <p>$4540.00</p>
+                        <% let suma = 0%>
+                        <% for( let i=0; i< article.length; i++) { %>
+                            <p>$<%= article[i].precio %></p>
+                            <% suma = suma + article[i].precio%>
+                        <% } %>
                     </div>
+                    <p>GASTOS DE ENVÍO</p>
                     <div class="row-total">
-                        <p>GASTOS DE ENVÍO</p>
+
                         <p>$0.00</p>
                     </div>
                 </section>
                 <section class="total-final">
                     <div class="row-total-fin">
                         <p>TOTAL</p>
-                        <p>$4540.00</p>
+                        <p>$<%=suma%></p>
                     </div>
                 </section>
                 <label id= "pagar"><button>PAGAR</button></label>
